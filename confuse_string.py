@@ -296,6 +296,7 @@ if __name__ == '__main__':
 
     #新建swift 文件
     creator = XcodeSwiftFileCreator(project_path,aes_key=aes_key,method_prefix=random_method_prefix)
+    decryptor_file_name = f'String+{random_method_prefix}Decryptor.swift'
     creator.create_swift_file(file_name, target_name)
 
     
@@ -310,6 +311,11 @@ if __name__ == '__main__':
                 if is_ignore_file(file_path):
                     continue
 
+                # 跳过新创建的解密文件，避免对解密文件本身进行混淆
+                if file == decryptor_file_name:
+                    print(f"跳过解密文件: {file}")
+                    continue
+
                 print(f"正在读取文件 {file_path}...")
 
                 ##方法
@@ -319,9 +325,66 @@ if __name__ == '__main__':
                 elif file.endswith('.swift'):
                     with open(file_path, 'r+') as f:
                         content = f.read()
-                        for de_str, en_str in data_map.items():
-                            # content = content.replace(de_str, en_str)
-                            content = re.sub(f'"{de_str}"', f'"{en_str}".{random_method_prefix}_decrypt()', content)
+                        original_content = content  # 保存原始内容用于比较
+                        
+                        # 按行处理，跳过已经包含解密方法的行
+                        lines = content.split('\n')
+                        processed_lines = []
+                        
+                        for line in lines:
+                            # 如果这行已经包含解密方法调用，直接跳过
+                            if re.search(r'\.[a-zA-Z_]+_decrypt\(\)', line):
+                                processed_lines.append(line)
+                                continue
+                                
+                            # 处理当前行
+                            processed_line = line
+                            for de_str, en_str in data_map.items():
+                                # 转义特殊字符，避免正则表达式错误
+                                escaped_de_str = re.escape(de_str)
+                                
+                                # 改进的正则表达式：匹配双引号字符串，但排除已经有解密方法调用的情况
+                                # 负向后行断言 (?!\.[a-zA-Z_]+_decrypt\(\)) 确保字符串后面没有跟解密方法
+                                pattern1 = f'"{escaped_de_str}"(?!\.[a-zA-Z_]+_decrypt\(\))'
+                                replacement1 = f'"{en_str}".{random_method_prefix}_decrypt()'
+                                
+                                # 更严格的部分匹配：确保不匹配已经加密的字符串
+                                # 使用负向前行断言和负向后行断言
+                                pattern2 = f'(?<!\.)"([^"]*{escaped_de_str}[^"]*)"(?!\.[a-zA-Z_]+_decrypt\(\))'
+                                
+                                # 先尝试精确匹配
+                                if re.search(pattern1, processed_line):
+                                    processed_line = re.sub(pattern1, replacement1, processed_line)
+                                    print(f"  ✅ 在 {file} 中找到并替换了: {de_str}")
+                                
+                                # 如果精确匹配没找到，尝试部分匹配（字符串包含目标文本）
+                                elif re.search(pattern2, processed_line):
+                                    def replace_partial(match):
+                                        full_string = match.group(1)
+                                        if de_str in full_string:
+                                            # 检查这个完整字符串是否已经是加密过的（通常加密字符串是base64格式）
+                                            # 如果字符串看起来像base64且长度较长，跳过处理
+                                            if len(full_string) > 20 and re.match(r'^[A-Za-z0-9+/]*={0,2}$', full_string):
+                                                return match.group(0)  # 不处理，返回原字符串
+                                            
+                                            # 只替换包含目标字符串的完整字符串
+                                            encrypted_full = rw_encrypt(aes_key, full_string)
+                                            return f'"{encrypted_full}".{random_method_prefix}_decrypt()'
+                                        return match.group(0)
+                                    
+                                    processed_line = re.sub(pattern2, replace_partial, processed_line)
+                                    print(f"  ✅ 在 {file} 中找到并部分替换了包含: {de_str}")
+                            
+                            processed_lines.append(processed_line)
+                        
+                        # 重新组合内容
+                        content = '\n'.join(processed_lines)
+                        
+                        # 只有当内容真的改变了才写入文件
+                        if content != original_content:
+                            print(f"  📝 更新文件: {file}")
+                        else:
+                            print(f"  ⏭️  跳过文件（无匹配）: {file}")
 
                     with open(file_path, 'w') as f:
                         f.write(content)
