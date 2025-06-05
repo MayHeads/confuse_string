@@ -18,6 +18,15 @@ class ViewController: UIViewController {
         print(xc)
         print(xy1)
         print(xy2)
+        
+        
+        ysEventTrace(name: "page_view", argument: [
+            "page_name" : "首页",
+        ])
+    }
+    
+    func ysEventTrace(name: String, argument: [String: Any]) {
+        
     }
 
 

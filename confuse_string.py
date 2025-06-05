@@ -15,12 +15,15 @@ from pbxproj import XcodeProject
 #工程中pod：  添加 pod 'CryptoSwift'
 #python环境： pip3 install pbxproj
 #/Users/xmiles/Documents/Project/CloudTuiQing
-project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
-target_name = "ConfuseDemo1"
+# project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
+# target_name = "ConfuseDemo1"
 
 
 # project_path = "/Users/jiangshanchen/WaterMarkCam"
 # target_name = "WaterMarkCam"
+
+project_path = "/Users/jiangshanchen/CloudTuiQing"
+target_name = "CloudTuiQing"
 
 IGNORE_DIRECTORY = [
     "Pods",
