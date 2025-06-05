@@ -18,6 +18,10 @@ from pbxproj import XcodeProject
 project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
 target_name = "ConfuseDemo1"
 
+
+# project_path = "/Users/jiangshanchen/WaterMarkCam"
+# target_name = "WaterMarkCam"
+
 IGNORE_DIRECTORY = [
     "Pods",
     "du.xcframework",
