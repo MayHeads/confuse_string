@@ -282,18 +282,26 @@ def extract_strings_from_swift_files(project_path: str) -> list:
                         
                         print(f"  正在处理文件: {file}")
                         
-                        # 使用正则表达式匹配字符串字面量
-                        # 匹配双引号包围的字符串，支持转义字符
-                        string_pattern = r'"([^"\\\\]|\\\\.)*"'
-                        matches = re.finditer(string_pattern, content)
+                        # 使用更强大的正则表达式匹配字符串字面量
+                        # 匹配双引号包围的字符串，支持转义字符，处理复杂嵌套情况
+                        string_pattern = r'"(?:[^"\\\\]|\\\\.)*"'
+                        matches = list(re.finditer(string_pattern, content))
+                        
+                        print(f"    在 {file} 中找到 {len(matches)} 个字符串字面量")
                         
                         file_string_count = 0
                         # 更精确的字符串提取
-                        for match in matches:
+                        for i, match in enumerate(matches):
                             full_match = match.group(0)  # 包含引号的完整匹配
                             string_content = full_match[1:-1]  # 去掉首尾引号
                             
-                            print(f"    找到字符串: \"{string_content}\"")
+                            # 显示上下文信息，帮助调试
+                            start_pos = max(0, match.start() - 20)
+                            end_pos = min(len(content), match.end() + 20)
+                            context = content[start_pos:end_pos].replace('\n', '\\n')
+                            
+                            print(f"    [{i+1}] 找到字符串: \"{string_content}\"")
+                            print(f"        上下文: ...{context}...")
                             
                             # 过滤条件检查，添加详细的调试信息
                             should_include = True
@@ -305,7 +313,10 @@ def extract_strings_from_swift_files(project_path: str) -> list:
                             elif len(string_content) >= 100:
                                 should_include = False
                                 filter_reason = "字符串太长"
-                            elif re.match(r'^[A-Za-z0-9+/]*={0,2}$', string_content) and len(string_content) > 10:
+                            elif (re.match(r'^[A-Za-z0-9+/]*={0,2}$', string_content) and 
+                                  len(string_content) > 15 and 
+                                  len(string_content) % 4 == 0 and
+                                  '+' in string_content or '/' in string_content or '=' in string_content):
                                 should_include = False
                                 filter_reason = "可能是base64编码"
                             elif string_content.startswith('http'):
@@ -320,13 +331,16 @@ def extract_strings_from_swift_files(project_path: str) -> list:
                             elif re.match(r'^\d{4}-\d{2}-\d{2}', string_content):
                                 should_include = False
                                 filter_reason = "日期格式"
+                            elif string_content in ['true', 'false', 'nil', 'null']:
+                                should_include = False
+                                filter_reason = "布尔值或空值"
                             
                             if should_include:
                                 all_strings.add(string_content)
                                 file_string_count += 1
-                                print(f"      ✅ 添加到待混淆列表: \"{string_content}\"")
+                                print(f"        ✅ 添加到待混淆列表")
                             else:
-                                print(f"      ❌ 过滤掉: \"{string_content}\" (原因: {filter_reason})")
+                                print(f"        ❌ 过滤掉 (原因: {filter_reason})")
                                 
                         print(f"    从 {file} 中提取了 {file_string_count} 个有效字符串")
                         processed_files += 1
