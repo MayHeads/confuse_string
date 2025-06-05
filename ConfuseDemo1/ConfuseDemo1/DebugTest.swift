@@ -8,3 +8,8 @@
 import Foundation
 
 
+let xc = "1234"
+let xy1 = "$_code"
+
+let xy2 = "$code"
+
