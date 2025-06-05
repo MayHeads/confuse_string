@@ -248,6 +248,103 @@ def rw_encrypt(key:str, plain_text: str) -> str:
         return ""
 
 
+def extract_strings_from_swift_files(project_path: str) -> list:
+    """
+    从项目中所有Swift文件提取字符串字面量
+    返回去重后的字符串列表
+    """
+    print("🔍 开始扫描项目中的Swift文件...")
+    
+    all_strings = set()  # 使用set自动去重
+    processed_files = 0
+    
+    for root, _, files in os.walk(project_path):
+        for file in files:
+            if file.endswith('.swift'):
+                file_path = os.path.join(root, file)
+                
+                # 跳过忽略的目录
+                if is_ignore_file(file_path):
+                    continue
+                
+                # 跳过可能的解密文件（避免提取已加密的字符串）
+                if 'Decryptor' in file:
+                    print(f"  跳过解密文件: {file}")
+                    continue
+                    
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        
+                        print(f"  正在处理文件: {file}")
+                        
+                        # 使用正则表达式匹配字符串字面量
+                        # 匹配双引号包围的字符串，支持转义字符
+                        string_pattern = r'"([^"\\\\]|\\\\.)*"'
+                        matches = re.finditer(string_pattern, content)
+                        
+                        file_string_count = 0
+                        # 更精确的字符串提取
+                        for match in matches:
+                            full_match = match.group(0)  # 包含引号的完整匹配
+                            string_content = full_match[1:-1]  # 去掉首尾引号
+                            
+                            print(f"    找到字符串: \"{string_content}\"")
+                            
+                            # 过滤条件检查，添加详细的调试信息
+                            should_include = True
+                            filter_reason = ""
+                            
+                            if len(string_content) == 0:
+                                should_include = False
+                                filter_reason = "空字符串"
+                            elif len(string_content) >= 100:
+                                should_include = False
+                                filter_reason = "字符串太长"
+                            elif re.match(r'^[A-Za-z0-9+/]*={0,2}$', string_content) and len(string_content) > 10:
+                                should_include = False
+                                filter_reason = "可能是base64编码"
+                            elif string_content.startswith('http'):
+                                should_include = False
+                                filter_reason = "URL链接"
+                            elif string_content.endswith(('.png', '.jpg', '.jpeg', '.gif')):
+                                should_include = False
+                                filter_reason = "图片文件名"
+                            elif re.match(r'^#[0-9A-Fa-f]{6}$', string_content):
+                                should_include = False
+                                filter_reason = "颜色值"
+                            elif re.match(r'^\d{4}-\d{2}-\d{2}', string_content):
+                                should_include = False
+                                filter_reason = "日期格式"
+                            
+                            if should_include:
+                                all_strings.add(string_content)
+                                file_string_count += 1
+                                print(f"      ✅ 添加到待混淆列表: \"{string_content}\"")
+                            else:
+                                print(f"      ❌ 过滤掉: \"{string_content}\" (原因: {filter_reason})")
+                                
+                        print(f"    从 {file} 中提取了 {file_string_count} 个有效字符串")
+                        processed_files += 1
+                        
+                except Exception as e:
+                    print(f"读取文件 {file_path} 时出错: {str(e)}")
+                    continue
+    
+    # 转换为列表并排序
+    string_list = sorted(list(all_strings))
+    
+    print(f"✅ 扫描完成! 从 {processed_files} 个Swift文件中提取到 {len(string_list)} 个唯一字符串")
+    
+    # 显示一些示例
+    if string_list:
+        print("📝 提取到的字符串示例:")
+        for i, s in enumerate(string_list[:10]):  # 显示前10个
+            print(f"  {i+1}. \"{s}\"")
+        if len(string_list) > 10:
+            print(f"  ... 还有 {len(string_list) - 10} 个字符串")
+    
+    return string_list
 
 
 if __name__ == '__main__':
@@ -259,28 +356,31 @@ if __name__ == '__main__':
     file_name = f'String+{random_method_prefix}Decryptor'
 
     aes_key = generate_aes_key() 
-    #读取本文件目录下的另外一个文件
-
-
-
+    
+    # 清空日志文件
     with open(f'{os.getcwd()}/confuse_string_log.txt', 'r+') as log_file:
         log_file.truncate(0)
 
-    with open(f'{os.getcwd()}/strings.txt', 'r') as f:
-        lines = f.readlines()
-
-        strings = []
-        for i in range(len(lines)):
-            line = lines[i].strip()
-            en_str = rw_encrypt(aes_key,line)
-            de_str = rw_decrypt(aes_key,en_str)
+    # 从项目Swift文件中提取字符串，而不是读取strings.txt
+    print("🚀 开始从项目中提取字符串...")
+    extracted_strings = extract_strings_from_swift_files(project_path)
     
-            if line == de_str:
-                print(f"{de_str} <-----> {en_str}")
-                strings.append(f"{de_str} <-----------> {en_str}")
+    if not extracted_strings:
+        print("❌ 没有找到可以混淆的字符串，程序退出")
+        exit(1)
 
-                data_map[de_str] = en_str
-            
+    print(f"🔐 开始加密 {len(extracted_strings)} 个字符串...")
+    
+    strings = []
+    for line in extracted_strings:
+        en_str = rw_encrypt(aes_key, line)
+        de_str = rw_decrypt(aes_key, en_str)
+
+        if line == de_str:
+            print(f"{de_str} <-----> {en_str}")
+            strings.append(f"{de_str} <-----------> {en_str}")
+            data_map[de_str] = en_str
+
     #映射日志
     with open(f'{os.getcwd()}/confuse_string_log.txt', 'r+') as f: 
         f.write("👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈" + '\n\n\n')
@@ -344,13 +444,13 @@ if __name__ == '__main__':
                                 escaped_de_str = re.escape(de_str)
                                 
                                 # 改进的正则表达式：匹配双引号字符串，但排除已经有解密方法调用的情况
-                                # 负向后行断言 (?!\.[a-zA-Z_]+_decrypt\(\)) 确保字符串后面没有跟解密方法
+                                # 负向后行断言确保字符串后面没有跟解密方法
                                 pattern1 = f'"{escaped_de_str}"(?!\.[a-zA-Z_]+_decrypt\(\))'
                                 replacement1 = f'"{en_str}".{random_method_prefix}_decrypt()'
                                 
                                 # 更严格的部分匹配：确保不匹配已经加密的字符串
                                 # 使用负向前行断言和负向后行断言
-                                pattern2 = f'(?<!\.)"([^"]*{escaped_de_str}[^"]*)"(?!\.[a-zA-Z_]+_decrypt\(\))'
+                                pattern2 = f'(?<!\\.)"([^"]*{escaped_de_str}[^"]*)"(?!\.[a-zA-Z_]+_decrypt\(\))'
                                 
                                 # 先尝试精确匹配
                                 if re.search(pattern1, processed_line):

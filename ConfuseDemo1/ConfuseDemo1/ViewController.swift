@@ -11,6 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(xc)
+        print(xy1)
+        print(xy2)
     }
 
 
