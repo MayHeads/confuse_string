@@ -15,8 +15,8 @@ from pbxproj import XcodeProject
 #工程中pod：  添加 pod 'CryptoSwift'
 #python环境： pip3 install pbxproj
 #/Users/xmiles/Documents/Project/CloudTuiQing
-project_path = "/Users/jiangshanchen/Desktop/充电马甲/CloudTuiQing"
-target_name = "CloudTuiQing"
+project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
+target_name = "ConfuseDemo1"
 
 IGNORE_DIRECTORY = [
     "Pods",
@@ -263,10 +263,10 @@ if __name__ == '__main__':
 
 
 
-    with open(f'{os.getcwd()}/confuse_string/confuse_string_log.txt', 'r+') as log_file:
+    with open(f'{os.getcwd()}/confuse_string_log.txt', 'r+') as log_file:
         log_file.truncate(0)
 
-    with open(f'{os.getcwd()}/confuse_string/strings.txt', 'r') as f:
+    with open(f'{os.getcwd()}/strings.txt', 'r') as f:
         lines = f.readlines()
 
         strings = []
@@ -282,7 +282,7 @@ if __name__ == '__main__':
                 data_map[de_str] = en_str
             
     #映射日志
-    with open(f'{os.getcwd()}/confuse_string/confuse_string_log.txt', 'r+') as f: 
+    with open(f'{os.getcwd()}/confuse_string_log.txt', 'r+') as f: 
         f.write("👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈" + '\n\n\n')
         for string in strings:
             f.write(string + '\n')
