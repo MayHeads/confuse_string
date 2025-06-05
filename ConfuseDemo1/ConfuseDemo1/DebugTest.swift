@@ -9,7 +9,13 @@ import Foundation
 
 
 let xc = "1234"
-let xy1 = "$_code"
+let xy1 = ""
 
-let xy2 = "$code"
+let xy2 =
+"""
+-------
+begin
+"end"
+-------
+"""
 
