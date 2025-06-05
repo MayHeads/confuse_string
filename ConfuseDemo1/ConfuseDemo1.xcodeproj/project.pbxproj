@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88078D1A2DF136F6002B5595 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88078D192DF136F6002B5595 /* CryptoSwift */; };
+		880BA2D12DF1445F002AD545 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 880BA2D02DF1445F002AD545 /* SwifterSwift */; };
 		AF276D8A54CF916E7F49C203 /* Pods_ConfuseDemo1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C6125CEF605C1E9373547A /* Pods_ConfuseDemo1.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880BA2D12DF1445F002AD545 /* SwifterSwift in Frameworks */,
 				AF276D8A54CF916E7F49C203 /* Pods_ConfuseDemo1.framework in Frameworks */,
 				88078D1A2DF136F6002B5595 /* CryptoSwift in Frameworks */,
 			);
@@ -149,6 +151,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				88078D182DF136F6002B5595 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				880BA2CF2DF1445F002AD545 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 88078CB92DF1366E002B5595 /* Products */;
@@ -415,6 +418,14 @@
 				minimumVersion = 1.8.4;
 			};
 		};
+		880BA2CF2DF1445F002AD545 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -422,6 +433,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 88078D182DF136F6002B5595 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		880BA2D02DF1445F002AD545 /* SwifterSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 880BA2CF2DF1445F002AD545 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
+			productName = SwifterSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
