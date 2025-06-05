@@ -10,7 +10,7 @@ import SwifterSwift
 
 class ViewController: UIViewController {
     
-    var lxvIewx = UIColor.init(hexString: "x0")
+    var lxvIewx = UIColor.init(hexString: "x01111")
 
     override func viewDidLoad() {
         super.viewDidLoad()

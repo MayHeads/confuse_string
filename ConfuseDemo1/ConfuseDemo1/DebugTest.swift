@@ -10,7 +10,8 @@ import Foundation
 
 
 let xc = "1234"
-let xy1 = ""
+
+let xy1 = "\(xc)https\("1234tdcaciton")"
 
 let xy2 =
 """
