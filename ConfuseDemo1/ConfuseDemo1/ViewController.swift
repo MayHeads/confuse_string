@@ -23,6 +23,9 @@ class ViewController: UIViewController {
         ysEventTrace(name: "page_view", argument: [
             "page_name" : "首页",
         ])
+        
+        let fixString = k == true ? "home_clear_apple" : "home_clear_sensor"
+
     }
     
     func ysEventTrace(name: String, argument: [String: Any]) {
@@ -39,7 +42,6 @@ class ViewController: UIViewController {
     let items = ["外网 IP", "外网 IP", "外网 IP"]
     
     let k: Bool = false
-    let fixString = k == true ? "home_clear_apple" : "home_clear_sensor")
 
 
 }
