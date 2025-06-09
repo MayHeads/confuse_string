@@ -458,14 +458,15 @@ if __name__ == '__main__':
                                 
                             # 处理当前行
                             processed_line = line
-                            for de_str, en_str in data_map.items():
+                            # 按字符串长度从长到短排序，避免短字符串先被替换导致长字符串匹配失败
+                            sorted_items = sorted(data_map.items(), key=lambda x: len(x[0]), reverse=True)
+                            for de_str, en_str in sorted_items:
                                 # 转义特殊字符，避免正则表达式错误
                                 escaped_de_str = re.escape(de_str)
                                 
-                                # 改进的正则表达式：匹配双引号字符串，但排除已经有解密方法调用的情况
+                                # 改进的正则表达式：只匹配字符串内容，不包含引号
                                 # 负向后行断言确保字符串后面没有跟解密方法
-                                # 同时确保引号前后的字符保持原样（包括逗号、括号等）
-                                pattern1 = f'("{escaped_de_str}")(?!\\.\\w+_decrypt\\(\\))'
+                                pattern1 = f'"{escaped_de_str}"(?!\\.\\w+_decrypt\\(\\))'
                                 replacement1 = f'"{en_str}".{random_method_prefix}_decrypt()'
                                 
                                 # 更严格的部分匹配：确保不匹配已经加密的字符串
@@ -473,32 +474,27 @@ if __name__ == '__main__':
                                 pattern2 = f'(?<!\\\\)"([^"]*{escaped_de_str}[^"]*)"(?!\\.\\w+_decrypt\\(\\))'
                                 
                                 # 先尝试精确匹配
-                                matches = list(re.finditer(pattern1, processed_line))
-                                if matches:
-                                    # 从后往前替换，避免索引变化影响
-                                    for match in reversed(matches):
-                                        start, end = match.span()
-                                        # 保持引号外的字符不变
-                                        processed_line = processed_line[:start] + replacement1 + processed_line[end:]
+                                if re.search(pattern1, processed_line):
+                                    processed_line = re.sub(pattern1, replacement1, processed_line)
                                     print(f"  ✅ 在 {file} 中找到并替换了: {de_str}")
                                 
-                                # 如果精确匹配没找到，尝试部分匹配（字符串包含目标文本）
-                                elif re.search(pattern2, processed_line):
-                                    def replace_partial(match):
-                                        full_string = match.group(1)
-                                        if de_str in full_string:
-                                            # 检查这个完整字符串是否已经是加密过的（通常加密字符串是base64格式）
-                                            # 如果字符串看起来像base64且长度较长，跳过处理
-                                            if len(full_string) > 20 and re.match(r'^[A-Za-z0-9+/]*={0,2}$', full_string):
-                                                return match.group(0)  # 不处理，返回原字符串
-                                            
-                                            # 只替换包含目标字符串的完整字符串
-                                            encrypted_full = rw_encrypt(aes_key, full_string)
-                                            return f'"{encrypted_full}".{random_method_prefix}_decrypt()'
-                                        return match.group(0)
-                                    
-                                    processed_line = re.sub(pattern2, replace_partial, processed_line)
-                                    print(f"  ✅ 在 {file} 中找到并部分替换了包含: {de_str}")
+                                # 暂时禁用部分匹配功能，因为它会导致数组语法破坏
+                                # elif re.search(pattern2, processed_line):
+                                #     def replace_partial(match):
+                                #         full_string = match.group(1)
+                                #         if de_str in full_string:
+                                #             # 检查这个完整字符串是否已经是加密过的（通常加密字符串是base64格式）
+                                #             # 如果字符串看起来像base64且长度较长，跳过处理
+                                #             if len(full_string) > 20 and re.match(r'^[A-Za-z0-9+/]*={0,2}$', full_string):
+                                #                 return match.group(0)  # 不处理，返回原字符串
+                                #             
+                                #             # 只替换包含目标字符串的完整字符串
+                                #             encrypted_full = rw_encrypt(aes_key, full_string)
+                                #             return f'"{encrypted_full}".{random_method_prefix}_decrypt()'
+                                #         return match.group(0)
+                                #     
+                                #     processed_line = re.sub(pattern2, replace_partial, processed_line)
+                                #     print(f"  ✅ 在 {file} 中找到并部分替换了包含: {de_str}")
                             
                             processed_lines.append(processed_line)
                         
