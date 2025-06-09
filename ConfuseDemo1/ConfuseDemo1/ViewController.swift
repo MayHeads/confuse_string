@@ -28,6 +28,18 @@ class ViewController: UIViewController {
     func ysEventTrace(name: String, argument: [String: Any]) {
         
     }
+    
+    var totalStorageGBValue: Float {
+        return (Float("1234".replacingOccurrences(of: ",", with: "")) ?? 0) / 1000.0
+    }
+    
+    var titles = ["非常满意", "满意", "一般", "不满意"]
+
+
+    let items = ["外网 IP", "外网 IP", "外网 IP"]
+    
+    let k: Bool = false
+    let fixString = k == true ? "home_clear_apple" : "home_clear_sensor")
 
 
 }
