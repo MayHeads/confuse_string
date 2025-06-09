@@ -206,9 +206,14 @@ def extract_strings_from_file(file_path: str) -> Set[str]:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # 使用编译好的正则表达式提高性能
+        # 改进的正则表达式，排除多行字符串
+        # 首先移除多行字符串内容，避免误匹配
+        multiline_pattern = re.compile(r'""".*?"""', re.DOTALL)
+        content_without_multiline = multiline_pattern.sub('', content)
+        
+        # 使用更精确的正则表达式匹配单行字符串
         string_pattern = re.compile(r'"(?:[^"\\\\]|\\\\.)*"')
-        matches = string_pattern.findall(content)
+        matches = string_pattern.findall(content_without_multiline)
         
         valid_strings = set()
         for match in matches:
@@ -286,12 +291,35 @@ def process_file_content(file_path: str, patterns: List[Tuple[re.Pattern, str, s
         if re.search(r'\.\w+_decrypt\(\)', content):
             return False
         
-        # 应用所有替换
+        # 按行处理，避免跨行替换问题
+        lines = content.split('\n')
+        processed_lines = []
         replacements_made = 0
-        for pattern, replacement, original_str in patterns:
-            if pattern.search(content):
-                content = pattern.sub(replacement, content)
-                replacements_made += 1
+        
+        for line in lines:
+            # 跳过多行字符串的开始和结束行
+            if '"""' in line:
+                processed_lines.append(line)
+                continue
+            
+            # 跳过字符串插值复杂的行（包含 \( 的行）
+            if '\\(' in line:
+                processed_lines.append(line)
+                continue
+                
+            processed_line = line
+            
+            # 应用字符串替换
+            for pattern, replacement, original_str in patterns:
+                if pattern.search(processed_line):
+                    new_line = pattern.sub(replacement, processed_line)
+                    if new_line != processed_line:
+                        processed_line = new_line
+                        replacements_made += 1
+            
+            processed_lines.append(processed_line)
+        
+        content = '\n'.join(processed_lines)
         
         # 只有当内容改变时才写入
         if content != original_content:
