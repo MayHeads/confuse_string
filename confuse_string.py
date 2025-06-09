@@ -15,15 +15,13 @@ from pbxproj import XcodeProject
 #工程中pod：  添加 pod 'CryptoSwift'
 #python环境： pip3 install pbxproj
 #/Users/xmiles/Documents/Project/CloudTuiQing
-# project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
-# target_name = "ConfuseDemo1"
+project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
+target_name = "ConfuseDemo1"
 
 
-# project_path = "/Users/jiangshanchen/WaterMarkCam"
-# target_name = "WaterMarkCam"
 
-project_path = "/Users/jiangshanchen/CloudTuiQing"
-target_name = "CloudTuiQing"
+# project_path = "/Users/jiangshanchen/CloudTuiQing"
+# target_name = "CloudTuiQing"
 
 IGNORE_DIRECTORY = [
     "Pods",
@@ -466,16 +464,22 @@ if __name__ == '__main__':
                                 
                                 # 改进的正则表达式：匹配双引号字符串，但排除已经有解密方法调用的情况
                                 # 负向后行断言确保字符串后面没有跟解密方法
-                                pattern1 = f'"{escaped_de_str}"(?!\.[a-zA-Z_]+_decrypt\(\))'
+                                # 同时确保引号前后的字符保持原样（包括逗号、括号等）
+                                pattern1 = f'("{escaped_de_str}")(?!\\.\\w+_decrypt\\(\\))'
                                 replacement1 = f'"{en_str}".{random_method_prefix}_decrypt()'
                                 
                                 # 更严格的部分匹配：确保不匹配已经加密的字符串
                                 # 使用负向前行断言和负向后行断言
-                                pattern2 = f'(?<!\\.)"([^"]*{escaped_de_str}[^"]*)"(?!\.[a-zA-Z_]+_decrypt\(\))'
+                                pattern2 = f'(?<!\\\\)"([^"]*{escaped_de_str}[^"]*)"(?!\\.\\w+_decrypt\\(\\))'
                                 
                                 # 先尝试精确匹配
-                                if re.search(pattern1, processed_line):
-                                    processed_line = re.sub(pattern1, replacement1, processed_line)
+                                matches = list(re.finditer(pattern1, processed_line))
+                                if matches:
+                                    # 从后往前替换，避免索引变化影响
+                                    for match in reversed(matches):
+                                        start, end = match.span()
+                                        # 保持引号外的字符不变
+                                        processed_line = processed_line[:start] + replacement1 + processed_line[end:]
                                     print(f"  ✅ 在 {file} 中找到并替换了: {de_str}")
                                 
                                 # 如果精确匹配没找到，尝试部分匹配（字符串包含目标文本）
