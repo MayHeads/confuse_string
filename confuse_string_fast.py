@@ -15,12 +15,15 @@ import threading
 from typing import Dict, List, Tuple, Set
 
 # 配置
-project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1/"
-target_name = "ConfuseDemo1"
+# project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1/"
+# target_name = "ConfuseDemo1"
+
+project_path = "/Users/jiangshanchen/CloudTuiQing"
+target_name = "CloudTuiQing"
 
 IGNORE_DIRECTORY = [
     "Pods", "DerivedData", "build", ".git", "node_modules", 
-    "Carthage", "fastlane", ".bundle"
+    "Carthage", "fastlane", ".bundle" , "CloudWidget", "Products"
 ]
 
 # 线程锁用于日志输出
