@@ -1,3 +1,4 @@
+## 批量处理图片
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageOps
 import numpy as np
 import random
@@ -6,6 +7,8 @@ import os
 from skimage import color, segmentation, measure
 import cv2
 import matplotlib.pyplot as plt
+import glob
+import time
 
 def modify_image(input_path, output_path, text_color=None, object_color_shift=None, add_icon=None):
     """
@@ -179,34 +182,218 @@ def modify_image(input_path, output_path, text_color=None, object_color_shift=No
     # 返回修改前后的图片用于比较
     return original, img
 
-# 使用示例
-if __name__ == "__main__":
-    input_image = "/Users/jiangshanchen/confuse_string/inputImage/tag_scaning_bg@3x.png"
-    output_image = "/Users/jiangshanchen/confuse_string/outputImage/modified_example.png"
+# 批量处理使用示例
+def batch_example():
+    """批量处理示例"""
+    folder_path = "/Users/jiangshanchen/CloudTuiQing/CloudTuiQing/Assets.xcassets"
     
-    # 修改参数（可选）：
-    # text_color - 要修改的文字颜色 (R, G, B)
-    # object_color_shift - 物体颜色偏移量 (0-1.0)
-    # add_icon - 要添加的小图标路径
-    
-    original, modified = modify_image(
-        input_image,
-        output_image,
-        text_color=(50, 100, 200),  # 蓝色文字
-        object_color_shift=0.1,      # 10% 色调偏移
-        add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"    # 添加小图标
+    batch_modify_images(
+        folder_path,
+        text_color=(255, 255, 255),  # 白色文字
+        object_color_shift=1.0,      # 100% 色调偏移 (增加变化)
+        add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"
     )
+
+# 如果需要批量处理，取消下面的注释
+# batch_example()
+
+# 使用示例
+
+
+def batch_modify_images(folder_path, text_color=None, object_color_shift=None, add_icon=None):
+    """
+    批量修改文件夹中的所有图片（png和jpg）
+    参数:
+        folder_path: 包含图片的文件夹路径
+        text_color: 要修改的文字颜色 (RGB元组)
+        object_color_shift: 物体颜色偏移量 (0-1.0)
+        add_icon: 要添加的小图标路径
+    """
+    # 支持的图片格式
+    image_extensions = ['*.png', '*.jpg', '*.jpeg', '*.PNG', '*.JPG', '*.JPEG']
     
-    # 显示结果对比
-    plt.figure(figsize=(12, 6))
-    plt.subplot(121)
-    plt.imshow(original)
-    plt.title("Original Image")
-    plt.axis('off')
+    # 收集所有图片文件
+    image_files = []
+    for ext in image_extensions:
+        image_files.extend(glob.glob(os.path.join(folder_path, ext)))
+        image_files.extend(glob.glob(os.path.join(folder_path, '**', ext), recursive=True))
     
-    plt.subplot(122)
-    plt.imshow(modified)
-    plt.title("Modified Image")
-    plt.axis('off')
+    print(f"找到 {len(image_files)} 个图片文件")
     
-    plt.show()
+    if not image_files:
+        print("未找到任何图片文件")
+        return
+    
+    start_time = time.time()
+    
+    for i, image_path in enumerate(image_files, 1):
+        try:
+            print(f"处理 ({i}/{len(image_files)}): {os.path.basename(image_path)}")
+            
+            # 创建临时文件名（保持原扩展名）
+            base_name, ext = os.path.splitext(image_path)
+            temp_path = base_name + "_tmp" + ext
+            
+            # 调用修改函数（不显示图片）
+            modify_image_fast(image_path, temp_path, text_color, object_color_shift, add_icon)
+            
+            # 替换原文件
+            os.replace(temp_path, image_path)
+            
+        except Exception as e:
+            print(f"处理 {image_path} 时出错: {str(e)}")
+            # 清理临时文件
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+    
+    end_time = time.time()
+    print(f"批量处理完成！总耗时: {end_time - start_time:.2f} 秒")
+
+def modify_image_fast(input_path, output_path, text_color=None, object_color_shift=None, add_icon=None):
+    """
+    快速版本的图片修改函数（优化了速度）
+    """
+    # 1. 读取原始图片
+    original = Image.open(input_path)
+    img = original.copy()
+    
+    # 简化的处理流程，跳过复杂的文字检测和分割
+    
+    # 2. 快速颜色调整 (增强变化)
+    if object_color_shift:
+        # 简化的颜色偏移，直接在RGB空间操作
+        np_img = np.array(img)
+        
+        # 随机选择几个区域进行颜色调整
+        h, w = np_img.shape[:2]
+        num_regions = 5  # 增加处理区域数量
+        
+        for _ in range(num_regions):
+            # 随机选择区域
+            x1 = random.randint(0, w//2)
+            y1 = random.randint(0, h//2)
+            x2 = random.randint(x1, min(x1 + w//3, w))  # 增大区域范围
+            y2 = random.randint(y1, min(y1 + h//3, h))  # 增大区域范围
+            
+            # 简单的颜色偏移 (增强变化)
+            region = np_img[y1:y2, x1:x2]
+            if region.size > 0:
+                shift = int(object_color_shift * 120)  # 大幅增加偏移强度
+                region[:,:,0] = np.clip(region[:,:,0] + shift, 0, 255)
+                region[:,:,1] = np.clip(region[:,:,1] + shift//2, 0, 255)  # 增加绿色通道变化
+                region[:,:,2] = np.clip(region[:,:,2] - shift, 0, 255)
+        
+        img = Image.fromarray(np_img)
+    
+    # 3. 快速添加小图标 (增大图标)
+    if add_icon and os.path.exists(add_icon):
+        try:
+            icon = Image.open(add_icon)
+            icon_size = (5, 5)  # 增大图标到5x5像素
+            icon = icon.resize(icon_size, Image.LANCZOS)
+            
+            # 简化位置选择，直接使用安全区域
+            margin = 20
+            if img.width > 2*margin and img.height > 2*margin:
+                position = (
+                    random.randint(margin, img.width - icon.width - margin),
+                    random.randint(margin, img.height - icon.height - margin)
+                )
+                
+                # 简化透明度处理
+                alpha = 0.8  # 增加透明度
+                mask = Image.new('L', icon.size, int(255 * alpha))
+                img.paste(icon, position, mask)
+        except:
+            pass  # 如果图标处理失败，跳过
+    
+    # 4. 快速全局调整 (增强变化)
+    # 增强亮度调整范围
+    enhancer = ImageEnhance.Brightness(img)
+    img = enhancer.enhance(random.uniform(0.85, 1.15))  # 扩大亮度变化范围
+    
+    # 增加色彩饱和度调整
+    enhancer = ImageEnhance.Color(img)
+    img = enhancer.enhance(random.uniform(0.8, 1.3))  # 增加色彩变化
+    
+    # 5. 增强的噪点处理
+    if random.random() < 0.8:  # 增加噪点概率到80%
+        np_img = np.array(img)
+        
+        # 检查是否有透明度
+        has_transparency = original.mode in ('RGBA', 'LA') or 'transparency' in original.info
+        
+        if has_transparency:
+            # 保持透明度的快速处理
+            original_rgba = original.convert('RGBA')
+            img_rgba = img.convert('RGBA')
+            np_img = np.array(img_rgba)
+            original_alpha = np.array(original_rgba)[:,:,3]
+            
+            # 在更大区域添加噪点
+            h, w = np_img.shape[:2]
+            center_h, center_w = h//6, w//6  # 扩大噪点区域
+            noise = np.random.normal(0, 3, (center_h*4, center_w*4, 3)).astype(np.uint8)  # 增强噪点强度
+            
+            y1, y2 = center_h, center_h*5
+            x1, x2 = center_w, center_w*5
+            
+            alpha_mask = original_alpha[y1:y2, x1:x2] > 200
+            for i in range(3):
+                region = np_img[y1:y2, x1:x2, i]
+                region[:] = np.where(alpha_mask, 
+                                   np.clip(region + noise[:,:,i], 0, 255),
+                                   region)
+            
+            np_img[:,:,3] = original_alpha
+            img = Image.fromarray(np_img, 'RGBA')
+            
+            if original.mode == 'RGB':
+                img = img.convert('RGB')
+        else:
+            # 普通图片的增强噪点
+            noise = np.random.normal(0, 3, np_img.shape).astype(np.uint8)  # 增强噪点强度
+            np_img = np.clip(np_img + noise, 0, 255)
+            img = Image.fromarray(np_img)
+    
+    # 6. 保存结果
+    img.save(output_path)
+    
+    return original, img
+
+
+
+if __name__ == "__main__":
+
+    batch_example()
+
+
+    # input_image = "/Users/jiangshanchen/confuse_string/inputImage/gb_back.png"
+    # output_image = "/Users/jiangshanchen/confuse_string/outputImage/modified_example.png"
+    
+    # # 修改参数（可选）：
+    # # text_color - 要修改的文字颜色 (R, G, B)
+    # # object_color_shift - 物体颜色偏移量 (0-1.0)
+    # # add_icon - 要添加的小图标路径
+    
+    # original, modified = modify_image(
+    #     input_image,
+    #     output_image,
+    #     text_color=(255, 255, 255),  # 蓝色文字
+    #     object_color_shift=0.8,      # 10% 色调偏移
+    #     add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"    # 添加小图标
+    # )
+    
+    # # 显示结果对比
+    # plt.figure(figsize=(12, 6))
+    # plt.subplot(121)
+    # plt.imshow(original)
+    # plt.title("Original Image")
+    # plt.axis('off')
+    
+    # plt.subplot(122)
+    # plt.imshow(modified)
+    # plt.title("Modified Image")
+    # plt.axis('off')
+    
+    # plt.show()

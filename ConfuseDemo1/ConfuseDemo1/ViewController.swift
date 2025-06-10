@@ -43,6 +43,10 @@ class ViewController: UIViewController {
     
     let k: Bool = false
 
+    
+    let image1 = UIImage.sBtn
+    
+    let iamge2 = UIImage.init(named: "s_frame")
 
 }
 
