@@ -14,11 +14,11 @@ from project_scanner import get_project_info
 def random_name(prefix="tl", length=6):
     return prefix + '_' + ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
-def find_imagesets(assets_path, target_name):
+def find_imagesets(assets_path):
     result = []
     for root, dirs, files in os.walk(assets_path):
         for d in dirs:
-            if d == f"{target_name}.imageset":
+            if d.endswith('.imageset'):
                 result.append(os.path.join(root, d))
     return result
 
@@ -43,10 +43,10 @@ def replace_in_file(file_path, old, new):
 def refactor_assets(project_info, prefix="tl"):
     # 1. 遍历所有assets
     for assets_path in project_info.xcassets_paths:
-        # 2. 找到所有s_btn.imageset
-        imagesets = find_imagesets(assets_path, "s_btn")
+        # 2. 找到所有.imageset
+        imagesets = find_imagesets(assets_path)
         for imageset in imagesets:
-            old_name = "s_btn"
+            old_name = os.path.basename(imageset).replace('.imageset', '')
             new_name = random_name(prefix)
             new_imageset_path = rename_imageset(imageset, new_name)
             print(f"重命名: {imageset} -> {new_imageset_path}")

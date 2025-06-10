@@ -8,6 +8,7 @@
 import UIKit
 import SwifterSwift
 
+
 class ViewController: UIViewController {
     
     var lxvIewx = UIColor.init(hexString: "x01111")
@@ -25,6 +26,13 @@ class ViewController: UIViewController {
         ])
         
         let fixString = k == true ? "home_clear_apple" : "home_clear_sensor"
+        
+        
+        let x1 = UIImageView(image: imagg3)
+        x1.contentMode = .scaleAspectFit
+        view.addSubview(x1)
+        x1.frame = CGRectMake(20, 100, 100, 100)
+
 
     }
     
@@ -44,9 +52,14 @@ class ViewController: UIViewController {
     let k: Bool = false
 
     
-    let image1 = UIImage.sBtn
     
-    let iamge2 = UIImage.init(named: "s_frame")
+    let iamge2 = UIImage.init(named: "tl_6ucglm")
+    
+    let imagg3 = UIImage.init(named: "tl_trrr9h")
+    
+    
+    
+ 
 
 }
 
