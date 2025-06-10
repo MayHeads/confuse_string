@@ -53,9 +53,9 @@ class ViewController: UIViewController {
 
     
     
-    let iamge2 = UIImage.init(named: "duc_mk6iqb")
+    let iamge2 = UIImage.init(named: "duc_4lrg7v")
     
-    let imagg3 = UIImage.init(named: "duc_qdunoo")
+    let imagg3 = UIImage.init(named: "duc_uo9404")
     
     
     
