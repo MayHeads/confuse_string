@@ -15,3 +15,5 @@ custom_ignore_swift_files = [
     'SceneDelegate.swift', 
     'main.swift'
 ]
+
+asset_prefix = "duc"
