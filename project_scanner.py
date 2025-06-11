@@ -11,14 +11,18 @@ class ProjectInfo:
     xcodeproj_path: Optional[str]
     xcassets_paths: List[str]
     all_swift_files: List[str]  # 所有Swift文件（未过滤）
+    podfile_paths: List[str]  # Podfile文件路径列表
+    target_name: str  # 项目目标名称（项目路径的最后一级）
     
     def __str__(self):
         return f"""
 项目路径: {self.project_path}
+项目名称: {self.target_name}
 Swift文件数量: {len(self.swift_files)} (过滤后)
 所有Swift文件数量: {len(self.all_swift_files)} (未过滤)
 Xcode项目文件: {self.xcodeproj_path}
 xcassets文件夹数量: {len(self.xcassets_paths)}
+Podfile文件数量: {len(self.podfile_paths)}
 """
 
 def scan_project(project_path: str, 
@@ -92,12 +96,21 @@ def scan_project(project_path: str,
     xcassets_pattern = os.path.join(project_path, '**/*.xcassets')
     xcassets_paths = glob.glob(xcassets_pattern, recursive=True)
     
+    # 5. 获取Podfile文件路径
+    podfile_pattern = os.path.join(project_path, '**/Podfile')
+    podfile_paths = glob.glob(podfile_pattern, recursive=True)
+    
+    # 6. 获取项目目标名称（项目路径的最后一级）
+    target_name = os.path.basename(os.path.normpath(project_path))
+    
     return ProjectInfo(
         project_path=project_path,
         swift_files=swift_files,
         xcodeproj_path=xcodeproj_path,
         xcassets_paths=xcassets_paths,
-        all_swift_files=all_swift_files
+        all_swift_files=all_swift_files,
+        podfile_paths=podfile_paths,
+        target_name=target_name
     )
 
 def print_project_summary(project_info: ProjectInfo):
@@ -132,6 +145,12 @@ def print_project_summary(project_info: ProjectInfo):
         for i, xcassets_path in enumerate(project_info.xcassets_paths):
             relative_assets = os.path.relpath(xcassets_path, project_info.project_path)
             print(f"  {i+1}. {relative_assets}")
+            
+    if project_info.podfile_paths:
+        print(f"\nPodfile文件:")
+        for i, podfile_path in enumerate(project_info.podfile_paths):
+            relative_podfile = os.path.relpath(podfile_path, project_info.project_path)
+            print(f"  {i+1}. {relative_podfile}")
 
 def scan_current_project():
     """

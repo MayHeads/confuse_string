@@ -13,13 +13,18 @@ from pbxproj import XcodeProject
 import concurrent.futures
 import threading
 from typing import Dict, List, Tuple, Set
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from project_scanner import get_project_info
 
 # 配置
 # project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1/"
 # target_name = "ConfuseDemo1"
 
-project_path = "/Users/jiangshanchen/CloudTuiQing"
-target_name = "CloudTuiQing"
+project_path = ""
+target_name = ""
 
 IGNORE_DIRECTORY = [
     "Pods", "DerivedData", "build", ".git", "node_modules", 
@@ -278,8 +283,19 @@ def create_compiled_patterns(data_map: Dict[str, str], method_prefix: str) -> Li
     
     return patterns
 
+def load_predefined_strings(file_path: str) -> Set[str]:
+    """加载预定义的字符串列表"""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            # 读取所有行，去除空行和空白字符
+            strings = {line.strip() for line in f if line.strip()}
+        return strings
+    except Exception as e:
+        safe_print(f"读取预定义字符串文件时出错: {str(e)}")
+        return set()
+
 def process_file_content(file_path: str, patterns: List[Tuple[re.Pattern, str, str]], 
-                        decryptor_file_name: str) -> bool:
+                        decryptor_file_name: str, predefined_strings: Set[str]) -> bool:
     """处理单个文件的字符串替换"""
     if is_ignore_file(file_path) or os.path.basename(file_path) == decryptor_file_name:
         return False
@@ -312,9 +328,9 @@ def process_file_content(file_path: str, patterns: List[Tuple[re.Pattern, str, s
                 
             processed_line = line
             
-            # 应用字符串替换
+            # 使用预定义的字符串列表进行匹配和替换
             for pattern, replacement, original_str in patterns:
-                if pattern.search(processed_line):
+                if original_str in predefined_strings and pattern.search(processed_line):
                     new_line = pattern.sub(replacement, processed_line)
                     if new_line != processed_line:
                         processed_line = new_line
@@ -338,7 +354,7 @@ def process_file_content(file_path: str, patterns: List[Tuple[re.Pattern, str, s
         return False
 
 def process_files_parallel(project_path: str, patterns: List[Tuple[re.Pattern, str, str]], 
-                          decryptor_file_name: str):
+                          decryptor_file_name: str, predefined_strings: Set[str]):
     """并行处理所有文件的字符串替换"""
     # 收集所有需要处理的Swift文件
     swift_files = []
@@ -353,7 +369,7 @@ def process_files_parallel(project_path: str, patterns: List[Tuple[re.Pattern, s
     # 并行处理文件
     updated_files = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-        future_to_file = {executor.submit(process_file_content, file_path, patterns, decryptor_file_name): file_path 
+        future_to_file = {executor.submit(process_file_content, file_path, patterns, decryptor_file_name, predefined_strings): file_path 
                          for file_path in swift_files}
         
         for future in concurrent.futures.as_completed(future_to_file):
@@ -367,7 +383,7 @@ def process_files_parallel(project_path: str, patterns: List[Tuple[re.Pattern, s
     
     safe_print(f"✅ 处理完成! 更新了 {updated_files} 个文件")
 
-def main():
+def start_confuse_string():
     """主函数"""
     safe_print("🚀 开始高性能字符串混淆...")
     
@@ -377,6 +393,10 @@ def main():
     
     safe_print(f"🔑 使用密钥: {aes_key}")
     safe_print(f"🔧 使用方法前缀: {random_method_prefix}")
+    
+    # 加载预定义的字符串列表
+    predefined_strings = load_predefined_strings('ios_resource/ios_collection_str.txt')
+    safe_print(f"📚 加载了 {len(predefined_strings)} 个预定义字符串")
     
     # 提取字符串
     extracted_strings = extract_strings_from_swift_files(project_path)
@@ -390,9 +410,10 @@ def main():
     # 批量加密字符串
     data_map = {}
     for string_content in extracted_strings:
-        encrypted = rw_encrypt(aes_key, string_content)
-        if encrypted:
-            data_map[string_content] = encrypted
+        if string_content in predefined_strings:  # 只加密预定义的字符串
+            encrypted = rw_encrypt(aes_key, string_content)
+            if encrypted:
+                data_map[string_content] = encrypted
     
     safe_print(f"✅ 成功加密 {len(data_map)} 个字符串")
     
@@ -423,9 +444,19 @@ def main():
     
     # 并行处理文件替换
     safe_print("🔄 开始字符串替换...")
-    process_files_parallel(project_path, patterns, decryptor_file_name)
+    process_files_parallel(project_path, patterns, decryptor_file_name, predefined_strings)
     
     safe_print("🎉 字符串混淆完成!")
 
 if __name__ == '__main__':
-    main() 
+
+    project_info = get_project_info()
+    
+    # 获取所有Swift文件
+    swift_files = project_info.swift_files
+    project_path = project_info.project_path
+    target_name = project_info.target_name
+    print("Processing files:", swift_files)
+
+
+    start_confuse_string() 
