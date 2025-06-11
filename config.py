@@ -4,6 +4,8 @@
 project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
 
 
+# project_path = "/Users/jiangshanchen/CSQingLi"
+
 # 自定义忽略设置
 custom_ignore_folders = [
     'Pods', 'build', 'DerivedData', '.git', 

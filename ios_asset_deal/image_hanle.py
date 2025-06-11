@@ -9,6 +9,12 @@ import cv2
 import matplotlib.pyplot as plt
 import glob
 import time
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from project_scanner import get_project_info
+from config import asset_prefix
 
 def modify_image(input_path, output_path, text_color=None, object_color_shift=None, add_icon=None):
     """
@@ -185,13 +191,17 @@ def modify_image(input_path, output_path, text_color=None, object_color_shift=No
 # 批量处理使用示例
 def batch_example():
     """批量处理示例"""
-    folder_path = "/Users/jiangshanchen/CloudTuiQing/CloudTuiQing/Assets.xcassets"
-    
-    batch_modify_images(
-        folder_path,
-        text_color=(255, 255, 255),  # 白色文字
-        object_color_shift=1.0,      # 100% 色调偏移 (增加变化)
-        add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"
+    # folder_path = "/Users/jiangshanchen/CloudTuiQing/CloudTuiQing/Assets.xcassets"
+
+    project_info = get_project_info()
+    print(project_info.xcassets_paths)
+    # 遍历xcassets_paths
+    for xcassets_path in project_info.xcassets_paths:
+        batch_modify_images(
+            xcassets_path,
+            text_color=(255, 255, 255),  # 白色文字
+            object_color_shift=1.0,      # 100% 色调偏移 (增加变化)
+            add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"
     )
 
 # 如果需要批量处理，取消下面的注释

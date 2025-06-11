@@ -10,9 +10,21 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from project_scanner import get_project_info
 from config import asset_prefix
+from ios_string_generate.string_gen import init_word_lists, get_random_snake_name
 
 
 def random_name(prefix="tl", length=6):
+    # 确保词库已初始化
+    if not init_word_lists():
+        # 如果初始化失败，使用原来的随机生成方式作为后备
+        return prefix + '_' + ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
+    
+    # 使用string_gen中的下划线命名生成器
+    snake_name = get_random_snake_name()
+    if snake_name:
+        return prefix + '_' + snake_name
+    
+    # 如果生成失败，使用原来的随机生成方式作为后备
     return prefix + '_' + ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
 def find_imagesets(assets_path):
