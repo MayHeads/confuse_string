@@ -423,19 +423,13 @@ def start_confuse_string():
     decryptor_file_name = f'{file_name}.swift'
     creator.create_swift_file(file_name, target_name)
     
-    # 写入日志
-    log_content = "👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈\n\n\n"
+    # 写入映射关系到native_con_str.txt
+    log_content = ""
     for original, encrypted in data_map.items():
-        log_content += f"{original} <-----------> {encrypted}\n"
+        log_content += f"{original} ----> {encrypted}\n"
     
-    # 本地日志
-    with open(f'{os.getcwd()}/confuse_string_log.txt', 'w', encoding='utf-8') as f:
-        f.write(log_content)
-    
-    # 项目日志
-    local_map_file = os.path.join(project_path, 'confuse_string', 'confuse_string_log.txt')
-    os.makedirs(os.path.dirname(local_map_file), exist_ok=True)
-    with open(local_map_file, 'w', encoding='utf-8') as f:
+    # 写入到native_con_str.txt
+    with open('ios_log/native_con_str.txt', 'w', encoding='utf-8') as f:
         f.write(log_content)
     
     # 预编译正则表达式模式
