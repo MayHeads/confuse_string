@@ -1,10 +1,10 @@
 
 
 
-# project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
+project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
 
 
-project_path = "/Users/jiangshanchen/CSQingLi"
+# project_path = "/Users/jiangshanchen/CSQingLi"
 
 # 忽略文件夹
 custom_ignore_folders = [
