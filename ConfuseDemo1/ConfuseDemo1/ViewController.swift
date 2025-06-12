@@ -85,3 +85,28 @@ class NoteGuideModel {
 }
 
 
+extension Double {
+    
+    var dataBytesAndUnit: (String,String) {
+        
+        let fileSize1 = CGFloat(self)
+        let KB:CGFloat = 1024
+        let MB:CGFloat = KB*KB
+        let GB:CGFloat = MB*KB
+        
+        if self < 10 {
+            return ("0.00","B")
+            
+        } else if fileSize1 < KB {
+            return ("< 1 ","KB")
+        } else if fileSize1 < MB {
+            return (String(format: "%.2f", CGFloat(fileSize1)/KB),"KB")
+        } else if fileSize1 < GB {
+            return (String(format: "%.2f", CGFloat(fileSize1)/MB),"MB")
+        } else {
+            return (String(format: "%.2f", CGFloat(fileSize1)/GB),"GB")
+        }
+    }
+}
+
+

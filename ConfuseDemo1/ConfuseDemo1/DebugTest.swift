@@ -34,3 +34,7 @@ begin
 """
 
 
+class Type1 {
+    private static var taskKey = "com.imageview.loadtask"
+}
+

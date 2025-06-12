@@ -13,7 +13,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from project_scanner import get_project_info
-from config import custom_ignore_folders, custom_ignore_swift_files
+from config import custom_ignore_folders, custom_ignore_swift_files, ig_fix_text, ig_format_text
 from collect_str import main_collect_str_all
 
 
@@ -29,8 +29,6 @@ project_path = project_info.project_path
 target_name = project_info.target_name
 
 IGNORE_DIRECTORY = custom_ignore_folders
-
-
 
 class XcodeSwiftFileCreator:
     def __init__(self, project_path: str, aes_key: str,method_prefix:str):
@@ -129,9 +127,13 @@ extension String {{
 '''
     def _add_swift_file_to_project(self,file_path, target_name):
         # 打开 .xcodeproj 文件
-        project = XcodeProject.load(self.project_path + "/TestPackage.xcodeproj/project.pbxproj")
+        project = XcodeProject.load(self.pbxproj_path)
 
-        project.add_file(file_path, force=False)
+        # 获取相对路径
+        relative_path = os.path.relpath(file_path, self.project_path)
+        
+        # 添加文件到项目
+        project.add_file(relative_path, force=False)
 
         # set a Other Linker Flags
         project.add_other_ldflags('-ObjC')
