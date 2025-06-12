@@ -283,15 +283,13 @@ def create_compiled_patterns(data_map: Dict[str, str], method_prefix: str) -> Li
     
     return patterns
 
-def load_predefined_strings(file_path: str) -> Set[str]:
+def load_predefined_strings(file_path: str = 'ios_resource/ios_collection_str.txt') -> Set[str]:
     """加载预定义的字符串列表"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            # 读取所有行，去除空行和空白字符
-            strings = {line.strip() for line in f if line.strip()}
-        return strings
-    except Exception as e:
-        safe_print(f"读取预定义字符串文件时出错: {str(e)}")
+            return {line.strip() for line in f if line.strip()}
+    except FileNotFoundError:
+        safe_print(f"❌ 找不到预定义字符串文件: {file_path}")
         return set()
 
 def process_file_content(file_path: str, patterns: List[Tuple[re.Pattern, str, str]], 
