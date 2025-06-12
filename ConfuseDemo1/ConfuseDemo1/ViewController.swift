@@ -11,7 +11,9 @@ import SwifterSwift
 
 class ViewController: UIViewController {
     
-    var lxvIewx = UIColor.init(hexString: "x01111")
+    var lxvIewx_ckm = UIColor.init(hexString: "x01111")
+    
+    var b12_ckm = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +30,13 @@ class ViewController: UIViewController {
         let fixString = k == true ? "home_clear_apple" : "home_clear_sensor"
         
         
-        let x1 = UIImageView(image: imagg3)
-        x1.contentMode = .scaleAspectFit
-        view.addSubview(x1)
-        x1.frame = CGRectMake(20, 100, 100, 100)
+        let x1_ckm = UIImageView(image: imagg3)
+        x1_ckm.contentMode = .scaleAspectFit
+        view.addSubview(x1_ckm)
+        x1_ckm.frame = CGRectMake(20, 100, 100, 100)
+        
+        
+        
 
 
     }
@@ -44,7 +49,7 @@ class ViewController: UIViewController {
         return (Float("1234".replacingOccurrences(of: ",", with: "")) ?? 0) / 1000.0
     }
     
-    var titles = ["非常满意", "满意", "一般", "不满意"]
+    var titles_ckm = ["非常满意", "满意", "一般", "不满意"]
 
 
     let items = ["外网 IP", "外网 IP", "外网 IP"]
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
 }
 
 
-class NoteGuideModel {
+class NoteGuideModel_ckm {
     var souce: String
     var title: String
     var tips: String
@@ -77,10 +82,10 @@ class NoteGuideModel {
         self.indiImage = indiImage
     }
      
-    static let allItems: [NoteGuideModel] = [
-        NoteGuideModel.init(souce: "3s", title: "gu1", tips: "gut1", indiImage: "indi_1"),
-        NoteGuideModel.init(souce: "cleansame", title: "gu2", tips: "gut2", indiImage: "indi_2"),
-        NoteGuideModel.init(souce: "cleanbigvideo", title: "gu3", tips: "gut3", indiImage: "indi_3"),
+    static let allItems: [NoteGuideModel_ckm] = [
+        NoteGuideModel_ckm.init(souce: "3s", title: "gu1", tips: "gut1", indiImage: "indi_1"),
+        NoteGuideModel_ckm.init(souce: "cleansame", title: "gu2", tips: "gut2", indiImage: "indi_2"),
+        NoteGuideModel_ckm.init(souce: "cleanbigvideo", title: "gu3", tips: "gut3", indiImage: "indi_3"),
     ]
 }
 
