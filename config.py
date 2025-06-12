@@ -42,3 +42,7 @@ ig_format_text = [
     '%s',
     '%f'
 ]
+
+
+#  替换类名和方法前缀
+STRING_SUFFIX = '_ckm'
