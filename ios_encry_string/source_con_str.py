@@ -126,20 +126,27 @@ extension String {{
 }}
 '''
     def _add_swift_file_to_project(self,file_path, target_name):
-        # 打开 .xcodeproj 文件
-        project = XcodeProject.load(self.pbxproj_path)
-
-        # 获取相对路径
-        relative_path = os.path.relpath(file_path, self.project_path)
-        
-        # 添加文件到项目
-        project.add_file(relative_path, force=False)
-
-        # set a Other Linker Flags
-        project.add_other_ldflags('-ObjC')
-
-        # save the project, otherwise your changes won't be picked up by Xcode
-        project.save()
+        """添加Swift文件到Xcode项目"""
+        try:
+            pbxproj_path = None
+            for root, dirs, files in os.walk(project_path):
+                for file in files:
+                    if file.endswith('.pbxproj'):
+                        pbxproj_path = os.path.join(root, file)
+                        break
+                if pbxproj_path:
+                    break
+            
+            if not pbxproj_path:
+                print("未找到.pbxproj文件")
+                return
+                
+            project = XcodeProject.load(pbxproj_path)
+            project.add_file(file_path)
+            project.save()
+            
+        except Exception as e:
+            print(f"添加文件到项目时出错: {str(e)}")
 
 
 #是否是忽略文件
