@@ -377,7 +377,7 @@ if __name__ == '__main__':
     aes_key = generate_aes_key() 
     
     # 清空日志文件
-    with open(f'{os.getcwd()}/confuse_string_log.txt', 'r+') as log_file:
+    with open(f'{os.getcwd()}/ios_log/native_con_str.txt', 'r+') as log_file:
         log_file.truncate(0)
 
     # 从项目Swift文件中提取字符串，而不是读取strings.txt
@@ -401,12 +401,12 @@ if __name__ == '__main__':
             data_map[de_str] = en_str
 
     #映射日志
-    with open(f'{os.getcwd()}/confuse_string_log.txt', 'r+') as f: 
+    with open(f'{os.getcwd()}/ios_log/native_con_str.txt', 'r+') as f: 
         f.write("👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈" + '\n\n\n')
         for string in strings:
             f.write(string + '\n')
 
-    local_map_file = project_path + 'confuse_string' + '/confuse_string_log.txt'
+    local_map_file = project_path + '/ios_log/native_con_str.txt'
     os.makedirs(os.path.dirname(local_map_file), exist_ok=True)
     with open(local_map_file, 'w', encoding='utf-8') as f:
         f.write("👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈" + '\n\n\n')

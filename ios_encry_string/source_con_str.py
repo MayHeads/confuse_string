@@ -14,6 +14,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from project_scanner import get_project_info
 from config import custom_ignore_folders, custom_ignore_swift_files
+from collect_str import main_collect_str_all
+
 
 
 
@@ -233,26 +235,22 @@ def rw_encrypt(key:str, plain_text: str) -> str:
     except Exception as e:
         return ""
 
-
-
-
-if __name__ == '__main__':
-
-
+def process_strings_and_write_mapping(aes_key: str, project_path: str) -> dict:
+    """
+    处理字符串加密并写入映射关系
+    Args:
+        aes_key: AES加密密钥
+        project_path: 项目路径
+    Returns:
+        dict: 加密后的字符串映射关系
+    """
     data_map = {}
-
-    random_method_prefix = ''.join(random.choices(string.ascii_letters + string.ascii_letters, k=2)).lower()
-    file_name = f'String+{random_method_prefix}Decryptor'
-
-    aes_key = generate_aes_key() 
+    
     #读取本文件目录下的另外一个文件
-
-
-
-    with open(f'{os.getcwd()}/confuse_string/confuse_string_log.txt', 'r+') as log_file:
+    with open(f'{os.getcwd()}/ios_log/native_con_str.txt', 'r+') as log_file:
         log_file.truncate(0)
 
-    with open(f'{os.getcwd()}/confuse_string/strings.txt', 'r') as f:
+    with open(f'{os.getcwd()}/ios_resource/ios_collection_str.txt', 'r') as f:
         lines = f.readlines()
 
         strings = []
@@ -264,28 +262,36 @@ if __name__ == '__main__':
             if line == de_str:
                 print(f"{de_str} <-----> {en_str}")
                 strings.append(f"{de_str} <-----------> {en_str}")
-
                 data_map[de_str] = en_str
             
     #映射日志
-    with open(f'{os.getcwd()}/confuse_string/confuse_string_log.txt', 'r+') as f: 
+    with open(f'{os.getcwd()}/ios_log/native_con_str.txt', 'r+') as f: 
         f.write("👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈" + '\n\n\n')
         for string in strings:
             f.write(string + '\n')
 
-    local_map_file = project_path + '/confuse_string_log.txt'
+    local_map_file = project_path + '/ios_log/native_con_str.txt'
     os.makedirs(os.path.dirname(local_map_file), exist_ok=True)
     with open(local_map_file, 'w', encoding='utf-8') as f:
         f.write("👉👉👉👉👉string Obfuscation Map List👈👈👈👈👈" + '\n\n\n')
         for string in strings:
             f.write(string + '\n')
+            
+    return data_map
+
+def start_string_obfuscation():
+    """开始字符串混淆流程"""
+    random_method_prefix = ''.join(random.choices(string.ascii_letters + string.ascii_letters, k=2)).lower()
+    file_name = f'String+{random_method_prefix}Decryptor'
+    aes_key = generate_aes_key() 
+
+    # 处理字符串加密并获取映射关系
+    data_map = process_strings_and_write_mapping(aes_key, project_path)
 
     #新建swift 文件
     creator = XcodeSwiftFileCreator(project_path,aes_key=aes_key,method_prefix=random_method_prefix)
     creator.create_swift_file(file_name, target_name)
 
-    
-    
     #替换
     for root, _, files in os.walk(project_path):
         for file in files:
@@ -311,6 +317,10 @@ if __name__ == '__main__':
 
                     with open(file_path, 'w') as f:
                         f.write(content)
+
+if __name__ == '__main__':
+    main_collect_str_all()
+    start_string_obfuscation()
 
                         
                     

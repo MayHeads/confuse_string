@@ -122,7 +122,7 @@ def save_strings_to_file(strings: Set[str], output_file: str):
             except UnicodeEncodeError:
                 print(f"Warning: Skipping string with invalid UTF-8 encoding: {s}")
 
-def main():
+def main_collect_str_all():
     # 获取项目信息
     project_info = get_project_info()
     
@@ -142,4 +142,4 @@ def main():
     print(f"Results saved to {output_file}")
 
 if __name__ == "__main__":
-    main()
+    main_collect_str_all()
