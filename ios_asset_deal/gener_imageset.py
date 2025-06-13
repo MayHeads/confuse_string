@@ -166,9 +166,9 @@ def asset_path():
     return asset_one_path
 
 
-if __name__ == '__main__':
-    asset_path = asset_path()
-    valid_folders = get_valid_asset_folders(asset_path)
+def entry_gener_imageset():
+    asset_root_path = asset_path()
+    valid_folders = get_valid_asset_folders(asset_root_path)
     print("Valid asset folders:")
     for folder in valid_folders:
         print(folder)
@@ -190,3 +190,7 @@ if __name__ == '__main__':
                 print(f"Error processing {folder}: {e}")
     
     print(f"\nTotal imagesets created: {total_success}")
+
+
+if __name__ == '__main__':
+    entry_gener_imageset()

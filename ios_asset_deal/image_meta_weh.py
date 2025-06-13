@@ -188,21 +188,7 @@ def modify_image(input_path, output_path, text_color=None, object_color_shift=No
     # 返回修改前后的图片用于比较
     return original, img
 
-# 批量处理使用示例
-def batch_example():
-    """批量处理示例"""
-    # folder_path = "/Users/jiangshanchen/CloudTuiQing/CloudTuiQing/Assets.xcassets"
 
-    project_info = get_project_info()
-    print(project_info.xcassets_paths)
-    # 遍历xcassets_paths
-    for xcassets_path in project_info.xcassets_paths:
-        batch_modify_images(
-            xcassets_path,
-            text_color=(255, 255, 255),  # 白色文字
-            object_color_shift=1.0,      # 100% 色调偏移 (增加变化)
-            add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"
-    )
 
 # 如果需要批量处理，取消下面的注释
 # batch_example()
@@ -371,11 +357,27 @@ def modify_image_fast(input_path, output_path, text_color=None, object_color_shi
     
     return original, img
 
+# 批量处理使用示例
+def entry_iamge_meta_change():
+    """批量处理示例"""
+    # folder_path = "/Users/jiangshanchen/CloudTuiQing/CloudTuiQing/Assets.xcassets"
+
+    project_info = get_project_info()
+    print(project_info.xcassets_paths)
+    # 遍历xcassets_paths
+    for xcassets_path in project_info.xcassets_paths:
+        batch_modify_images(
+            xcassets_path,
+            text_color=(255, 255, 255),  # 白色文字
+            object_color_shift=1.0,      # 100% 色调偏移 (增加变化)
+            add_icon="/Users/jiangshanchen/confuse_string/icoImage/Ellipse 95@3x.png"
+    )
+
 
 
 if __name__ == "__main__":
 
-    batch_example()
+    entry_iamge_meta_change()
 
 
     # input_image = "/Users/jiangshanchen/confuse_string/inputImage/gb_back.png"

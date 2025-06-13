@@ -122,7 +122,10 @@ def refactor_assets(project_info, prefix="tl"):
                     replace_in_file(swift_file, old_name, new_name)
                 with ThreadPoolExecutor() as executor:
                     executor.map(process_swift, project_info.swift_files)
-
-if __name__ == "__main__":
+def entry_change_name():
     project_info = get_project_info()
     refactor_assets(project_info, prefix=asset_prefix)  # prefix可自定义
+
+
+if __name__ == "__main__":
+    entry_change_name()
