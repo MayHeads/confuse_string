@@ -101,7 +101,7 @@ def process_imageset_pngs(imageset_path, new_name, log_file):
 
 def refactor_assets(project_info, prefix="tl"):
     # 创建或清空日志文件
-    with open("ios_log/assetlog.txt", "w", encoding="utf-8") as asset_log_file, \
+    with open("ios_log/asset_change_name.txt", "w", encoding="utf-8") as asset_log_file, \
          open("ios_log/imagename.txt", "w", encoding="utf-8") as image_log_file:
         # 1. 遍历所有assets
         for assets_path in project_info.xcassets_paths:

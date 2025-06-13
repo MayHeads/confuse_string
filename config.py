@@ -22,6 +22,13 @@ custom_ignore_swift_files = [
 asset_prefix = "duc"
 
 
+ASSET_IMAGE_CONFIG = {
+    'width_range': (100, 200),      # 图片宽度范围
+    'height_range': (200, 300),     # 图片高度范围
+    'blur_range': (1, 5),           # 模糊程度范围
+    'imageset_count_range': (2, 3)  # 每个文件夹生成的imageset数量范围
+}
+
 ##### 字符串混淆  配置 <字符串混淆忽略>
 # 固定文本忽略列表
 ig_fix_text = [

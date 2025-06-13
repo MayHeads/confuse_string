@@ -3,11 +3,14 @@ import sys
 import random
 import requests
 import json
-from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from project_scanner import get_project_info
 from ios_string_generate.string_gen import get_random_method_name, get_random_snake_name
+from config import ASSET_IMAGE_CONFIG
 
+# 配置参数
+IMAGE_CONFIG = ASSET_IMAGE_CONFIG
 
 def write_log(image_name):
     """
@@ -33,11 +36,14 @@ def download_image(image_name, folder_path):
     从 picsum.photos 下载随机图片并保存为 PNG
     """
     # 随机生成图片尺寸
-    width = random.randint(100, 200)
-    height = random.randint(200, 300)
+    width = random.randint(*IMAGE_CONFIG['width_range'])
+    height = random.randint(*IMAGE_CONFIG['height_range'])
     
-    # 构建图片URL
-    image_url = f"https://picsum.photos/{width}/{height}"
+    # 随机生成模糊程度
+    blur_amount = random.randint(*IMAGE_CONFIG['blur_range'])
+    
+    # 构建图片URL，添加模糊效果
+    image_url = f"https://picsum.photos/{width}/{height}?blur={blur_amount}"
     
     try:
         # 下载图片
@@ -118,29 +124,39 @@ def create_imageset_folder(parent_folder):
 
 def get_valid_asset_folders(root_path):
     """
-    Recursively get valid asset folders that:
-    1. Contain Contents.json
-    2. Don't contain special characters like '.'
-    3. Are unique
+    优化后的文件夹遍历逻辑
     """
     valid_folders = set()
     
     def is_valid_folder_name(folder_name):
-        # Check if folder name contains special characters
         return not any(char in folder_name for char in ['.', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '|', '\\', '/', ':', ';', '"', "'", '<', '>', ',', '?', '!'])
     
     for root, dirs, files in os.walk(root_path):
-        # Skip hidden directories
+        # 快速过滤隐藏目录
         dirs[:] = [d for d in dirs if not d.startswith('.')]
         
-        for dir_name in dirs:
-            dir_path = os.path.join(root, dir_name)
-            contents_path = os.path.join(dir_path, 'Contents.json')
-            
-            if os.path.exists(contents_path) and is_valid_folder_name(dir_name):
-                valid_folders.add(dir_path)
+        # 检查当前目录是否包含 Contents.json
+        if 'Contents.json' in files:
+            dir_name = os.path.basename(root)
+            if is_valid_folder_name(dir_name):
+                valid_folders.add(root)
     
     return list(valid_folders)
+
+
+def process_folder(folder):
+    """
+    处理单个文件夹
+    """
+    num_imagesets = random.randint(*IMAGE_CONFIG['imageset_count_range'])
+    success_count = 0
+    
+    for _ in range(num_imagesets):
+        if create_imageset_folder(folder):
+            success_count += 1
+    
+    return success_count
+
 
 def asset_path():
     project_info = get_project_info()
@@ -156,10 +172,21 @@ if __name__ == '__main__':
     print("Valid asset folders:")
     for folder in valid_folders:
         print(folder)
-        # 在每个有效文件夹中创建2-3个imageset
-        num_imagesets = random.randint(2, 3)
-        for _ in range(num_imagesets):
-            if create_imageset_folder(folder):
-                print(f"Created imageset in {folder}")
-            else:
-                print(f"Failed to create imageset in {folder}")
+    
+    # 使用线程池并行处理文件夹
+    total_success = 0
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        # 提交所有任务
+        future_to_folder = {executor.submit(process_folder, folder): folder for folder in valid_folders}
+        
+        # 获取结果
+        for future in as_completed(future_to_folder):
+            folder = future_to_folder[future]
+            try:
+                success_count = future.result()
+                total_success += success_count
+                print(f"Processed {folder}: {success_count} imagesets created")
+            except Exception as e:
+                print(f"Error processing {folder}: {e}")
+    
+    print(f"\nTotal imagesets created: {total_success}")
