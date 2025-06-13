@@ -22,6 +22,7 @@ IOS_KEYWORDS = {
 # 全局变量存储词库
 NOUNS = []
 VERBS = []
+IS_INITIALIZED = False  # 添加初始化标志
 
 # 缓存最近生成的字符串，使用OrderedDict保持插入顺序
 # 格式: {string: timestamp}
@@ -87,11 +88,43 @@ def add_to_cache(string):
     if len(RECENT_STRINGS) > 1000:  # 设置一个合理的最大缓存大小
         RECENT_STRINGS.popitem(last=False)
 
+def init_word_lists():
+    """
+    初始化词库
+    """
+    global NOUNS, VERBS, IS_INITIALIZED
+    
+    # 如果已经初始化过，直接返回True
+    if IS_INITIALIZED:
+        return True
+        
+    # 获取当前文件所在目录的父目录
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
+    # 构建词库文件的完整路径
+    nouns_path = os.path.join(base_dir, 'ios_resource', 'nouns.txt')
+    verbs_path = os.path.join(base_dir, 'ios_resource', 'verbs.txt')
+    
+    # 加载词库
+    NOUNS = load_words(nouns_path)
+    VERBS = load_words(verbs_path)
+    
+    if not NOUNS or not VERBS:
+        print("Error: Required word files not found or empty")
+        return False
+        
+    IS_INITIALIZED = True
+    return True
+
 def get_random_class_name():
     """
     生成一个随机的类名（驼峰命名）
     限制最大长度为40个字符
     """
+    if not IS_INITIALIZED:
+        if not init_word_lists():
+            return None
+    
     if not NOUNS:
         return None
     
@@ -119,6 +152,10 @@ def get_random_method_name():
     """
     生成一个随机的方法名（首字母小写的驼峰命名）
     """
+    if not IS_INITIALIZED:
+        if not init_word_lists():
+            return None
+    
     if not VERBS or not NOUNS:
         return None
     
@@ -154,6 +191,10 @@ def get_random_snake_name():
     """
     生成一个随机的下划线命名
     """
+    if not IS_INITIALIZED:
+        if not init_word_lists():
+            return None
+    
     if not VERBS or not NOUNS:
         return None
     
@@ -183,31 +224,7 @@ def get_random_snake_name():
     
     return None
 
-def init_word_lists():
-    """
-    初始化词库
-    """
-    global NOUNS, VERBS
-    # 获取当前文件所在目录的父目录
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    
-    # 构建词库文件的完整路径
-    nouns_path = os.path.join(base_dir, 'ios_resource', 'nouns.txt')
-    verbs_path = os.path.join(base_dir, 'ios_resource', 'verbs.txt')
-    
-    # 加载词库
-    NOUNS = load_words(nouns_path)
-    VERBS = load_words(verbs_path)
-    
-    if not NOUNS or not VERBS:
-        print("Error: Required word files not found or empty")
-        return False
-    return True
-
 def main():
-    if not init_word_lists():
-        return
-    
     # 生成示例
     print("Generated Class Names:")
     for _ in range(5):
