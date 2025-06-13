@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         let fixString = k == true ? "home_clear_apple" : "home_clear_sensor"
         
         
-        let x1_ckm = UIImageView(image: imagg3)
+        let x1_ckm = UIImageView(image: UIImage.init(named: "test1"))
         x1_ckm.contentMode = .scaleAspectFit
         view.addSubview(x1_ckm)
         x1_ckm.frame = CGRectMake(20, 100, 100, 100)
