@@ -11,7 +11,9 @@ import SwifterSwift
 
 class ViewController: UIViewController {
     
-    var lxvIewx_ckm = UIColor.init(hexString: "x01111")
+    var lxvIewx_ckm = UIColor.init(hexString: "#9a9a9a")
+    
+    var intColors = UIColor.init(hexString: "#4d2a46")
     
     var b12_ckm = false
 
@@ -21,6 +23,9 @@ class ViewController: UIViewController {
         print(xc)
         print(xy1)
         print(xy2)
+        
+        view.backgroundColor = intColors
+        
         
         
         ysEventTrace(name: "page_view", argument: [
