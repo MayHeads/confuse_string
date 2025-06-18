@@ -15,7 +15,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from project_scanner import get_project_info
 from config import custom_ignore_folders, custom_ignore_swift_files, ig_fix_text, ig_format_text
 from collect_str import main_collect_str_all
-
+from config import AES_KEY
 
 
 
@@ -32,6 +32,10 @@ IGNORE_DIRECTORY = custom_ignore_folders
 
 # 本地 AES 密钥
 LOCAL_AES_KEY = "0M32COOACYE79YEC"  # 替换为你的本地密钥
+
+
+# AES_KEY = '0M32COOACYE79YEC'
+
 
 class XcodeSwiftFileCreator:
     def __init__(self, project_path: str, aes_key: str,method_prefix:str):
@@ -299,7 +303,6 @@ def process_strings_and_write_mapping(aes_key: str, project_path: str) -> dict:
             f.write(string + '\n')
             
     return data_map
-AES_KEY = '0M32COOACYE79YEC'
 def start_string_obfuscation():
     """开始字符串混淆流程"""
     random_method_prefix = ''.join(random.choices(string.ascii_letters + string.ascii_letters, k=2)).lower()
