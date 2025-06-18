@@ -62,3 +62,7 @@ REPLACE_IGNORE_FILE_NAMES = {
     'Info',
     'Assets',
 }
+
+# 生成swif文件的主题和数量
+THEME_KEYWORDS = ["壁纸系列"]  # 主题关键字列表
+NUM_FILES = 100  # 要生成的文件数量

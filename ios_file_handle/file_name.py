@@ -1,3 +1,4 @@
+# 重命名文件名
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -61,10 +62,14 @@ def rename_swift_files(swift_files):
     
     return name_mapping
 
-if __name__ == '__main__':
+def rename_swift_file():
     project_info = get_project_info()
     swift_all_files = project_info.all_swift_files
     
     # 重命名文件
     name_mapping = rename_swift_files(swift_all_files)
     print(f"总共重命名了 {len(name_mapping)} 个文件")
+
+
+if __name__ == '__main__':
+    rename_swift_file()

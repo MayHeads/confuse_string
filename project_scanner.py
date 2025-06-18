@@ -14,10 +14,16 @@ class ProjectInfo:
     podfile_paths: List[str]  # Podfile文件路径列表
     target_name: str  # 项目目标名称（项目路径的最后一级）
     
+    @property
+    def content_path(self) -> str:
+        """返回项目路径和目标名称的组合路径"""
+        return os.path.join(self.project_path, self.target_name)
+    
     def __str__(self):
         return f"""
 项目路径: {self.project_path}
 项目名称: {self.target_name}
+内容路径: {self.content_path}
 Swift文件数量: {len(self.swift_files)} (过滤后)
 所有Swift文件数量: {len(self.all_swift_files)} (未过滤)
 Xcode项目文件: {self.xcodeproj_path}
@@ -119,6 +125,7 @@ def print_project_summary(project_info: ProjectInfo):
     print("项目扫描结果")
     print("=" * 60)
     print(project_info)
+    print(f"\n内容路径: {project_info.content_path}")
     
     if project_info.swift_files:
         print(f"\n过滤后的Swift文件列表 (前10个):")
