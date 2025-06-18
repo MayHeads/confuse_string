@@ -1,3 +1,6 @@
+# 收集所有 Swift 文件中的字符串
+# 1. 收集所有 Swift 文件中的字符串 并保存到 ios_resource/ios_collection_str.txt 文件中
+
 import os
 import sys
 import re
