@@ -30,6 +30,9 @@ target_name = project_info.target_name
 
 IGNORE_DIRECTORY = custom_ignore_folders
 
+# 本地 AES 密钥
+LOCAL_AES_KEY = "0M32COOACYE79YEC"  # 替换为你的本地密钥
+
 class XcodeSwiftFileCreator:
     def __init__(self, project_path: str, aes_key: str,method_prefix:str):
         self.project_path = project_path
@@ -181,42 +184,19 @@ def rw_decrypt(key:str, encrypted_text: str) -> str:
     except Exception as e:
         return ""
 
-def generate_aes_key(length: int = 16) -> str:
-    """
-    生成指定长度的AES密钥
-    格式：大写字母 + 数字 + 小写字母的组合
-    """
-    try:
-        # 定义字符集
-        uppercase_letters = string.ascii_uppercase  # A-Z
-        digits = string.digits                     # 0-9
-        lowercase_letters = string.ascii_lowercase  # a-z
-        
-        # 确保每种字符至少出现一次
-        key = [
-            random.choice(uppercase_letters),  # 至少一个大写字母
-            random.choice(digits),            # 至少一个数字
-            random.choice(lowercase_letters)   # 至少一个小写字母
-        ]
-        
-        # 剩余长度随机填充
-        remaining_length = length - len(key)
-        all_chars = uppercase_letters + digits + lowercase_letters
-        
-        # 生成剩余字符
-        for _ in range(remaining_length):
-            key.append(random.choice(all_chars))
-        
-        # 打乱顺序
-        random.shuffle(key)
-        
-        # 合并成字符串
-        return ''.join(key)
-    
-    except Exception as e:
-        print(f"生成密钥时发生错误: {str(e)}")
-        return None
+def generate_aes_key():
+    """生成 AES 密钥"""
+    return os.urandom(32)  # 生成 32 字节的随机密钥
 
+def get_aes_key(use_local_key=True):
+    """
+    获取 AES 密钥
+    :param use_local_key: 是否使用本地密钥
+    :return: AES 密钥
+    """
+    if use_local_key and LOCAL_AES_KEY:
+        return LOCAL_AES_KEY.encode('utf-8')
+    return generate_aes_key()
 
 def rw_encrypt(key:str, plain_text: str) -> str:
     try:
@@ -292,7 +272,7 @@ def start_string_obfuscation():
     """开始字符串混淆流程"""
     random_method_prefix = ''.join(random.choices(string.ascii_letters + string.ascii_letters, k=2)).lower()
     file_name = f'String+{random_method_prefix}Decryptor'
-    aes_key = generate_aes_key() 
+    aes_key = get_aes_key(use_local_key=True) 
 
     # 处理字符串加密并获取映射关系
     data_map = process_strings_and_write_mapping(aes_key, project_path)
@@ -326,10 +306,14 @@ def start_string_obfuscation():
 
                     with open(file_path, 'w') as f:
                         f.write(content)
-
-if __name__ == '__main__':
+def enc_string_process():
     main_collect_str_all()
     start_string_obfuscation()
+    
+
+if __name__ == '__main__':
+    
+    enc_string_process()
 
                         
                     

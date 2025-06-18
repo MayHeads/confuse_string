@@ -28,10 +28,10 @@ class ViewController: UIViewController {
         view.backgroundColor = intColors
         
         
-        let kfView  =   UIHostingController(rootView: IndiapaperGunboatdiplomacyView()).view ?? UIView()
-        
-        view.addSubview(kfView)
-        kfView.frame = CGRectMake(0, 200, view.width, 500)
+//        let kfView  =   UIHostingController(rootView: IndiapaperGunboatdiplomacyView()).view ?? UIView()
+//        
+//        view.addSubview(kfView)
+//        kfView.frame = CGRectMake(0, 200, view.width, 500)
         
         
         ysEventTrace(name: "page_view", argument: [
