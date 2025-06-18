@@ -299,12 +299,12 @@ def process_strings_and_write_mapping(aes_key: str, project_path: str) -> dict:
             f.write(string + '\n')
             
     return data_map
-
+AES_KEY = '0M32COOACYE79YEC'
 def start_string_obfuscation():
     """开始字符串混淆流程"""
     random_method_prefix = ''.join(random.choices(string.ascii_letters + string.ascii_letters, k=2)).lower()
     file_name = f'String+{random_method_prefix}Decryptor'
-    aes_key = generate_aes_key() 
+    aes_key = AES_KEY
 
     # 处理字符串加密并获取映射关系
     data_map = process_strings_and_write_mapping(aes_key, project_path)
