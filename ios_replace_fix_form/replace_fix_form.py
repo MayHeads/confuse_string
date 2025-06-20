@@ -1,3 +1,4 @@
+# 替换所有_ckm结尾的字符串
 import os
 import sys
 import re

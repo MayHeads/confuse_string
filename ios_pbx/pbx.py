@@ -1,3 +1,4 @@
+# 替换pbx文件中的ID
 import os
 import sys
 import re
@@ -70,16 +71,24 @@ def process_pbx_file(pbx_path):
     print(f"ID替换完成，映射关系已保存到: {log_file}")
     print(f"原文件已备份到: {backup_path}")
 
-if __name__ == '__main__':
+def z_pbx_combin():
     project_info = get_project_info()
     pbx_path = project_info.xcodeproj_path
     
     pbx_file_name = pbx_path + '/project.pbxproj'
+    process_pbx_file(pbx_file_name)
+
+if __name__ == '__main__':
+    z_pbx_combin()
+    # project_info = get_project_info()
+    # pbx_path = project_info.xcodeproj_path
+    
+    # pbx_file_name = pbx_path + '/project.pbxproj'
     # 检查文件是否已经处理过
     # if os.path.exists(pbx_file_name + '.backup'):
     #     print("文件已经处理过，请检查备份文件")
     #     sys.exit(1)
     
     # 处理pbx文件
-    process_pbx_file(pbx_file_name)
+    # process_pbx_file(pbx_file_name)
 

@@ -305,15 +305,20 @@ def replace_colors():
     
     return replaced_files
 
+def z_color_combin():
+    color_hanlde()
+    replace_colors()
+
 
 if __name__=='__main__':
-    # 提取项目中的颜色代码并生成映射
-    color_hanlde()
+    z_color_combin()
+    # # 提取项目中的颜色代码并生成映射
+    # color_hanlde()
     
-    # 询问用户是否要替换颜色
-    user_input = input("\n是否要替换Swift文件中的颜色代码? (y/n): ")
-    if user_input.lower() in ['y', 'yes']:
-        # 替换所有颜色
-        replace_colors()
-    else:
-        print("跳过颜色替换操作")
+    # # 询问用户是否要替换颜色
+    # user_input = input("\n是否要替换Swift文件中的颜色代码? (y/n): ")
+    # if user_input.lower() in ['y', 'yes']:
+    #     # 替换所有颜色
+    #     replace_colors()
+    # else:
+    #     print("跳过颜色替换操作")
