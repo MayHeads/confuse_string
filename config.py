@@ -1,5 +1,7 @@
 
-project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
+# project_path = "/Users/jiangshanchen/confuse_string/ConfuseDemo1"
+
+project_path = "/Users/jiangshanchen/TTRouSDK"
 
 
 # project_path = "/Users/jiangshanchen/CSQingLi"
@@ -12,9 +14,9 @@ custom_ignore_folders = [
 
 ### 忽略swif文件  <忽略的swift文件>
 custom_ignore_swift_files = [
-    'AppDelegate.swift',
-    'SceneDelegate.swift', 
-    'main.swift'
+    # 'AppDelegate.swift',
+    # 'SceneDelegate.swift', 
+    # 'main.swift'
 ]
 
 
@@ -50,19 +52,23 @@ ig_format_text = [
 
 
 #  替换类名和方法前缀 <替换类名和方法前缀>
-STRING_SUFFIX = '_ckm'
+STRING_SUFFIX = '_pkm'
 
 
 # 需要忽略的文件名列表  <替换文件名>
 REPLACE_IGNORE_FILE_NAMES = {
-    'AppDelegate',
-    'SceneDelegate',
-    'ViewController',
-    'Main',
-    'Info',
-    'Assets',
+    # 'AppDelegate',
+    # 'SceneDelegate',
+    # 'ViewController',
+    # 'Main',
+    # 'Info',
+    # 'Assets',
 }
 
 # 生成swif文件的主题和数量
 THEME_KEYWORDS = ["壁纸系列"]  # 主题关键字列表
 NUM_FILES = 100  # 要生成的文件数量
+
+
+# 混淆字符串key
+CONFUSE_KEY = "0C32C22ACYE79YKC" 
