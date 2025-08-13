@@ -57,12 +57,12 @@ STRING_SUFFIX = '_pkm'
 
 # 需要忽略的文件名列表  <替换文件名>
 REPLACE_IGNORE_FILE_NAMES = {
-    # 'AppDelegate',
-    # 'SceneDelegate',
-    # 'ViewController',
-    # 'Main',
-    # 'Info',
-    # 'Assets',
+    'AppDelegate',
+    'SceneDelegate',
+    'ViewController',
+    'Main',
+    'Info',
+    'Assets',
 }
 
 # 生成swif文件的主题和数量
