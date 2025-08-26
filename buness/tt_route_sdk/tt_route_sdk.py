@@ -38,22 +38,22 @@ def execute_pod_install():
 if __name__ == '__main__':
 
     # 替换pod名字
-    # change_pod_ex()
+    change_pod_ex()
 
     # 替换固定名字
-    # z_replace_fix_form()
+    z_replace_fix_form()
 
     # 加密字符串
     z_enc_combin()
 
     # 替换文件名
-    # z_replace_file()
+    z_replace_file()
 
     # 生成处理文件 swiftUI文件
-    # z_gen_process()
+    z_gen_process()
 
     # 执行pod install
-    # execute_pod_install()
+    execute_pod_install()
 
 
 
