@@ -36,6 +36,8 @@ def rename_directories(project_path):
 
 
 def change_pod_ex():
+    delete_empty_folders()
+    
     project_info = get_project_info()
     project_path = project_info.project_path
     
@@ -119,11 +121,65 @@ def change_pod_ex():
     print(f"处理的文件数量: {replaced_files_count}")
     print(f"总替换次数: {total_replacements}")
 
+def delete_empty_folders():
+    project_info = get_project_info()
+    project_path = project_info.project_path
+
+    print(f"开始清理空目录: {project_path}")
+
+    # 递归删除空目录的通用函数
+    def recursive_delete_empty_dirs(root_path, deleted_count=[0]):
+        """递归删除空目录，如果子目录都为空，则删除当前目录"""
+        if not os.path.exists(root_path):
+            return False
+
+        try:
+            # 获取目录内容
+            items = os.listdir(root_path)
+            has_non_empty_subdir = False
+
+            # 递归处理所有子目录
+            for item in items:
+                item_path = os.path.join(root_path, item)
+                if os.path.isdir(item_path):
+                    # 递归删除子目录中的空目录
+                    if recursive_delete_empty_dirs(item_path, deleted_count):
+                        has_non_empty_subdir = True
+
+            # 重新检查当前目录是否为空
+            remaining_items = os.listdir(root_path)
+
+            # 如果目录为空（没有任何文件或子目录），则删除它
+            if not remaining_items:
+                try:
+                    parent_dir = os.path.dirname(root_path)
+                    os.rmdir(root_path)
+                    deleted_count[0] += 1
+                    print(f"删除空目录: {root_path}")
+                    return False  # 返回False表示这个目录被删除了
+                except OSError as e:
+                    print(f"无法删除目录 {root_path}: {e}")
+                    return True  # 返回True表示删除失败，目录仍然存在
+            else:
+                return True  # 目录不为空，返回True
+
+        except OSError as e:
+            print(f"无法访问目录 {root_path}: {e}")
+            return True
+
+    # 统计删除的目录数量
+    deleted_count = [0]
+
+    # 从项目根目录开始递归删除空目录
+    recursive_delete_empty_dirs(project_path, deleted_count)
+
+    print(f"空目录清理完成，共删除 {deleted_count[0]} 个空目录")
 
 if __name__ == '__main__':
 
     print(f"开始替换项目中的 {fix_phase} 为 {new_phase}")
-    change_pod_ex()
+    # change_pod_ex()
+    delete_empty_folders()
     print(f"替换完成")
 
 
