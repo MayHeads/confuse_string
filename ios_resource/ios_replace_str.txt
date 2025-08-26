@@ -370,6 +370,7 @@ requsetDomin_pkm
 res_pkm
 reset_pkm
 response_pkm
+restorePurchase_pkm
 restoreuuid_pkm
 resul1_pkm
 resultDict_pkm

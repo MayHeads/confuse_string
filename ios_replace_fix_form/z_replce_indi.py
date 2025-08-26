@@ -1,4 +1,4 @@
-from replace_fix_form import main_replace_fix_form
+from .replace_fix_form import main_replace_fix_form
 
 
 def z_replace_fix_form():

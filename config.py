@@ -70,5 +70,15 @@ THEME_KEYWORDS = ["清理系列"]  # 主题关键字列表
 NUM_FILES = 50  # 要生成的文件数量
 
 
-# 混淆字符串key
+# 混淆字符串key <暂时用随机生成的>
 CONFUSE_KEY = "0C32C2KT2FE79YKC" 
+
+
+
+# pod 文件名相关混淆
+ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
+NEW_POD_FILE_NAME = "TCSWeepSDK"
+
+
+# 是否是pod 混淆模式
+IS_POD_CONFUSE_MODE = True
