@@ -66,9 +66,9 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ["壁纸系列"]  # 主题关键字列表
-NUM_FILES = 100  # 要生成的文件数量
+THEME_KEYWORDS = ["清理系列"]  # 主题关键字列表
+NUM_FILES = 50  # 要生成的文件数量
 
 
 # 混淆字符串key
-CONFUSE_KEY = "0C32C22ACYE79YKC" 
+CONFUSE_KEY = "0C32C2KT2FE79YKC" 

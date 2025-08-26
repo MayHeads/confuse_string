@@ -55,6 +55,7 @@ activityChannel_pkm
 addOrder_pkm
 advertisingIdentifier_pkm
 aes_pkm
+aesres_pkm
 againRequestmodel_pkm
 allowedQueryParamAndKey_pkm
 alphaExa_pkm
@@ -65,6 +66,7 @@ apiRecord_pkm
 api_pkm
 appReviewEndpoint_pkm
 appStartDic_pkm
+appVersionCode_pkm
 appVersionWitSSSChoutPoint_pkm
 appendTransactionstatusMonitoringCallback_pkm
 appleIDs_pkm
@@ -103,6 +105,7 @@ cdid_pkm
 changeSelectIndex_pkm
 changeStatus_pkm
 ciphertext_pkm
+ciphertextres_pkm
 cleanVipData_pkm
 cleanVip_pkm
 closeButtonSUOSUODelay_pkm
@@ -133,11 +136,15 @@ currentAppleId_pkm
 currentChannelCode_pkm
 currentCity_pkm
 currentNetworkStatus_pkm
+currentUUID_pkm
 current_pkm
 customerId_pkm
 data1_pkm
+dataBase64_pkm
 dataDic_pkm
 dataDict_pkm
+dataMd5res_pkm
+dataModel_pkm
 dataString_pkm
 dataText_pkm
 data_pkm
@@ -170,6 +177,7 @@ dynamicParams_pkm
 element_pkm
 enFix_pkm
 encodeAuthorization_pkm
+encodeStr_pkm
 endNetwrokRequestEnd_pkm
 entry_pkm
 error_pkm
@@ -215,6 +223,7 @@ idfa_pkm
 idfv_pkm
 index_pkm
 infoDictionary_pkm
+infoDictionarydataMd5res_pkm
 info_pkm
 infor_pkm
 initBDSDK_pkm
@@ -226,6 +235,7 @@ initiatingPurchaseRestoration_pkm
 iosPSuosuoroductId_pkm
 iosSSuosuotyleId_pkm
 isConnected_pkm
+isDefaultGroup_pkm
 isEnableMakePayment_pkm
 isFromBackground_pkm
 isHasSuspended_pkm
@@ -258,6 +268,7 @@ mString_pkm
 mainSuosuoButtonColor_pkm
 mainSuosuoButtonCopywriting_pkm
 majorVersion_pkm
+majorVersiondataMd5res_pkm
 maxCount_pkm
 memSuosuober_pkm
 membSuosuoerEquityIntroduce_pkm
@@ -354,6 +365,7 @@ report_pkm
 requestData_pkm
 requestDomain_pkm
 requestList_pkm
+requestSign_pkm
 requsetDomin_pkm
 res_pkm
 reset_pkm
@@ -398,11 +410,18 @@ supplementaryId_pkm
 supplementaryIdentifier_pkm
 systemInfo_pkm
 tag_pkm
+tc1_pkm
+tc2_pkm
+tc2tc1_pkm
+tc3_pkm
+tc4_pkm
+tc5_pkm
 timSuosuoeliness_pkm
 timeInterval_pkm
 timeNess_pkm
 timer_pkm
 timestampInMilliseconds_pkm
+timestamp_pkm
 tipsString_pkm
 toDebugString_pkm
 topMSuosuoark_pkm

@@ -15,4 +15,11 @@ def z_gen_process():
 
 
 if __name__ == '__main__':
+
+    # 生成文件
     z_gen_process()
+
+    # 重命名文件
+    z_replace_file()
+
+ 
