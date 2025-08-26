@@ -12,6 +12,16 @@ import handle_root.file_module_area as module_area
 
 import add_rubbish_swift_code.rubbish_swift_code as rubbish_util
 
+
+def should_ignore_file(file_path):
+    """检查文件路径是否应该被忽略"""
+    for ignore_dir in config.IGNORE_CODE_DIRECTORY:
+        if ignore_dir in file_path:
+            print(f"忽略文件（包含忽略目录 {ignore_dir}）: {file_path}")
+            return True
+    return False
+
+
 ###插入垃圾属性 example:
 ### class A {
 ###   var name: String = "hello" 
@@ -31,6 +41,9 @@ def handle_insert_rubbish_ivar():
     swift_result = file_util.get_files_endswithSwift(result)
     ## 3、插入垃圾属性
     for file_path in swift_result:
+        ## 检查是否应该忽略该文件
+        if should_ignore_file(file_path):
+            continue
         
         ## 4 获取结构
         module_names = module_area.get_class_or_struct_module_area_in_file(file_path)

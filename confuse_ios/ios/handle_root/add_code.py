@@ -14,6 +14,15 @@ import config.config as config
 from ios.file_base import file_base
 
 
+def should_ignore_file(file_path):
+    """检查文件路径是否应该被忽略"""
+    for ignore_dir in config.IGNORE_CODE_DIRECTORY:
+        if ignore_dir in file_path:
+            print(f"忽略文件（包含忽略目录 {ignore_dir}）: {file_path}")
+            return True
+    return False
+
+
 def c_add_random_code():
     for i in range(config.CONFUSE_LEVEL):
         print(f"混淆次数---> {i}")
@@ -22,6 +31,9 @@ def c_add_random_code():
         #2.0
         items = find_swift_files_all()
         for item in items:
+            # 检查是否应该忽略该文件
+            if should_ignore_file(item):
+                continue
             parse_swift_file_2.modfife_method(item)
         # add_random_code(item)
 
@@ -46,6 +58,9 @@ def find_swift_files(directory):
         for file in files:
             if fnmatch.fnmatch(file, '*.swift'):
                 file_path = os.path.join(root, file)
+                # 检查是否应该忽略该文件
+                if should_ignore_file(file_path):
+                    continue
                 swift_files.append(file_path)
 
     return swift_files
@@ -53,8 +68,12 @@ def find_swift_files(directory):
 #获取swift 后缀的文件
 def find_swift_files_all():
     swift_files = file_base.get_files_suffix_with_swift()
-
-    return swift_files
+    # 过滤掉应该忽略的文件
+    filtered_files = []
+    for file_path in swift_files:
+        if not should_ignore_file(file_path):
+            filtered_files.append(file_path)
+    return filtered_files
 
 
 

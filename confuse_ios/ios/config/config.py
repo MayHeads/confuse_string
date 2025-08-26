@@ -59,7 +59,7 @@ IGNORE_CODE_DIRECTORY = [
     "qianyan.xcodeproj",
     "Others",
     "mac",
-    "SDK",
+    # "SDK",
     "Demo",
 
 ]

@@ -32,6 +32,13 @@ def execute_pod_install():
     os.chdir(current_dir)
 
 
+def insert_action():
+    project_root = os.path.dirname(os.path.dirname(current_dir))
+    confuse_ios_path = os.path.join(project_root, "confuse_ios")
+    os.chdir(confuse_ios_path)
+    os.system("python3 ios/entry/entry.py")
+
+
 
 
 
@@ -51,6 +58,8 @@ if __name__ == '__main__':
 
     # 生成处理文件 swiftUI文件
     z_gen_process()
+
+    insert_action()
 
     # 执行pod install
     execute_pod_install()
