@@ -36,16 +36,16 @@ def generate_logic_rubbish_code():
     type = random.choice(oc_types)
     text = ""
     if type == "int":
-        text = '''%s R_LOCAL_IVAR_1 = %s;\nwhile (R_LOCAL_IVAR_1 >= %s) { break; }''' % (type,random.randint(1, 1000), random.randint(1, 1000))
+        text = '''%s R_LOCAL_IVAR_1 = %s;\nwhile (R_LOCAL_IVAR_1 >= %s) { break; }''' % (type,random.randint(1, 5), random.randint(1, 5))
         text = text.replace('R_LOCAL_IVAR_1',get_single_word())
     elif type == "float" or type == "double":
-        text = '''%s R_LOCAL_IVAR_1 = %s;\nwhile (R_LOCAL_IVAR_1 >= %s) { break; }''' % (type,round(random.uniform(1, 1000),3), round(random.uniform(1, 1000),3))
+        text = '''%s R_LOCAL_IVAR_1 = %s;\nwhile (R_LOCAL_IVAR_1 >= %s) { break; }''' % (type,round(random.uniform(1, 5),3), round(random.uniform(1, 1000),3))
         text = text.replace('R_LOCAL_IVAR_1',get_single_word())
     elif type == "BOOL":
         i = get_single_word()
         text = '''%s R_LOCAL_IVAR_1 = %s;
                     for (int %s = %s; %s < R_LOCAL_IVAR_1; %s++) { break; }
-                ''' %('int',random.randint(0,100),i,random.randint(1, 1000),i,i)
+                ''' %('int',random.randint(0,5),i,random.randint(1, 5),i,i)
         text = text.replace('R_LOCAL_IVAR_1',get_single_word())
     elif type == "NSString *":
         i = get_single_word()

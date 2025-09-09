@@ -1,14 +1,10 @@
 """ 项目路径，调试的话，设置成自己的路径
 """
-# 项目路径不能套取路径
-# ROOT_PROJECT_DIR = "/Users/jiangshanchen/charge_ios/FrogPhoto"
-# ROOT_PROJECT_DIR = "/Users/lindy/test_ios"
-# ROOT_PROJECT_DIR = "/Users/lindy/Desktop/xmiles_project/callshow"
-# ROOT_PROJECT_DIR = "/Users/lindy/Desktop/xmiles_project/wifi_ios"
 
-# ROOT_PROJECT_DIR = "/Users/jiangshanchen/Desktop/gitee/test_ios"
 
-ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
+ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK1"
+
+
 
 
 # 项目Scheme，用来匹配workspace，资源代码的位置

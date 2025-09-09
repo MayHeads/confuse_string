@@ -16,7 +16,7 @@ def generate_swift_property():
         
         type_name = random.choice(_typeList)
         if "int" in type_name:
-            random_number = random.randint(1, 10000)
+            random_number = random.randint(1, 10)
             new_str += '\n' + 'var' + ' ' + random_strs.lower_ivar_name() + ':' + type_name + ' = ' + f'{random_number}'
         elif 'String' in type_name:
             random_str = random_strs.lower_ivar_name()
@@ -27,7 +27,7 @@ def generate_swift_property():
             new_str += '\n' + 'var' + ' ' + random_strs.lower_ivar_name() + ':' + type_name + ' = ' + f'{random_bool}'
 
         elif 'Double' in type_name:
-            random_number = random.uniform(1, 10000)
+            random_number = random.uniform(1, 10)
             new_str += '\n' + 'var' + ' ' + random_strs.lower_ivar_name() + ':' + type_name + ' = ' + f'{random_number}'
             
 
