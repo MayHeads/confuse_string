@@ -60,8 +60,12 @@ def generate_combined_view(view_names):
 // Generated on: {current_date}
 // Combined Views: {', '.join(view_names)}
 
-struct {view_name}: View {{
-    var body: some View {{
+public struct {view_name}: View {{
+    public init() {{
+        // Default initializer
+    }}
+
+    public var body: some View {{
         ScrollView {{
             VStack(spacing: 30) {{
 """
@@ -91,8 +95,8 @@ struct {view_name}: View {{
 }}
 
 // Preview provider
-struct {view_name}_Previews: PreviewProvider {{
-    static var previews: some View {{
+public struct {view_name}_Previews: PreviewProvider {{
+    public static var previews: some View {{
         NavigationView {{
             {view_name}()
         }}

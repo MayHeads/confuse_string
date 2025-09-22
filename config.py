@@ -1,6 +1,6 @@
 
 
-project_path = "/Users/jiangshanchen/TTRouSDK1"
+project_path = "/Users/jiangshanchen/TTVideoRe"
 
 
 # 忽略文件夹  <忽略的swift文件夹>
@@ -63,8 +63,8 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['心率 血压1']  # 主题关键字列表
-NUM_FILES = 11  # 要生成的文件数量
+THEME_KEYWORDS = ['支持 缠绕']  # 主题关键字列表
+NUM_FILES = 5  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>
@@ -74,9 +74,9 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 
 # pod 文件名相关混淆
 ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
-# NEW_POD_FILE_NAME = "BFMccpSDK1"
+# NEW_POD_FILE_NAME = "TSComSDK"
 
-NEW_POD_FILE_NAME = "BFMccpSDK1"
+NEW_POD_FILE_NAME = "TSComSDK"
 
 
 # 是否是pod 混淆模式

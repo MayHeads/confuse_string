@@ -427,10 +427,14 @@ import SwiftUI
 // Theme: {', '.join(theme_keywords)}
 // Generated on: {current_date}
 
-struct {view_name}: View {{
+public struct {view_name}: View {{
 {state_vars_string}
 
-    var body: some View {{
+    public init() {{
+        // Default initializer
+    }}
+
+    public var body: some View {{
         ScrollView {{
             VStack(alignment: .leading, spacing: 15) {{
                 {body_content}
@@ -448,8 +452,8 @@ struct {view_name}: View {{
 }}
 
 // Preview provider
-struct {view_name}_Previews: PreviewProvider {{
-    static var previews: some View {{
+public struct {view_name}_Previews: PreviewProvider {{
+    public static var previews: some View {{
         NavigationView {{
             {view_name}()
         }}

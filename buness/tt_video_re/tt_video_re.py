@@ -3,6 +3,8 @@
 import sys
 import os
 import re
+import time
+
 
 # 添加项目根目录到Python路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -22,9 +24,9 @@ NEW_POD_FILE_NAME = "TSComSDK"
 # 生成处理文件 swiftUI文件
 THEME_KEYWORDS = ["支持 缠绕"]  # 主题关键字列表
 # 要生成的文件数量
-NUM_FILES = 20  # 要生成的文件数量
+NUM_FILES = 5  # 要生成的文件数量
 # 项目路径
-project_path = "/Users/jiangshanchen/TTRouSDK"
+project_path = "/Users/jiangshanchen/TTVideoRe"
 
 
 def execute_pod_install():
@@ -98,26 +100,31 @@ if __name__ == '__main__':
     
     # 更新配置文件
     update_config_files()
+    # update_config_files()
+
+    # 延迟1s
+    time.sleep(1)
+
 
     # 替换pod名字
-    change_pod_ex()
+    # change_pod_ex()
 
     # 替换固定名字
     z_replace_fix_form()
 
     # 加密字符串
-    z_enc_combin()
+    # z_enc_combin()
 
     # 替换文件名
     z_replace_file()
 
     # 生成处理文件 swiftUI文件
-    z_gen_process()
+    # z_gen_process()
 
     insert_action()
 
     # 执行pod install
-    execute_pod_install()
+    # execute_pod_install()
 
 
 
