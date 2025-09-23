@@ -13,12 +13,11 @@ from pathlib import Path
 
 # ==================== 调试参数配置 ====================
 # 方便调试时快速修改参数，无需修改代码内部
-DEBUG_ORIGIN_FOLDER = '/Users/jiangshanchen/confuse_string/ios_log/origin_image_file'  # 原始图片文件夹路径
-DEBUG_OUTPUT_FOLDER = '/Users/jiangshanchen/confuse_string/ios_log/output_image_file'  # 输出图片文件夹路径
+ # 输出图片文件夹路径
 DEBUG_FOLDER_PATH = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'  # 要处理的文件夹路径
-DEBUG_BLUR_RADIUS = 5           # 模糊半径 (1-20, 数值越大越模糊)
+DEBUG_BLUR_RADIUS = 3           # 模糊半径 (1-20, 数值越大越模糊)
 DEBUG_BLUR_TYPE = 'gaussian'    # 模糊类型 ('gaussian', 'box', 'median')
-DEBUG_QUALITY = 30              # 输出图片质量 (1-100)
+DEBUG_QUALITY = 95              # 输出图片质量 (1-100)
 DEBUG_PRESERVE_TRANSPARENCY = True  # 是否保持透明区域不变
 DEBUG_BACKUP = False            # 是否创建备份文件
 DEBUG_RECURSIVE = True          # 是否递归查找子文件夹
