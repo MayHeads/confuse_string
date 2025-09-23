@@ -11,6 +11,19 @@ from PIL import Image, ImageFilter
 import argparse
 from pathlib import Path
 
+# ==================== 调试参数配置 ====================
+# 方便调试时快速修改参数，无需修改代码内部
+DEBUG_ORIGIN_FOLDER = '/Users/jiangshanchen/confuse_string/ios_log/origin_image_file'  # 原始图片文件夹路径
+DEBUG_OUTPUT_FOLDER = '/Users/jiangshanchen/confuse_string/ios_log/output_image_file'  # 输出图片文件夹路径
+DEBUG_FOLDER_PATH = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'  # 要处理的文件夹路径
+DEBUG_BLUR_RADIUS = 5           # 模糊半径 (1-20, 数值越大越模糊)
+DEBUG_BLUR_TYPE = 'gaussian'    # 模糊类型 ('gaussian', 'box', 'median')
+DEBUG_QUALITY = 30              # 输出图片质量 (1-100)
+DEBUG_PRESERVE_TRANSPARENCY = True  # 是否保持透明区域不变
+DEBUG_BACKUP = False            # 是否创建备份文件
+DEBUG_RECURSIVE = True          # 是否递归查找子文件夹
+# =====================================================
+
 class ImageBlurProcessor:
     """图片模糊处理器"""
     
@@ -402,17 +415,17 @@ def main():
 def simple_blur_demo():
     """简单的模糊效果演示"""
     print("=== 图片模糊效果处理工具 ===")
-    print("使用默认参数进行演示...")
+    print("使用调试参数进行演示...")
     
-    # 使用默认路径
-    origin_folder = '/Users/jiangshanchen/confuse_string/ios_log/origin_image_file'
-    output_folder = '/Users/jiangshanchen/confuse_string/ios_log/output_image_file'
+    print(f"原始文件夹: {DEBUG_ORIGIN_FOLDER}")
+    print(f"输出文件夹: {DEBUG_OUTPUT_FOLDER}")
+    print(f"模糊参数：类型={DEBUG_BLUR_TYPE}, 半径={DEBUG_BLUR_RADIUS}, 质量={DEBUG_QUALITY}")
     
     # 创建处理器
-    processor = ImageBlurProcessor(origin_folder, output_folder)
+    processor = ImageBlurProcessor(DEBUG_ORIGIN_FOLDER, DEBUG_OUTPUT_FOLDER)
     
-    # 处理所有图片，使用中等模糊效果
-    processor.process_all_images(blur_radius=15, blur_type='gaussian', quality=95)
+    # 处理所有图片，使用调试参数
+    processor.process_all_images(blur_radius=DEBUG_BLUR_RADIUS, blur_type=DEBUG_BLUR_TYPE, quality=DEBUG_QUALITY)
     
     print("\n演示完成！")
     print("你可以使用以下命令进行自定义处理：")
@@ -425,19 +438,19 @@ def blur_folder_example():
     """演示如何直接对文件夹中的图片进行模糊处理并替换"""
     print("=== 文件夹图片模糊替换演示 ===")
     
-    # 示例：对指定文件夹中的图片进行模糊处理并替换
-    folder_path = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'
-    
-    print(f"将对文件夹 {folder_path} 中的图片进行模糊处理并替换原文件...")
+    print(f"将对文件夹 {DEBUG_FOLDER_PATH} 中的图片进行模糊处理并替换原文件...")
+    print(f"调试参数：模糊半径={DEBUG_BLUR_RADIUS}, 类型={DEBUG_BLUR_TYPE}, 质量={DEBUG_QUALITY}")
+    print(f"备份模式：{'开启' if DEBUG_BACKUP else '关闭'}, 递归模式：{'开启' if DEBUG_RECURSIVE else '关闭'}")
     
     # 使用静态方法直接处理
     ImageBlurProcessor.blur_folder_images(
-        folder_path=folder_path,
-        blur_radius=5,
-        blur_type='gaussian',
-        quality=30,
-        backup=False,  # 不创建备份文件
-        preserve_transparency=True  # 保持透明区域不变
+        folder_path=DEBUG_FOLDER_PATH,
+        blur_radius=DEBUG_BLUR_RADIUS,
+        blur_type=DEBUG_BLUR_TYPE,
+        quality=DEBUG_QUALITY,
+        backup=DEBUG_BACKUP,
+        preserve_transparency=DEBUG_PRESERVE_TRANSPARENCY,
+        recursive=DEBUG_RECURSIVE
     )
     
     print("\n文件夹处理完成！")

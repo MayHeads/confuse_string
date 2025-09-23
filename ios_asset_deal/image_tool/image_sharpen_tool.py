@@ -11,6 +11,17 @@ from PIL import Image, ImageFilter, ImageEnhance
 import argparse
 from pathlib import Path
 
+# ==================== 调试参数配置 ====================
+# 方便调试时快速修改参数，无需修改代码内部
+DEBUG_FOLDER_PATH = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'  # 要处理的文件夹路径
+DEBUG_SHARPEN_STRENGTH = 200      # 锐化强度 (0.1-5.0)
+DEBUG_SHARPEN_TYPE = 'unsharp_mask'  # 锐化类型 ('unsharp_mask', 'sharpen', 'detail', 'enhance')
+DEBUG_PRESERVE_TRANSPARENCY = True  # 是否保持透明区域不变
+DEBUG_BACKUP = False              # 是否创建备份文件
+DEBUG_RECURSIVE = True            # 是否递归查找子文件夹
+DEBUG_QUALITY = 95                # 输出图片质量 (1-100)
+# =====================================================
+
 class ImageSharpenProcessor:
     """图片锐化处理器"""
     
@@ -325,22 +336,21 @@ def main():
 def sharpen_demo():
     """锐化效果演示"""
     print("=== 图片锐化效果处理工具 ===")
-    print("使用默认参数进行演示...")
+    print("使用调试参数进行演示...")
     
-    # 示例：对指定文件夹中的图片进行锐化处理并替换
-    folder_path = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'
-    
-    print(f"将对文件夹 {folder_path} 中的图片进行锐化处理并替换原文件...")
+    print(f"将对文件夹 {DEBUG_FOLDER_PATH} 中的图片进行锐化处理并替换原文件...")
+    print(f"调试参数：强度={DEBUG_SHARPEN_STRENGTH}, 类型={DEBUG_SHARPEN_TYPE}")
+    print(f"备份模式：{'开启' if DEBUG_BACKUP else '关闭'}, 递归模式：{'开启' if DEBUG_RECURSIVE else '关闭'}")
     
     try:
         # 使用静态方法直接处理
         ImageSharpenProcessor.sharpen_folder_images(
-            folder_path=folder_path,
-            sharpen_strength=200,
-            sharpen_type='unsharp_mask',
-            preserve_transparency=True,
-            backup=False,
-            recursive=True
+            folder_path=DEBUG_FOLDER_PATH,
+            sharpen_strength=DEBUG_SHARPEN_STRENGTH,
+            sharpen_type=DEBUG_SHARPEN_TYPE,
+            preserve_transparency=DEBUG_PRESERVE_TRANSPARENCY,
+            backup=DEBUG_BACKUP,
+            recursive=DEBUG_RECURSIVE
         )
         
         print("\n演示完成！")

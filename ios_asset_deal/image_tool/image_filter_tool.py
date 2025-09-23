@@ -11,6 +11,17 @@ from PIL import Image, ImageFilter, ImageEnhance
 import argparse
 from pathlib import Path
 
+# ==================== 调试参数配置 ====================
+# 方便调试时快速修改参数，无需修改代码内部
+DEBUG_FOLDER_PATH = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'  # 要处理的文件夹路径
+DEBUG_FILTER_TYPE = 'invert'        # 滤镜类型 ('red_black', 'sepia', 'vintage', 'high_contrast', 'invert', 'grayscale')
+DEBUG_FILTER_STRENGTH = 1.5         # 滤镜强度 (0.1-3.0)
+DEBUG_PRESERVE_TRANSPARENCY = True  # 是否保持透明区域不变
+DEBUG_BACKUP = False                # 是否创建备份文件
+DEBUG_RECURSIVE = True              # 是否递归查找子文件夹
+DEBUG_QUALITY = 95                  # 输出图片质量 (1-100)
+# =====================================================
+
 class ImageFilterProcessor:
     """图片自定义滤镜处理器"""
     
@@ -403,22 +414,21 @@ def main():
 def filter_demo():
     """自定义滤镜效果演示"""
     print("=== 图片自定义滤镜效果处理工具 ===")
-    print("使用默认参数进行演示...")
+    print("使用调试参数进行演示...")
     
-    # 示例：对指定文件夹中的图片进行自定义滤镜处理并替换
-    folder_path = '/Users/jiangshanchen/TSComposs/TSComposs/Resource/Assets.xcassets'
-    
-    print(f"将对文件夹 {folder_path} 中的图片进行红黑滤镜处理并替换原文件...")
+    print(f"将对文件夹 {DEBUG_FOLDER_PATH} 中的图片进行自定义滤镜处理并替换原文件...")
+    print(f"调试参数：类型={DEBUG_FILTER_TYPE}, 强度={DEBUG_FILTER_STRENGTH}")
+    print(f"备份模式：{'开启' if DEBUG_BACKUP else '关闭'}, 递归模式：{'开启' if DEBUG_RECURSIVE else '关闭'}")
     
     try:
         # 使用静态方法直接处理
         ImageFilterProcessor.filter_folder_images(
-            folder_path=folder_path,
-            filter_type='invert',
-            filter_strength=1.5,
-            preserve_transparency=True,
-            backup=False,
-            recursive=True
+            folder_path=DEBUG_FOLDER_PATH,
+            filter_type=DEBUG_FILTER_TYPE,
+            filter_strength=DEBUG_FILTER_STRENGTH,
+            preserve_transparency=DEBUG_PRESERVE_TRANSPARENCY,
+            backup=DEBUG_BACKUP,
+            recursive=DEBUG_RECURSIVE
         )
         
         print("\n演示完成！")
