@@ -2,7 +2,7 @@
 """
 
 
-ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTVideoRe"
+ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
 
 

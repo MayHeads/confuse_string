@@ -4,15 +4,14 @@ import SwiftUI
 // Theme: 支持 缠绕
 // Generated on: 2025-09-22
 
-public struct MycteriaamericanaEnsignView: View {
+public struct SpectatorWabashriverView: View {
     @State private var logFiles: [String] = ["app.log", "error.log"]
     @State private var formats: [String] = ["ZIP", "TAR.GZ", "7Z"]
     @State private var activeConnections: [ActiveConnection] = [ActiveConnection(details: "Sample Connection 1")]
     @State private var fileList: [FileItem] = [FileItem(name: "document.pdf", size: 1024)]
     @State private var taskList: [TaskItem] = [TaskItem(title: "Task 1", isCompleted: false)]
-    @State private var taskStatus: TaskStatus = TaskStatus()
-    @State private var selectedFileCount: Int = 0
     @State private var isLoading: Bool = false
+    @State private var networkStatus: NetworkStatus = NetworkStatus()
     @State private var statusmessagestring: String = "Processing..."
     @State private var errormessagestring: String = "An error occurred"
 
@@ -24,7 +23,7 @@ public struct MycteriaamericanaEnsignView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
                 VStack(spacing: 20) {
-                    Image("illustration_com")
+                    Image("bendBuckleunderDeverbalnounGenusberoe")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity)
@@ -36,7 +35,7 @@ public struct MycteriaamericanaEnsignView: View {
                         Text(errormessagestring)
                             .foregroundColor(.red)
                     }
-                    Image("pattern_com")
+                    Image("judgeAmericanbrooklimeMiddlebuster")
                         .resizable()
                         .frame(height: 100)
                         .opacity(0.5)
@@ -49,7 +48,7 @@ public struct MycteriaamericanaEnsignView: View {
             }
             .padding()
         }
-        .navigationTitle("MycteriaamericanaEnsign")
+        .navigationTitle("SpectatorWabashriver")
     }
 
     // MARK: - Supporting Types
@@ -70,17 +69,18 @@ public struct MycteriaamericanaEnsignView: View {
         var isCompleted: Bool
     }
 
-    private struct TaskStatus {
-        var status: String = "Pending"
-        var color: Color = .orange
+    private struct NetworkStatus {
+        var icon: String = "wifi.slash"
+        var message: String = "Disconnected"
+        var color: Color = .red
     }
 }
 
 // Preview provider
-public struct MycteriaamericanaEnsignView_Previews: PreviewProvider {
+public struct SpectatorWabashriverView_Previews: PreviewProvider {
     public static var previews: some View {
         NavigationView {
-            MycteriaamericanaEnsignView()
+            SpectatorWabashriverView()
         }
     }
 }

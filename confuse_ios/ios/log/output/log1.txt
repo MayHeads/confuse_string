@@ -1,7 +1,7 @@
-混淆项目路径：/Users/jiangshanchen/TTVideoRe
+混淆项目路径：/Users/jiangshanchen/TTRouSDK
 
 
 
 
 
-混淆项目完成，总用时4.035602807998657
+混淆项目完成，总用时65.73675608634949

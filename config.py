@@ -1,6 +1,6 @@
 
 
-project_path = "/Users/jiangshanchen/TTVideoRe"
+project_path = "/Users/jiangshanchen/TTRouSDK"
 
 
 # 忽略文件夹  <忽略的swift文件夹>
@@ -64,7 +64,7 @@ REPLACE_IGNORE_FILE_NAMES = {
 
 # 生成swif文件的主题和数量
 THEME_KEYWORDS = ['支持 缠绕']  # 主题关键字列表
-NUM_FILES = 5  # 要生成的文件数量
+NUM_FILES = 20  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>
