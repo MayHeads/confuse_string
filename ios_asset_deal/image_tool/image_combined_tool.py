@@ -62,7 +62,7 @@ CONTOUR_TYPE = 'enhance'             # 轮廓增强类型 ('edge_enhance', 'edge
 
 
 # =====================================================
-
+# 更新工具配置
 def update_tool_configs():
     """更新所有工具的配置参数"""
     
