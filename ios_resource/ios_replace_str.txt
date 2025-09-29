@@ -1,6 +1,7 @@
 AESA_pkm
 AESB_pkm
 ApiUrl_pkm
+Appdelegate_pkm
 AttTracting_pkm
 BDManager_pkm
 CEApplePurchaseStatusUtil_pkm
@@ -26,6 +27,7 @@ SSCIDFAHelper_pkm
 SSCNetworkConfig_pkm
 SSCNetworkMonitor_pkm
 SSCNetworkTool_pkm
+SSCPaymentTransactionInnerState_pkm
 SSCPaymentTransactionState_pkm
 SSCProductCommodityDtoListGoodsInfoModel_pkm
 SSCProductCommodityDtoListModel_pkm
@@ -49,6 +51,7 @@ TTBuildNetWorkProtocol_pkm
 TTBuildVipProtocol_pkm
 TTBuild_pkm
 TTSDK_pkm
+action_pkm
 activityChannelCode_pkm
 activityChannel_pkm
 addOrder_pkm
@@ -102,6 +105,7 @@ bundleShortVersionString_pkm
 bur_pkm
 buttonActionName_pkm
 cId_pkm
+cancelByUser_pkm
 cdid_pkm
 changeSelectIndex_pkm
 changeStatus_pkm
@@ -186,6 +190,7 @@ eventObject_pkm
 exAlpha_pkm
 executeAppleProductAsyncFetch_pkm
 executeAppleProductFetch_pkm
+executeChanegeViewDidLoad_pkm
 executeProductInfoAsyncFetch_pkm
 executeProductInfoFetch_pkm
 execute_pkm
@@ -200,6 +205,7 @@ finishorderID_pkm
 firSuosuostDeductionTime_pkm
 foregroundReturnTimestamp_pkm
 freeSuosuoTrialCheck_pkm
+gdtsAppID_pkm
 genZhongEvent_pkm
 getAttactionStatus_pkm
 getCustomerUrl_pkm
@@ -246,6 +252,7 @@ isFromBackground_pkm
 isHasSuspended_pkm
 isHaveResult_pkm
 isLoadedAtt_pkm
+isLoaded_pkm
 isMemberAciton_pkm
 isPolling_pkm
 isProtocoSelected_pkm
@@ -306,6 +313,7 @@ networkType_pkm
 newServiceAttribute_pkm
 notification_pkm
 numericStatusCode_pkm
+opne_url_key_tccc2_pkm
 options_pkm
 orderCreatedSuccessfully_pkm
 orderCreationEndpoint_pkm
@@ -315,6 +323,8 @@ orderId_pkm
 orderResult_pkm
 orderStatusReportEndpoint_pkm
 orderVerificationEndpoint_pkm
+originalMethod_pkm
+originalSelector_pkm
 outerModel_pkm
 p_pkm
 pageSuosuoDescTitle_pkm
@@ -337,6 +347,7 @@ paymentFailed_pkm
 paymentInProgress_pkm
 paymentRestorationEndpoint_pkm
 pks_pkm
+postPurchase_pkm
 prdId_pkm
 prettify_pkm
 priSuosuoceConvert_pkm
@@ -356,10 +367,13 @@ productsappleIDs_pkm
 protSuosuoocolCheck_pkm
 pruchaseResultData_pkm
 pssVeisn_pkm
+purchaseCallBack_pkm
+purchaseFailed_pkm
 purchaseRestorationFailed_pkm
 purchaseRestoredSuccessfully_pkm
 purchaseResult_pkm
 purchaseStatusMonitoringCallback_pkm
+purchaseSuccess_pkm
 queryAdvertisingId_pkm
 queue_pkm
 re1_pkm
@@ -382,6 +396,7 @@ requestList_pkm
 requestSign_pkm
 requsetDomin_pkm
 res_pkm
+resotreCallBack_pkm
 response_pkm
 restorePurchase_pkm
 restoreuuid_pkm
@@ -396,6 +411,7 @@ returnText_pkm
 saUpload_pkm
 scIsVip_pkm
 schedulePeriodicEventUpload_pkm
+secretKey_pkm
 sensorSSCList_pkm
 serializedJSONString_pkm
 serviceList_pkm
@@ -411,6 +427,8 @@ single_pkm
 sortSuosuo_pkm
 ssc_appReview_pkm
 startMonitoring_pkm
+start_app_key_tccc3_pkm
+stateAction_pkm
 state_pkm
 statusCode_pkm
 statusMonitoringCallback_pkm
@@ -425,6 +443,9 @@ successTag_pkm
 success_pkm
 supplementaryId_pkm
 supplementaryIdentifier_pkm
+swizzleViewDidLoad_pkm
+swizzledMethod_pkm
+swizzledSelector_pkm
 systemInfo_pkm
 tag_pkm
 tc1_pkm
@@ -486,3 +507,4 @@ vipModel_pkm
 vipStatus_pkm
 vipStatusasync_pkm
 with_pkm
+zgxMapStr_pkm

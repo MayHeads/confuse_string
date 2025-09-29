@@ -125,7 +125,7 @@ def parse_objc_class(file_path):
     struct_list = []
 
     # 定义系统类的前缀
-    system_class_prefixes = ['NS', 'UI', 'CG', 'OS']
+    system_class_prefixes = ['NS', 'UI', 'CG', 'OS', 'GDT', 'Turing']
 
     index = clang.cindex.Index.create()
     tu = index.parse(file_path)

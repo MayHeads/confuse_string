@@ -21,7 +21,7 @@ def parse_objc_file_method(file_path):
     index = clang.cindex.Index.create()
     tu = index.parse(file_path)
     # 定义系统类前缀
-    system_class_prefixes = ['UI', 'NS']
+    system_class_prefixes = ['UI', 'NS', 'GDT', 'Turing']
 
     # 获取根节点
     root = tu.cursor
@@ -109,7 +109,7 @@ def parse_objc_class(file_path):
         Config.set_library_path(path)
 
     # 定义系统类的前缀
-    system_class_prefixes = ['NS', 'UI', 'CG', 'OS']
+    system_class_prefixes = ['NS', 'UI', 'CG', 'OS', 'GDT', 'Turing']
 
     index = clang.cindex.Index.create()
     tu = index.parse(file_path)

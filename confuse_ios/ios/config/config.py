@@ -57,7 +57,14 @@ IGNORE_CODE_DIRECTORY = [
     "mac",
     # "SDK",
     "Demo",
-
+    # 新增：忽略 Pod 库相关目录
+    "MyFirstLibrary",
+    "KSCompossSDK",
+    "TTRouSDK.debug.dylib",
+    # 忽略第三方库目录
+    "ThirdParty",
+    "External",
+    "Vendor"
 ]
 # 忽略assert不操作的目录
 IGNORE_ASSERT_DEFAULT_DIRECTORY = [".colorset", ".appiconset", ".imageset"]
@@ -67,5 +74,17 @@ CONFUSE_STR_FILES = [
     # "FlutterCommonTool",
     # "ViewController",
     # "RequestApi",
+]
+
+# 忽略混淆的类名前缀
+IGNORE_CLASS_PREFIXES = [
+    'GDT',           # 广点通相关类
+    'Turing',        # 图灵相关类
+    'NS',            # 系统类
+    'UI',            # 系统类
+    'CG',            # 系统类
+    'OS',            # 系统类
+    'MyFirstLibrary', # Pod 库类
+    'KSCompossSDK'   # 新的 Pod 库类
 ]
 

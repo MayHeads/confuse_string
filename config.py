@@ -63,8 +63,8 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['支持 缠绕']  # 主题关键字列表
-NUM_FILES = 20  # 要生成的文件数量
+THEME_KEYWORDS = ['地图显示 导航']  # 主题关键字列表
+NUM_FILES = 40  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>
@@ -74,9 +74,9 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 
 # pod 文件名相关混淆
 ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
-# NEW_POD_FILE_NAME = "TSComSDK"
+# NEW_POD_FILE_NAME = "MMPtkSDK"
 
-NEW_POD_FILE_NAME = "TSComSDK"
+NEW_POD_FILE_NAME = "MMPtkSDK"
 
 
 # 是否是pod 混淆模式

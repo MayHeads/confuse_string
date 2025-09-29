@@ -1,4 +1,4 @@
-## 批量处理图片
+## 批量处理图片  这个先暂时不用
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageOps
 import numpy as np
 import random
