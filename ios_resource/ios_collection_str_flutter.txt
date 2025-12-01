@@ -198,7 +198,7 @@ topMark
 tranId
 transactionId
 true
-ttfluttersdk_plugin
+ttfluttersdk_plugin_channel_name
 type
 uaWeb
 unimportantId
