@@ -1,6 +1,9 @@
 
+# swiftsdk项目
+# project_path = "/Users/jiangshanchen/TTRouSDK"
 
-project_path = "/Users/jiangshanchen/TTRouSDK"
+# flutter项目
+project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
 
 
 # 忽略文件夹  <忽略的swift文件夹>
