@@ -1,4 +1,4 @@
-# 替换所有_ckm结尾的字符串
+# 替换所有_ckm结尾的字符串 这个shi针对swift项目的
 import os
 import sys
 import re
