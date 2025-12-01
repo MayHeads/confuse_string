@@ -37,6 +37,21 @@ def insert_action():
     os.system("python3 ios/entry/entry.py")
 
 
+def execute_clean_py():
+    project_info = get_project_info()
+    flutter_clenpy = project_info.flutter_clenpy
+    if flutter_clenpy:
+        # flutter_clenpy 是文件路径，需要获取其所在目录
+        clean_py_dir = os.path.dirname(flutter_clenpy)
+        clean_py_file = os.path.basename(flutter_clenpy)
+        
+        # 切换到 clean.py 文件所在的目录
+        os.chdir(clean_py_dir)
+        # 执行 clean.py 文件
+        os.system(f"python3 {clean_py_file}")
+        print(f"已执行 clean.py: {flutter_clenpy}")
+    else:
+        print("未找到 clean.py 文件，跳过执行")
 
 
 
@@ -54,6 +69,9 @@ if __name__ == '__main__':
 
     # 替换pod名字  这个可以统一用flutter
     change_pod_ex()
+
+    # 执行clean.py文件
+    execute_clean_py()
 
 
 

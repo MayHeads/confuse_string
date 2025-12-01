@@ -13,9 +13,11 @@ class ProjectInfo:
     all_swift_files: List[str]  # 所有Swift文件（未过滤）
     podfile_paths: List[str]  # Podfile文件路径列表
     target_name: str  # 项目目标名称（项目路径的最后一级）
-
+     
+    #### flutter 相关
     flutter_plugin_path: str  # 搜索project_path下的获取到ttfluttersdk_plugin的目录 如果为空 给空字符串
     flutter_plugin_dart_files: List[str] # 搜索flutter_plugin_path下的获取到所有的dart文件 如果为空 给空列表
+    flutter_clenpy: str # 搜索project_path下的clean.py文件 如果为空 给空字符串
     
     @property
     def content_path(self) -> str:
@@ -34,6 +36,7 @@ xcassets文件夹数量: {len(self.xcassets_paths)}
 Podfile文件数量: {len(self.podfile_paths)}
 flutter_plugin_path: {self.flutter_plugin_path}
 flutter_plugin_dart_files: {len(self.flutter_plugin_dart_files)}
+flutter_clenpy: {self.flutter_clenpy}
 """
 
 def scan_project(project_path: str, 
@@ -132,6 +135,15 @@ def scan_project(project_path: str,
                     if file.endswith('.dart'):
                         flutter_plugin_dart_files.append(os.path.join(root, file))
     
+    # 8. 搜索 project_path 下的 clean.py 文件
+    flutter_clenpy = ""
+    clean_py_pattern = os.path.join(project_path, '**/clean.py')
+    clean_py_files = glob.glob(clean_py_pattern, recursive=True)
+    
+    # 如果找到文件，取第一个（通常只有一个）
+    if clean_py_files:
+        flutter_clenpy = clean_py_files[0]
+    
     return ProjectInfo(
         project_path=project_path,
         swift_files=swift_files,
@@ -141,7 +153,8 @@ def scan_project(project_path: str,
         podfile_paths=podfile_paths,
         target_name=target_name,
         flutter_plugin_path=flutter_plugin_path,
-        flutter_plugin_dart_files=flutter_plugin_dart_files
+        flutter_plugin_dart_files=flutter_plugin_dart_files,
+        flutter_clenpy=flutter_clenpy
     )
 
 def print_project_summary(project_info: ProjectInfo):
@@ -199,6 +212,12 @@ def print_project_summary(project_info: ProjectInfo):
             print("未找到Dart文件")
     else:
         print(f"\nFlutter Plugin路径: 未找到")
+    
+    if project_info.flutter_clenpy:
+        relative_clean = os.path.relpath(project_info.flutter_clenpy, project_info.project_path)
+        print(f"\nclean.py文件: {relative_clean}")
+    else:
+        print(f"\nclean.py文件: 未找到")
 
 def scan_current_project():
     """
