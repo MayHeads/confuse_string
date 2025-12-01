@@ -1,23 +1,38 @@
 .
 /tool-ab-service/api/abTest/getListGroupingConfigE/v2
 /tool-appbase-service/api/common/rftstatus/v2
+/tool-appbase-service/api/ios/rb/findBook/v2
 /tool-bridging-service/api/tianshu/ios/quarantine/addOrderV2
 /tool-bridging-service/api/tianshu/ios/quarantine/appAttribution
+/tool-bridging-service/api/tianshu/ios/quarantine/recover
+/tool-bridging-service/api/tianshu/ios/quarantine/reportStateV2
+/tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataBatch
+/tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataV2
+/tool-bridging-service/api/tianshu/ios/quarantine/verifyOrderV2
+/tool-flow-service/api/payMember/getPayMemberInfo/v2
+/tool-flow-service/api/payMember/ios/queryIosCommodityInfo/v2/
+/tool-flow-service/api/payMember/ios/uploadPayTag
+/tool-flow-service/payMember/test/deleteAllMemberData
 0
 0000
+0D32C8OACYE79YCA
 1
 100
 126000
 126001
 133016
 14.6
+1573999086783053
 25
+2534631968723976
 3.0.6.5
 5
 61
 8d0bd96920e3b122afe156f36afc2bc8
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~
 AppStart
 Apple
+F00C5GZWB1xX6EW9
 PAY_CANCELED
 PAY_FAILURE
 PAY_SUCCESS
@@ -25,6 +40,7 @@ PKCS7
 Tool-Auth-
 [
 abValue
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 actionStrategy
 activityChannel
 adsToken
@@ -37,6 +53,7 @@ app_version
 app_version_name
 application/json
 attributionToken
+b03a69af45d64500b5d2e0f6f1a945a0
 b_channel
 bdGetAttributionToken
 bdGetDuIdfa
@@ -60,6 +77,7 @@ content-type
 cur_channel
 currentChannel
 currentCity
+custom_device_id
 data
 data 字段为 null
 data 字段为空或格式不正确
@@ -180,6 +198,7 @@ topMark
 tranId
 transactionId
 true
+ttfluttersdk_plugin
 type
 uaWeb
 unimportantId
@@ -192,6 +211,7 @@ uuidString
 ver
 version
 versionCode
+xkX2Ab1P3KuI214V
 xm_lib
 xm_lib_version
 xm_manufacturer

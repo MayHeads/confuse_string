@@ -2,6 +2,7 @@
 
 import os
 import sys
+import shutil
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from project_scanner import get_project_info
 
@@ -127,39 +128,99 @@ def delete_empty_folders():
 
     print(f"开始清理空目录: {project_path}")
 
+    # 需要忽略的目录（系统/构建目录，如果目录中只有这些目录，也应该被删除）
+    ignore_dirs = {'.git', '.dart_tool', '.idea', '.vscode', 'build', 'DerivedData', 'Pods', '.swiftpm'}
+
     # 递归删除空目录的通用函数
     def recursive_delete_empty_dirs(root_path, deleted_count=[0]):
-        """递归删除空目录，如果子目录都为空，则删除当前目录"""
+        """递归删除空目录，包括本身就是空的目录，以及只包含隐藏/系统目录的目录"""
         if not os.path.exists(root_path):
             return False
 
         try:
-            # 获取目录内容
+            # 获取目录内容（os.listdir 不会返回 . 和 ..）
             items = os.listdir(root_path)
-            has_non_empty_subdir = False
-
-            # 递归处理所有子目录
-            for item in items:
-                item_path = os.path.join(root_path, item)
-                if os.path.isdir(item_path):
-                    # 递归删除子目录中的空目录
-                    if recursive_delete_empty_dirs(item_path, deleted_count):
-                        has_non_empty_subdir = True
-
-            # 重新检查当前目录是否为空
-            remaining_items = os.listdir(root_path)
-
-            # 如果目录为空（没有任何文件或子目录），则删除它
-            if not remaining_items:
+            
+            # 如果目录完全为空，直接删除
+            if not items:
                 try:
-                    parent_dir = os.path.dirname(root_path)
                     os.rmdir(root_path)
                     deleted_count[0] += 1
                     print(f"删除空目录: {root_path}")
-                    return False  # 返回False表示这个目录被删除了
+                    return False
                 except OSError as e:
                     print(f"无法删除目录 {root_path}: {e}")
-                    return True  # 返回True表示删除失败，目录仍然存在
+                    return True
+            
+            # 过滤掉需要忽略的目录和隐藏文件/目录（以 . 开头的）
+            # 如果目录中只有忽略的目录或隐藏文件，也应该删除
+            filtered_items = []
+            for item in items:
+                # 跳过忽略的目录
+                if item in ignore_dirs:
+                    continue
+                # 跳过隐藏文件/目录（以 . 开头）
+                if item.startswith('.'):
+                    continue
+                filtered_items.append(item)
+            
+            # 如果过滤后为空（即只有忽略的目录或隐藏文件），直接删除整个目录
+            if not filtered_items:
+                try:
+                    # 使用 shutil.rmtree 强制删除整个目录（包括所有内容）
+                    shutil.rmtree(root_path)
+                    deleted_count[0] += 1
+                    print(f"删除目录（只包含隐藏/系统目录）: {root_path}")
+                    return False
+                except OSError as e:
+                    print(f"无法删除目录 {root_path}: {e}")
+                    return True
+
+            # 递归处理所有子目录（不包括忽略的目录和隐藏文件）
+            for item in filtered_items:
+                item_path = os.path.join(root_path, item)
+                if os.path.isdir(item_path):
+                    # 递归删除子目录中的空目录
+                    recursive_delete_empty_dirs(item_path, deleted_count)
+
+            # 重新检查当前目录是否为空（子目录被删除后可能变为空）
+            remaining_items = os.listdir(root_path)
+            
+            # 再次过滤
+            filtered_remaining = []
+            for item in remaining_items:
+                if item in ignore_dirs:
+                    continue
+                if item.startswith('.'):
+                    continue
+                filtered_remaining.append(item)
+
+            # 如果过滤后为空，检查是否只包含忽略的目录或隐藏文件
+            if not filtered_remaining:
+                # 检查是否只包含忽略的目录或隐藏文件
+                all_ignored = all(item in ignore_dirs or item.startswith('.') 
+                                 for item in remaining_items)
+                
+                if all_ignored:
+                    # 如果只包含忽略的目录或隐藏文件，使用 shutil.rmtree 强制删除
+                    try:
+                        shutil.rmtree(root_path)
+                        deleted_count[0] += 1
+                        print(f"删除目录（子目录删除后只包含隐藏/系统目录）: {root_path}")
+                        return False
+                    except OSError as e:
+                        print(f"无法删除目录 {root_path}: {e}")
+                        return True
+                else:
+                    # 如果完全为空，使用 os.rmdir
+                    try:
+                        os.rmdir(root_path)
+                        deleted_count[0] += 1
+                        print(f"删除空目录（子目录删除后变为空）: {root_path}")
+                        return False
+                    except OSError as e:
+                        print(f"无法删除目录 {root_path}: {e}")
+                        return True
             else:
                 return True  # 目录不为空，返回True
 
@@ -178,8 +239,9 @@ def delete_empty_folders():
 if __name__ == '__main__':
 
     print(f"开始替换项目中的 {fix_phase} 为 {new_phase}")
-    # change_pod_ex()
     delete_empty_folders()
+    # change_pod_ex()
+
     print(f"替换完成")
 
 

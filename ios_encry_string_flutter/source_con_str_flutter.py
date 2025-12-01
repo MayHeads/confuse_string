@@ -275,9 +275,12 @@ def replace_strings_in_dart_files(dart_files: List[str], data_map: dict, method_
             # 替换所有匹配的字符串
             modified = False
             for de_str, en_str in data_map.items():
+                # 生成注释字符串，将原始字符串中的 / 替换为空
+                comment_str = de_str.replace('/', '')
+                
                 # 替换单引号字符串
                 single_pattern = f"'{re.escape(de_str)}'"
-                single_replacement = f"/*{de_str}*/'{en_str}'.{method_prefix}_decrypt()"
+                single_replacement = f"/*{comment_str}*/'{en_str}'.{method_prefix}_decrypt()"
                 new_content = re.sub(single_pattern, single_replacement, content)
                 if new_content != content:
                     modified = True
@@ -285,7 +288,7 @@ def replace_strings_in_dart_files(dart_files: List[str], data_map: dict, method_
                 
                 # 替换双引号字符串
                 double_pattern = f'"{re.escape(de_str)}"'
-                double_replacement = f'/*{de_str}*/"{en_str}".{method_prefix}_decrypt()'
+                double_replacement = f'/*{comment_str}*/"{en_str}".{method_prefix}_decrypt()'
                 new_content = re.sub(double_pattern, double_replacement, content)
                 if new_content != content:
                     modified = True

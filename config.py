@@ -76,7 +76,9 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 
 
 # pod 文件名相关混淆
-ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
+# ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
+ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
+
 # NEW_POD_FILE_NAME = "MMPtkSDK"
 
 NEW_POD_FILE_NAME = "MMPtkSDK"

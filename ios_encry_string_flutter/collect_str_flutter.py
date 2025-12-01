@@ -83,46 +83,6 @@ def is_import_export_statement_string(content: str, match_start: int, match_end:
     
     return False
 
-def is_static_string_declaration(content: str, match_start: int, match_end: int) -> bool:
-    """
-    检查字符串所在行是否包含 const 或 static String 相关声明
-    规则：
-    1. 如果行中包含 const，忽略该行的所有字符串
-    2. 如果行中包含 static String，忽略该行的所有字符串
-    例如:
-    - static String name = 'test';
-    - static const String version = "1.0.0";
-    - const String path = 'some/path';
-    - const apiKey = 'abc123';
-    - final const value = 'test';
-    """
-    # 找到字符串所在行的开始位置
-    line_start = content.rfind('\n', 0, match_start)
-    if line_start == -1:
-        line_start = 0
-    else:
-        line_start += 1  # 跳过换行符
-    
-    # 找到字符串所在行的结束位置
-    line_end = content.find('\n', match_end)
-    if line_end == -1:
-        line_end = len(content)
-    
-    # 获取整行内容
-    line_content = content[line_start:line_end]
-    
-    # 规则1: 如果行中包含 const，忽略该行的所有字符串
-    # 使用单词边界确保匹配完整的 const 关键字
-    if re.search(r'\bconst\b', line_content, re.IGNORECASE):
-        return True
-    
-    # 规则2: 检查是否包含 static String（不区分大小写）
-    static_pattern = r'static\s+String'
-    if re.search(static_pattern, line_content, re.IGNORECASE):
-        return True
-    
-    return False
-
 def extract_strings_from_content(content: str) -> Set[str]:
     """
     从内容中提取所有静态字符串（单引号和双引号）
@@ -144,9 +104,7 @@ def extract_strings_from_content(content: str) -> Set[str]:
         if is_import_export_statement_string(content, match_start, match_end):
             return  # 跳过import/export语句中的路径字符串
         
-        # 检查是否在static String或static const String声明中
-        if is_static_string_declaration(content, match_start, match_end):
-            return  # 跳过static String声明中的字符串
+        # 不再跳过static String、const或static const声明中的字符串，允许混淆
         
         s = match.group(0)
         # 移除引号
