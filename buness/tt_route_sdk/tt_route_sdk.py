@@ -18,11 +18,11 @@ from ios_encry_string.z_enc_combin import z_enc_combin
 from ios_file_handle.z_file_combin import z_replace_file, z_gen_process
 
 # 替换pod名字
-NEW_POD_FILE_NAME = "MMPtkSDK"
+NEW_POD_FILE_NAME = "YetRateSDK"
 # 生成处理文件 swiftUI文件
-THEME_KEYWORDS = ["地图显示 导航"]  # 主题关键字列表
+THEME_KEYWORDS = ["心率", "统计"]  # 主题关键字列表
 # 要生成的文件数量
-NUM_FILES = 40  # 要生成的文件数量
+NUM_FILES = 54  # 要生成的文件数量
 # 项目路径
 project_path = "/Users/jiangshanchen/TTRouSDK"
 

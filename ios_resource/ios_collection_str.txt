@@ -19,6 +19,8 @@ $wifi
 &uuid=
 &ver=1&data=
 .
+/tool-ab-service/api/abTest/getListGroupingConfigE/v2
+/tool-appbase-service/api/action/config/get/v3
 /tool-appbase-service/api/common/rftstatus/v2
 /tool-appbase-service/api/ios/rb/findBook/v2
 /tool-bridging-service/api/tianshu/ios/quarantine/addOrderV2
@@ -36,7 +38,7 @@ $wifi
 0000
 1
 100
-1216863435
+12341
 133014
 133015
 1573999086783053
@@ -47,7 +49,6 @@ $wifi
 5G
 5GSrcqkeB24HYrbMVkWIyF4wKEfVszQOyLauyXdEPRI
 61
-6eee7af3a5f64502bc50e6ff9be244e4
 =======
 ART
 Apple
@@ -58,6 +59,7 @@ Beginning network request...
 CFBundleIdentifier
 CFBundleShortVersionString
 CFBundleVersion
+DK_ELA
 End monitoring...
 Error:
 F00C5GZWB1xX6EW9
@@ -79,19 +81,21 @@ Purchase restoration failed.
 Purchase restored successfully.
 SEC-
 ST
+START_APP
 Setting VIP monitor...
 Tool-Auth
 Transaction verification failed.
 Transaction verified successfully.
 Unknown
 WIFI
-[BaroncliveofplasseyAntisepsisSkoplje-AttachecaseAmbiguity]
-[BaroncliveofplasseyAntisepsisSkoplje-Error]
-[BaroncliveofplasseyAntisepsisSkoplje-Error] deviceId is not allow nil
-[BaroncliveofplasseyAntisepsisSkoplje-Error] prdId is not allow nil
-[BaroncliveofplasseyAntisepsisSkoplje-Error] requestDomin is not allow nil
+[BelievingMonetaryvalueIndianmillet-CardiffAxialmuscle]
+[BelievingMonetaryvalueIndianmillet-Error]
+[BelievingMonetaryvalueIndianmillet-Error] deviceId is not allow nil
+[BelievingMonetaryvalueIndianmillet-Error] prdId is not allow nil
+[BelievingMonetaryvalueIndianmillet-Error] requestDomin is not allow nil
 _APP
 _url
+abValue
 action1 -->
 activityChannel
 activityChannel=
@@ -117,7 +121,7 @@ click
 closeButtonDelay
 closeButtonTransparency
 code
-com.suosuo.tracker.upstageCornerIrisvernaVibration
+com.suosuo.tracker.pushupScufflePavocristatusOxaliscorniculata
 commoditNum
 commodityBgColor
 commodityDtoList
@@ -125,9 +129,10 @@ commodityGroupDtoList
 commodityId
 commodityName
 commodityProperty
+configData
+configs
 content
 content-type
-cooccurDissectBugbaneCartonful
 cur_channel
 currentChannel
 currentChannel=
@@ -140,7 +145,7 @@ deviceId=
 device_id
 discountButtonCopywriting
 discountPriceDesc
-embellishHarryNumdahrug
+display
 en
 eventName
 extSuosuoraDescTransparency:
@@ -148,10 +153,12 @@ extraDesc
 extraDescTransparency
 firstDeductionTime
 freeTrialCheck
+furbishupPicnicGiambattistalulliTrumpetflower
 goodsInfo
 groupId
 groupName
 groupType
+home_clearing_photo
 http://app.gzshenyuewl.com
 https://iostesthuyitool.jidiandian.cn
 iOS
@@ -211,14 +218,18 @@ sandbox
 sdk_heartbeat
 sdk_version
 sdk_version_name
+sedfasdfasdfad
 sensorList
 service
+serviceCode
+shatterTeacupfulPinnotheresostreum
 showBuyCount
 signature
 signatureD=
 simulatesAskToBuyInSandbox
 sjql
 sort
+sortWaltherrichardrulfhess
 startFrom
 state
 styleName
@@ -262,6 +273,7 @@ zgxMap
 年
 开通会员成功啦，快去使用功能吧～
 无网络
+最终模型数组 =
 月
 未知
 未知错误，apple支付失败

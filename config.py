@@ -66,8 +66,8 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['地图显示 导航']  # 主题关键字列表
-NUM_FILES = 40  # 要生成的文件数量
+THEME_KEYWORDS = ['心率', '统计']  # 主题关键字列表
+NUM_FILES = 54  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>
@@ -79,9 +79,9 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 # ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
 ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
 
-# NEW_POD_FILE_NAME = "MMPtkSDK"
+NEW_POD_FILE_NAME = "Sunshine"
 
-NEW_POD_FILE_NAME = "MMPtkSDK"
+# NEW_POD_FILE_NAME = "YetRateSDK"
 
 
 # 是否是pod 混淆模式

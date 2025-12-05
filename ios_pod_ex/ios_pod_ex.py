@@ -12,8 +12,14 @@ fix_phase = ORIGIN_POD_FILE_NAME
 new_phase = NEW_POD_FILE_NAME
 
 
-def rename_directories(project_path):
+def rename_directories(project_path, old_name=None, new_name=None):
     """递归重命名包含目标字符串的目录"""
+    # 如果没有传入参数，使用全局变量
+    if old_name is None:
+        old_name = fix_phase
+    if new_name is None:
+        new_name = new_phase
+    
     renamed_dirs_count = 0
     
     # 从最深层的目录开始处理，避免路径变化影响遍历
@@ -22,8 +28,8 @@ def rename_directories(project_path):
             old_dir_path = os.path.join(root, dir_name)
             
             # 检查目录名是否需要替换
-            if fix_phase in dir_name:
-                new_dir_name = dir_name.replace(fix_phase, new_phase)
+            if old_name in dir_name:
+                new_dir_name = dir_name.replace(old_name, new_name)
                 new_dir_path = os.path.join(root, new_dir_name)
                 
                 try:
@@ -36,18 +42,31 @@ def rename_directories(project_path):
     return renamed_dirs_count
 
 
-def change_pod_ex():
+def change_pod_ex(old_name: str = None, new_name: str = None):
+    """
+    替换项目中的字符串
+    
+    参数:
+        old_name: 原始名字（要替换的字符串），如果为None则从配置读取
+        new_name: 替换后的名字，如果为None则从配置读取
+    """
+    # 如果没有传入参数，使用配置中的值
+    if old_name is None:
+        old_name = fix_phase
+    if new_name is None:
+        new_name = new_phase
+    
     delete_empty_folders()
     
     project_info = get_project_info()
     project_path = project_info.project_path
     
-    print(f"开始替换项目中的 {fix_phase} 为 {new_phase}")
+    print(f"开始替换项目中的 {old_name} 为 {new_name}")
     print(f"项目路径: {project_path}")
     
     # 首先处理目录名的替换
     print("\n=== 处理目录名替换 ===")
-    renamed_dirs_count = rename_directories(project_path)
+    renamed_dirs_count = rename_directories(project_path, old_name, new_name)
     print(f"重命名目录数量: {renamed_dirs_count}")
     
     # 统计替换的文件数量
@@ -65,7 +84,7 @@ def change_pod_ex():
             
             # 处理文件名中的替换
             old_file_name = file
-            new_file_name = file.replace(fix_phase, new_phase)
+            new_file_name = file.replace(old_name, new_name)
             
             # 如果文件名需要替换
             if old_file_name != new_file_name:
@@ -99,16 +118,109 @@ def change_pod_ex():
                     continue
                 
                 # 检查是否需要替换
-                if fix_phase in content:
+                if old_name in content:
                     # 替换内容
-                    new_content = content.replace(fix_phase, new_phase)
+                    new_content = content.replace(old_name, new_name)
                     
                     # 写回文件
                     with open(file_path, 'w', encoding=used_encoding) as f:
                         f.write(new_content)
                     
                     # 统计替换次数
-                    replacements = content.count(fix_phase)
+                    replacements = content.count(old_name)
+                    total_replacements += replacements
+                    
+                    print(f"更新文件内容: {file_path} (替换了 {replacements} 处)")
+                    replaced_files_count += 1
+                    
+            except Exception as e:
+                print(f"处理文件内容失败 {file_path}: {str(e)}")
+    
+    print(f"\n=== 替换完成！===")
+    print(f"重命名目录数量: {renamed_dirs_count}")
+    print(f"处理的文件数量: {replaced_files_count}")
+    print(f"总替换次数: {total_replacements}")
+
+def change_pod_ex_with_params(old_name: str, new_name: str):
+    """
+    替换项目中的字符串（使用参数指定原始名字和替换后的名字）
+    
+    参数:
+        old_name: 原始名字（要替换的字符串）
+        new_name: 替换后的名字
+    """
+    delete_empty_folders()
+    
+    project_info = get_project_info()
+    project_path = project_info.project_path
+    
+    print(f"开始替换项目中的 {old_name} 为 {new_name}")
+    print(f"项目路径: {project_path}")
+    
+    # 首先处理目录名的替换
+    print("\n=== 处理目录名替换 ===")
+    renamed_dirs_count = rename_directories(project_path, old_name, new_name)
+    print(f"重命名目录数量: {renamed_dirs_count}")
+    
+    # 统计替换的文件数量
+    replaced_files_count = 0
+    total_replacements = 0
+    
+    print("\n=== 处理文件名和内容替换 ===")
+    # 遍历项目中的所有文件
+    for root, dirs, files in os.walk(project_path):
+        # 跳过一些不需要处理的目录
+        dirs[:] = [d for d in dirs if d not in ['.git', 'build', 'DerivedData', 'Pods']]
+        
+        for file in files:
+            file_path = os.path.join(root, file)
+            
+            # 处理文件名中的替换
+            old_file_name = file
+            new_file_name = file.replace(old_name, new_name)
+            
+            # 如果文件名需要替换
+            if old_file_name != new_file_name:
+                new_file_path = os.path.join(root, new_file_name)
+                try:
+                    os.rename(file_path, new_file_path)
+                    print(f"重命名文件: {file_path} -> {new_file_path}")
+                    file_path = new_file_path
+                    replaced_files_count += 1
+                except Exception as e:
+                    print(f"重命名文件失败 {file_path}: {str(e)}")
+            
+            # 处理文件内容中的替换
+            try:
+                # 尝试读取文件内容
+                encodings = ['utf-8', 'utf-16', 'ascii', 'latin1']
+                content = None
+                used_encoding = None
+                
+                for encoding in encodings:
+                    try:
+                        with open(file_path, 'r', encoding=encoding) as f:
+                            content = f.read()
+                        used_encoding = encoding
+                        break
+                    except UnicodeDecodeError:
+                        continue
+                
+                if content is None:
+                    print(f"无法读取文件 {file_path}，跳过")
+                    continue
+                
+                # 检查是否需要替换
+                if old_name in content:
+                    # 替换内容
+                    new_content = content.replace(old_name, new_name)
+                    
+                    # 写回文件
+                    with open(file_path, 'w', encoding=used_encoding) as f:
+                        f.write(new_content)
+                    
+                    # 统计替换次数
+                    replacements = content.count(old_name)
                     total_replacements += replacements
                     
                     print(f"更新文件内容: {file_path} (替换了 {replacements} 处)")
@@ -240,7 +352,9 @@ if __name__ == '__main__':
 
     print(f"开始替换项目中的 {fix_phase} 为 {new_phase}")
     delete_empty_folders()
-    change_pod_ex()
+    # change_pod_ex()
+    change_pod_ex("Runner", "Sunshine")
+
 
     print(f"替换完成")
 

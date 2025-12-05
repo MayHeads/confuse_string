@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from project_scanner import get_project_info
 from ios_string_generate.string_gen import get_random_class_name, init_word_lists
 from config import REPLACE_IGNORE_FILE_NAMES, STRING_SUFFIX
-
+# 更改.dart 文件名 【fluttersdk中的目录结构】
 # 需要忽略的文件名列表
 IGNORE_FILE_NAMES = REPLACE_IGNORE_FILE_NAMES
 
