@@ -1,0 +1,15 @@
+INVALID_ARGUMENT
+bdGetAttributionToken
+bdGetDuIdfa
+bdGetSystemIDFA
+deviceID
+deviceID is required
+duIDFA
+gdGetCaid
+initBDManager
+initGDManager
+nvgag_shuzilm_cn
+prdid
+prdid is required
+suID
+ttfluttersdk_plugin_channel_name

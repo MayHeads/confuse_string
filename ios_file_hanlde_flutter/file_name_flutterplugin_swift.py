@@ -2,6 +2,15 @@
 import os
 import sys
 import re
+# 收集所有以_pkm结尾的.swift、.h、.m文件 【flutter_plugin_path中的目录结构】
+# 重命名文件名（.swift、.h、.m，仅处理以_pkm结尾的文件）并记录映射关系
+# 注意：.h 和 .m 文件是成对出现的，会改成相同的名字
+# 同时替换文件内容中的 _pkm 相关字符串
+# 将替换后的文件名和内容映射关系写入到日志文件中
+# 从映射日志文件中加载文件名映射关系和内容映射关系
+# 在project_path中递归遍历所有文件内容，精准替换映射关系
+# 遍历所有文件（不限制文件类型，只跳过二进制文件），在文件内容中查找并替换所有匹配的旧文件名
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from project_scanner import get_project_info
 from ios_string_generate.string_gen import get_random_class_name, init_word_lists

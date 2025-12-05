@@ -13,8 +13,8 @@ from ios_replace_fix_form_flutter.z_replace_fix_form_flutter import z_replace_fi
 from ios_pod_ex.ios_pod_ex import change_pod_ex
 from project_scanner import get_project_info
 
-from ios_encry_string_flutter.z_enc_combin_flutter import z_enc_combin_flutter
-from ios_file_hanlde_flutter.z_file_combin_flutter import z_replace_file_flutter
+from ios_encry_string_flutter.z_enc_combin_flutter import z_enc_combin_flutter, z_enc_combin_flutter_swift
+from ios_file_hanlde_flutter.z_file_combin_flutter import z_replace_file_flutter, z_replace_file_flutter_plugin_swift, z_replace_pkm_strings_in_flutter_plugin
 # # 替换pod名字
 # NEW_POD_FILE_NAME = "MMPtkSDK"
 # # 生成处理文件 swiftUI文件
@@ -57,14 +57,24 @@ def execute_clean_py():
 
 if __name__ == '__main__':
 
-    # 替换文件名
+    # 替换文件名 flutter文件
     z_replace_file_flutter()
 
-    # 替换固定名字
+    # 替换固定名字 flutter文件
     z_replace_fix_form_flutter()
 
-    # 加密字符串
+    # 替换文件名 flutter plugin文件 swift文件
+    z_replace_file_flutter_plugin_swift()
+
+
+    # 替换文件内容 flutter plugin文件 swift文件
+    z_replace_pkm_strings_in_flutter_plugin()
+
+    # 加密字符串 flutter文件
     z_enc_combin_flutter()
+
+    # 加密字符串 flutter plugin文件 swift文件
+    z_enc_combin_flutter_swift()
 
 
     # 替换pod名字  这个可以统一用flutter
