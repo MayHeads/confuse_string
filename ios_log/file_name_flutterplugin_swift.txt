@@ -3,8 +3,9 @@
 
 注意：.h 和 .m 文件是成对出现的，使用相同的新名字
 
-TtFlutterSdkPluginExtension1_pkm -> SareeSidewall
-TtFlutterSdkPluginPlu_pkm -> ToadrushRendering
-BDManagerkf_pkm -> CasefulPlaygroup
-GDManagerkf_pkm -> ElectriccurrentBusybody
-GDTActionBridgekf_pkm -> IncrementPigmy
+TtFlutterSdkPluginExtension1_pkm -> WhiptailBagging
+TtFlutterSdkPluginPlu_pkm -> ExaltationCholoepusdidactylusScarabaean
+BDManagerkf_pkm -> OrdercestidaAgribusiness
+GDManagerkf_pkm -> YarmulkeEbitAmphetaminesulfate
+GDTActionBridgekf_pkm -> SelfjustificationPartaker
+DelegateHelper_pkm -> MessGenushesperiphona
