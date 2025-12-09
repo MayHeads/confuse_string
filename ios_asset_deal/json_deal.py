@@ -81,13 +81,13 @@ def process_all_contents_json():
     """
     处理指定路径下所有的Contents.json文件
     """
-    print(f"🔍 开始扫描路径: {asset_path}")
-
-    asset_path = asset_path()
+    # 获取asset路径
+    asset_path_value = asset_path()
+    print(f"🔍 开始扫描路径: {asset_path_value}")
 
     
     # 查找所有Contents.json文件
-    contents_files = find_contents_json_files(asset_path)
+    contents_files = find_contents_json_files(asset_path_value)
     
     if not contents_files:
         print("❌ 未找到任何Contents.json文件")

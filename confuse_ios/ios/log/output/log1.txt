@@ -1,7 +1,7 @@
-混淆项目路径：/Users/jiangshanchen/TTRouSDK
+混淆项目路径：/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk/ios
 
 
 
 
 
-混淆项目完成，总用时102.25689768791199
+混淆项目完成，总用时8.709853172302246

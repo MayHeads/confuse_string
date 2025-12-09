@@ -147,6 +147,9 @@ if __name__ == '__main__':
     # 加密字符串 flutter plugin文件 swift文件
     z_enc_combin_flutter_swift()
 
+    # 插入垃圾代码
+    insert_action()
+
 
 
     # 替换pod名字  这个可以统一用flutter
@@ -154,6 +157,8 @@ if __name__ == '__main__':
 
     # 执行clean.py文件
     execute_clean_py()
+
+
 
 
 

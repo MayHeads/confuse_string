@@ -218,6 +218,7 @@ isInDebug_pkm
 isInitAppGlobalManagerParams_pkm
 isInnerVip_pkm
 isNotFirst_pkm
+isReview_pkm
 isRftstatus_pkm
 isSandbox_pkm
 isStartGroup_pkm

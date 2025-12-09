@@ -5,6 +5,8 @@
 # flutter项目
 project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
 
+# project_path = "/Users/jiangshanchen/scanner3"
+
 
 # 忽略文件夹  <忽略的swift文件夹>
 custom_ignore_folders = [
@@ -66,8 +68,8 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['心率', '统计']  # 主题关键字列表
-NUM_FILES = 54  # 要生成的文件数量
+THEME_KEYWORDS = ['文档', '扫描', '拍证件照', '翻译', '文件管理', '合同']  # 主题关键字列表
+NUM_FILES = 60  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>

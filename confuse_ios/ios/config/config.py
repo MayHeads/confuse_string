@@ -2,7 +2,11 @@
 """
 
 
-ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
+# ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
+
+# ROOT_PROJECT_DIR = "/Users/jiangshanchen/scanner3/ios"
+
+ROOT_PROJECT_DIR = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk/ios"
 
 
 

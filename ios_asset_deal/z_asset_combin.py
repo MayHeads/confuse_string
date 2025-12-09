@@ -6,7 +6,13 @@ import re
 import json
 from concurrent.futures import ThreadPoolExecutor
 
+# 添加项目根目录到路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# 添加当前目录到路径，以便导入同目录下的模块
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
 
 from asset_change_name import entry_change_name
 from gener_imageset import entry_gener_imageset
