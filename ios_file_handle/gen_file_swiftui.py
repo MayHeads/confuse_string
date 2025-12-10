@@ -64,17 +64,17 @@ def generate_dynamic_default_value(spec_type, spec_role):
     elif spec_type == "String":
         # 生成随机字符串
         return generate_random_string_value()
-    elif "[ActiveConnection]" in spec_type:
-        # 生成随机连接详情
+    elif "[ActiveConnection]" in spec_type or "ActiveConnection" in spec_type:
+        # 生成随机连接详情（注意：这里使用原类型名，实际生成时会替换）
         detail = generate_random_string_value()
         return f"[ActiveConnection(details: {detail})]"
-    elif "[FileItem]" in spec_type:
-        # 生成随机文件项
+    elif "[FileItem]" in spec_type or "FileItem" in spec_type:
+        # 生成随机文件项（注意：这里使用原类型名，实际生成时会替换）
         name = generate_random_string_value()
         size = random.randint(100, 10000)
         return f"[FileItem(name: {name}, size: {size})]"
-    elif "[TaskItem]" in spec_type:
-        # 生成随机任务项
+    elif "[TaskItem]" in spec_type or "TaskItem" in spec_type:
+        # 生成随机任务项（注意：这里使用原类型名，实际生成时会替换）
         title = generate_random_string_value()
         is_completed = random.choice(["true", "false"])
         return f"[TaskItem(title: {title}, isCompleted: {is_completed})]"
@@ -360,6 +360,7 @@ def generate_swiftui_view_content(view_name, theme_keywords):
         used_swift_names.add(swift_var_name)
 
         # 动态生成默认值（字符串值随机生成）
+        # 注意：这里先使用原类型名生成，后面会统一替换
         dynamic_default_val = generate_dynamic_default_value(spec['type'], spec['role'])
         
         placeholder_to_swift_name_map[spec["placeholder"]] = swift_var_name
@@ -448,66 +449,216 @@ def generate_swiftui_view_content(view_name, theme_keywords):
             used_types.add(spec["type"].strip("[]"))
         elif spec["type"] not in ["String", "Int", "Double", "Bool"]:
             used_types.add(spec["type"])
-
+    
+    # 生成类型名称映射（原类型名 -> 随机类型名）和属性名映射
+    type_name_mapping = {}
+    property_name_mapping = {}  # 格式: {type_name: {old_prop: new_prop}}
+    used_struct_names = set()
+    
+    # 定义需要生成的结构体模板
+    struct_templates = {
+        "ActiveConnection": {
+            "is_identifiable": True,
+            "properties": [
+                {"name": "details", "type": "String", "has_default": False}
+            ]
+        },
+        "FileItem": {
+            "is_identifiable": True,
+            "properties": [
+                {"name": "name", "type": "String", "has_default": False},
+                {"name": "size", "type": "Int", "has_default": False}
+            ]
+        },
+        "TaskItem": {
+            "is_identifiable": True,
+            "properties": [
+                {"name": "title", "type": "String", "has_default": False},
+                {"name": "isCompleted", "type": "Bool", "has_default": False}
+            ]
+        },
+        "ConnectionStatus": {
+            "is_identifiable": False,
+            "properties": [
+                {"name": "icon", "type": "String", "has_default": True, "default_value": "\"wifi.slash\""},
+                {"name": "message", "type": "String", "has_default": True, "default_value": "\"Unknown\""},
+                {"name": "color", "type": "Color", "has_default": True, "default_value": ".gray"}
+            ]
+        },
+        "FileStatus": {
+            "is_identifiable": False,
+            "properties": [
+                {"name": "status", "type": "String", "has_default": True, "default_value": "\"Ready\""},
+                {"name": "color", "type": "Color", "has_default": True, "default_value": ".blue"}
+            ]
+        },
+        "TaskStatus": {
+            "is_identifiable": False,
+            "properties": [
+                {"name": "status", "type": "String", "has_default": True, "default_value": "\"Pending\""},
+                {"name": "color", "type": "Color", "has_default": True, "default_value": ".orange"}
+            ]
+        },
+        "NetworkStatus": {
+            "is_identifiable": False,
+            "properties": [
+                {"name": "icon", "type": "String", "has_default": True, "default_value": "\"wifi.slash\""},
+                {"name": "message", "type": "String", "has_default": True, "default_value": "\"Disconnected\""},
+                {"name": "color", "type": "Color", "has_default": True, "default_value": ".red"}
+            ]
+        },
+        "CompressionStatus": {
+            "is_identifiable": False,
+            "properties": [
+                {"name": "status", "type": "String", "has_default": True, "default_value": "\"Idle\""},
+                {"name": "progress", "type": "Double", "has_default": True, "default_value": "0.0"},
+                {"name": "color", "type": "Color", "has_default": True, "default_value": ".blue"}
+            ]
+        }
+    }
+    
     # 生成所需的数据结构
     supporting_structs = []
-    
-    # 添加所有可能需要的类型定义
-    type_definitions = {
-        "ActiveConnection": """
-    // MARK: - Supporting Types
-    private struct ActiveConnection: Identifiable {
-        let id = UUID()
-        var details: String
-    }""",
-        "FileItem": """
-    private struct FileItem: Identifiable {
-        let id = UUID()
-        var name: String
-        var size: Int
-    }""",
-        "TaskItem": """
-    private struct TaskItem: Identifiable {
-        let id = UUID()
-        var title: String
-        var isCompleted: Bool
-    }""",
-        "ConnectionStatus": """
-    private struct ConnectionStatus {
-        var icon: String = "wifi.slash"
-        var message: String = "Unknown"
-        var color: Color = .gray
-    }""",
-        "FileStatus": """
-    private struct FileStatus {
-        var status: String = "Ready"
-        var color: Color = .blue
-    }""",
-        "TaskStatus": """
-    private struct TaskStatus {
-        var status: String = "Pending"
-        var color: Color = .orange
-    }""",
-        "NetworkStatus": """
-    private struct NetworkStatus {
-        var icon: String = "wifi.slash"
-        var message: String = "Disconnected"
-        var color: Color = .red
-    }""",
-        "CompressionStatus": """
-    private struct CompressionStatus {
-        var status: String = "Idle"
-        var progress: Double = 0.0
-        var color: Color = .blue
-    }"""
-    }
-
-    # 检查模板中使用的所有类型
     template_content = "\n".join(chosen_suggestion_elements_templates)
-    for type_name, definition in type_definitions.items():
-        if type_name in template_content or type_name in used_types:
-            supporting_structs.append(definition)
-
+    
+    # 为每个需要的类型生成随机名称和结构体定义
+    for original_type_name, template in struct_templates.items():
+        if original_type_name in template_content or original_type_name in used_types:
+            # 生成随机结构体名称
+            struct_name = get_random_class_name()
+            if not struct_name:
+                struct_name = f"Struct{random.randint(1000, 9999)}"
+            
+            # 确保唯一性
+            original_struct_name = struct_name
+            counter = 1
+            while struct_name in used_struct_names:
+                struct_name = f"{original_struct_name}{counter}"
+                counter += 1
+            used_struct_names.add(struct_name)
+            
+            # 保存类型映射关系
+            type_name_mapping[original_type_name] = struct_name
+            
+            # 生成属性（使用随机属性名）并保存属性映射
+            property_lines = []
+            used_property_names = set()
+            property_name_mapping[original_type_name] = {}
+            
+            for prop_template in template["properties"]:
+                # 生成随机属性名
+                prop_name = get_random_method_name()
+                if not prop_name:
+                    prop_name = to_camel_case(prop_template["name"])
+                
+                # 确保属性名唯一
+                original_prop_name = prop_name
+                prop_counter = 1
+                while prop_name in used_property_names:
+                    prop_name = f"{original_prop_name}{prop_counter}"
+                    prop_counter += 1
+                used_property_names.add(prop_name)
+                
+                # 保存属性名映射
+                property_name_mapping[original_type_name][prop_template["name"]] = prop_name
+                
+                # 构建属性声明
+                if prop_template["has_default"]:
+                    prop_line = f"        var {prop_name}: {prop_template['type']} = {prop_template['default_value']}"
+                else:
+                    prop_line = f"        var {prop_name}: {prop_template['type']}"
+                
+                property_lines.append(prop_line)
+            
+            # 构建结构体定义
+            struct_def = "    // MARK: - Supporting Types\n" if not supporting_structs else ""
+            if template["is_identifiable"]:
+                struct_def += f"    private struct {struct_name}: Identifiable {{\n"
+                struct_def += "        let id = UUID()\n"
+            else:
+                struct_def += f"    private struct {struct_name} {{\n"
+            
+            struct_def += "\n".join(property_lines)
+            struct_def += "\n    }"
+            
+            supporting_structs.append(struct_def)
+    
+    # 更新 state_var_declarations 中的类型引用和默认值中的类型名、属性名
+    import re
+    for i, decl in enumerate(state_var_declarations):
+        # 首先替换类型名
+        for original_type, new_type in type_name_mapping.items():
+            # 替换数组类型中的类型名
+            if f"[{original_type}]" in decl:
+                state_var_declarations[i] = decl.replace(f"[{original_type}]", f"[{new_type}]")
+            # 替换非数组类型（使用单词边界）
+            elif original_type in decl:
+                pattern = r'\b' + re.escape(original_type) + r'\b'
+                state_var_declarations[i] = re.sub(pattern, new_type, state_var_declarations[i])
+        
+        # 然后替换默认值中的类型名和属性名（必须在类型名替换之后）
+        for original_type, new_type in type_name_mapping.items():
+            if original_type in property_name_mapping:
+                prop_mapping = property_name_mapping[original_type]
+                
+                # 先替换类型名（在初始化表达式中，使用新类型名）
+                # 匹配模式：NewType(property: value) 或 [NewType(property: value)]
+                # 注意：此时类型名可能已经被替换了，所以需要同时检查原类型名和新类型名
+                for type_to_check in [original_type, new_type]:
+                    type_pattern = r'\b' + re.escape(type_to_check) + r'\('
+                    if re.search(type_pattern, state_var_declarations[i]):
+                        # 如果找到匹配，替换为新类型名
+                        state_var_declarations[i] = re.sub(type_pattern, f"{new_type}(", state_var_declarations[i])
+                
+                # 然后替换所有属性名（在初始化参数中）
+                # 需要按顺序替换，避免部分匹配问题
+                for old_prop, new_prop in prop_mapping.items():
+                    # 匹配模式：oldProp: value（在括号内，作为参数标签）
+                    # 使用单词边界确保精确匹配
+                    prop_pattern = r'\b' + re.escape(old_prop) + r':'
+                    if re.search(prop_pattern, state_var_declarations[i]):
+                        state_var_declarations[i] = re.sub(prop_pattern, f"{new_prop}:", state_var_declarations[i])
+    
+    # 更新 state_vars_string
+    state_vars_string = "\n".join(state_var_declarations)
+    
+    # 替换模板内容中的类型名和属性访问
+    for i, elem in enumerate(processed_body_elements):
+        # 替换类型名
+        for original_type, new_type in type_name_mapping.items():
+            # 替换数组类型
+            elem = elem.replace(f"[{original_type}]", f"[{new_type}]")
+            # 替换独立类型名（使用单词边界）
+            import re
+            pattern = r'\b' + re.escape(original_type) + r'\b'
+            elem = re.sub(pattern, new_type, elem)
+        
+        # 替换属性访问（如 connection.details -> connection.newPropName）
+        for original_type, prop_mapping in property_name_mapping.items():
+            # 获取类型的小写形式（用于变量名）
+            type_var_name = to_camel_case(original_type)
+            new_type = type_name_mapping.get(original_type, original_type)
+            new_type_var_name = to_camel_case(new_type)
+            
+            for old_prop, new_prop in prop_mapping.items():
+                # 替换 pattern: typeVar.oldProp -> newTypeVar.newProp
+                # 需要匹配各种可能的变量名形式
+                patterns = [
+                    (f"{type_var_name}.{old_prop}", f"{new_type_var_name}.{new_prop}"),
+                    (f"{original_type.lower()}.{old_prop}", f"{new_type_var_name}.{new_prop}"),
+                    (f"connection.{old_prop}", f"{new_type_var_name}.{new_prop}"),
+                    (f"file.{old_prop}", f"{new_type_var_name}.{new_prop}"),
+                    (f"task.{old_prop}", f"{new_type_var_name}.{new_prop}"),
+                ]
+                for old_pattern, new_pattern in patterns:
+                    if old_pattern in elem:
+                        elem = elem.replace(old_pattern, new_pattern)
+        
+        processed_body_elements[i] = elem
+    
+    # 更新 body_content
+    body_content = "\n                ".join(processed_body_elements)
+    
     supporting_structs_string = "\n".join(supporting_structs)
 
     content = f"""
