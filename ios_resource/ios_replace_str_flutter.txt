@@ -221,6 +221,7 @@ isNotFirst_pkm
 isReview_pkm
 isRftstatus_pkm
 isSandbox_pkm
+isSetVip_pkm
 isStartGroup_pkm
 isSubscribingCallback_pkm
 isSubscribing_pkm
@@ -233,6 +234,7 @@ isvip_pkm
 item_pkm
 ivStr_pkm
 iv_pkm
+jsonString_pkm
 json_pkm
 keyAndIV_pkm
 keyStr_pkm

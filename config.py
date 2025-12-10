@@ -1,9 +1,9 @@
 
 # swiftsdk项目
-# project_path = "/Users/jiangshanchen/TTRouSDK"
+project_path = "/Users/jiangshanchen/TTRouSDK"
 
 # flutter项目
-project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
+# project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
 
 # project_path = "/Users/jiangshanchen/scanner3"
 

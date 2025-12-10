@@ -1,3 +1,4 @@
+-------1
 .
 /tool-ab-service/api/abTest/getListGroupingConfigE/v2
 /tool-appbase-service/api/common/rftstatus/v2
@@ -18,8 +19,8 @@
 0D32C8OACYE79YCA
 1
 100
-126000
-126001
+133014
+133015
 133016
 14.6
 1573999086783053
@@ -54,6 +55,7 @@ app_version_name
 application/json
 attributionToken
 b03a69af45d64500b5d2e0f6f1a945a0
+b763defb600f1d3df48e7b8291600790
 b_channel
 bdGetAttributionToken
 bdGetDuIdfa

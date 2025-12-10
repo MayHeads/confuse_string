@@ -3,6 +3,7 @@ import sys
 import random
 import requests
 import json
+import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from project_scanner import get_project_info
@@ -31,7 +32,7 @@ def write_log(image_name):
         f.write(f"{image_name}\n")
 
 
-def download_image(image_name, folder_path):
+def download_image(image_name, folder_path, timeout=10):
     """
     从 picsum.photos 下载随机图片并保存为 PNG
     """
@@ -46,8 +47,8 @@ def download_image(image_name, folder_path):
     image_url = f"https://picsum.photos/{width}/{height}?blur={blur_amount}"
     
     try:
-        # 下载图片
-        response = requests.get(image_url)
+        # 下载图片，添加超时设置
+        response = requests.get(image_url, timeout=timeout)
         response.raise_for_status()
         
         # 保存为PNG
@@ -59,8 +60,11 @@ def download_image(image_name, folder_path):
         write_log(image_name)
         
         return True
+    except requests.exceptions.Timeout:
+        print(f"⚠️  下载图片超时: {image_name}")
+        return False
     except Exception as e:
-        print(f"Error downloading image: {e}")
+        print(f"⚠️  下载图片出错 {image_name}: {e}")
         return False
 
 
@@ -111,13 +115,26 @@ def create_imageset_folder(parent_folder):
     try:
         os.makedirs(imageset_path, exist_ok=True)
         
-        # 下载图片
-        if download_image(method_name, imageset_path):
+        # 下载图片（添加超时处理）
+        if download_image(method_name, imageset_path, timeout=15):
             # 创建 Contents.json
             create_contents_json(method_name, imageset_path)
             return True
+        else:
+            # 如果下载失败，清理已创建的文件夹
+            try:
+                if os.path.exists(imageset_path):
+                    shutil.rmtree(imageset_path)
+            except:
+                pass
     except Exception as e:
-        print(f"Error creating imageset folder: {e}")
+        print(f"  ⚠️  创建 imageset 文件夹出错: {e}")
+        # 清理已创建的文件夹
+        try:
+            if os.path.exists(imageset_path):
+                shutil.rmtree(imageset_path)
+        except:
+            pass
     
     return False
 
@@ -164,17 +181,46 @@ def count_existing_imagesets(root_path):
                 count += 1
     return count
 
+def create_single_imageset(subfolder_path):
+    """
+    创建单个 imageset（用于多线程）
+    """
+    return create_imageset_folder(subfolder_path)
+
 def create_subfolder_with_imagesets(parent_folder, num_imagesets, folder_name):
     """
-    在父文件夹中创建子文件夹，并在其中创建指定数量的 imageset
+    在父文件夹中创建子文件夹，并在其中创建指定数量的 imageset（使用多线程）
     """
     subfolder_path = os.path.join(parent_folder, folder_name)
     os.makedirs(subfolder_path, exist_ok=True)
     
     success_count = 0
-    for _ in range(num_imagesets):
-        if create_imageset_folder(subfolder_path):
-            success_count += 1
+    failed_count = 0
+    
+    # 使用线程池并行创建 imageset
+    max_workers = min(10, num_imagesets)  # 最多10个线程
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # 提交所有任务
+        futures = [executor.submit(create_single_imageset, subfolder_path) for _ in range(num_imagesets)]
+        
+        # 获取结果并显示进度
+        completed = 0
+        for future in as_completed(futures):
+            completed += 1
+            try:
+                if future.result():
+                    success_count += 1
+                else:
+                    failed_count += 1
+            except Exception as e:
+                failed_count += 1
+                print(f"  ⚠️  创建 imageset 时出错: {e}")
+            
+            # 显示进度
+            print(f"  📥 [{folder_name}] 进度: {completed}/{num_imagesets} (成功: {success_count}, 失败: {failed_count})", end='\r')
+    
+    # 清除进度行并显示结果
+    print(f"  ✅ [{folder_name}] 完成: {success_count}/{num_imagesets} 个 imageset 创建成功")
     
     return success_count
 
@@ -220,8 +266,10 @@ def entry_gener_imageset():
         num_folders = (total_to_generate + imagesets_per_folder - 1) // imagesets_per_folder  # 向上取整
         
         print(f"📁 将创建 {num_folders} 个子文件夹，每个文件夹约 {imagesets_per_folder} 个 imageset")
+        print(f"🚀 使用多线程并行处理，加速生成...\n")
         
-        total_success = 0
+        # 准备所有文件夹任务
+        folder_tasks = []
         remaining = total_to_generate
         
         for i in range(num_folders):
@@ -232,14 +280,31 @@ def entry_gener_imageset():
             
             # 计算这个文件夹要创建的 imageset 数量
             current_batch = min(imagesets_per_folder, remaining)
-            
-            print(f"\n📂 创建子文件夹: {folder_name}，将生成 {current_batch} 个 imageset")
-            success_count = create_subfolder_with_imagesets(asset_root_path, current_batch, folder_name)
-            total_success += success_count
+            folder_tasks.append((folder_name, current_batch))
             remaining -= current_batch
             
             if remaining <= 0:
                 break
+        
+        # 使用线程池并行处理多个文件夹
+        total_success = 0
+        max_folder_workers = min(5, len(folder_tasks))  # 最多5个文件夹并行
+        
+        with ThreadPoolExecutor(max_workers=max_folder_workers) as executor:
+            # 提交所有文件夹任务
+            future_to_folder = {
+                executor.submit(create_subfolder_with_imagesets, asset_root_path, num_imagesets, folder_name): (folder_name, num_imagesets)
+                for folder_name, num_imagesets in folder_tasks
+            }
+            
+            # 获取结果
+            for future in as_completed(future_to_folder):
+                folder_name, num_imagesets = future_to_folder[future]
+                try:
+                    success_count = future.result()
+                    total_success += success_count
+                except Exception as e:
+                    print(f"  ❌ 处理文件夹 {folder_name} 时出错: {e}")
         
         print(f"\n✅ 总共创建了 {total_success} 个 imageset")
     else:

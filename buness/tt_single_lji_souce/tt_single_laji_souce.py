@@ -103,19 +103,19 @@ if __name__ == '__main__':
     
 
     # z_asset_combin()
-    # entry_gener_imageset()
+    entry_gener_imageset()
 
 
 
     # # 生成处理文件 swiftUI文件
-    # z_gen_process()
+    z_gen_process()
 
     # z_replace_fix_form()
     # z_replace_file()
 
     # z_enc_combin()
 
-    insert_action()
+    # insert_action()
 
 
 

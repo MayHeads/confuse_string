@@ -12,7 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import THEME_KEYWORDS, NUM_FILES
 
 try:
-    from ios_string_generate.string_gen import get_random_class_name, init_word_lists
+    from ios_string_generate.string_gen import get_random_class_name, init_word_lists, get_random_method_name
 except ImportError:
     print("错误：无法导入 'ios_string_generate.string_gen'。请确保该模块存在且路径正确。")
     print("当前sys.path:", sys.path)
@@ -35,6 +35,52 @@ def to_camel_case(name_str):
     if not name_str: # If it became empty after stripping
         return "anotherProperty"
     return name_str[0].lower() + name_str[1:]
+
+def generate_random_string_value(prefix="", with_quotes=True):
+    """生成随机字符串值"""
+    random_suffix = "".join(random.choices("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", k=8))
+    value = f"{prefix}_{random_suffix}" if prefix else random_suffix
+    if with_quotes:
+        return f"\"{value}\""
+    return value
+
+def generate_random_string_array(count=2):
+    """生成随机字符串数组"""
+    strings = [generate_random_string_value(with_quotes=True) for _ in range(count)]
+    return "[" + ", ".join(strings) + "]"
+
+def generate_dynamic_default_value(spec_type, spec_role):
+    """根据类型和角色动态生成默认值"""
+    if spec_type == "Double":
+        return f"{random.uniform(0.1, 0.9):.2f}"
+    elif spec_type == "Int":
+        return f"{random.randint(0, 100)}"
+    elif spec_type == "Bool":
+        return random.choice(["true", "false"])
+    elif spec_type == "[String]":
+        # 生成2-4个随机字符串
+        count = random.randint(2, 4)
+        return generate_random_string_array(count)
+    elif spec_type == "String":
+        # 生成随机字符串
+        return generate_random_string_value()
+    elif "[ActiveConnection]" in spec_type:
+        # 生成随机连接详情
+        detail = generate_random_string_value()
+        return f"[ActiveConnection(details: {detail})]"
+    elif "[FileItem]" in spec_type:
+        # 生成随机文件项
+        name = generate_random_string_value()
+        size = random.randint(100, 10000)
+        return f"[FileItem(name: {name}, size: {size})]"
+    elif "[TaskItem]" in spec_type:
+        # 生成随机任务项
+        title = generate_random_string_value()
+        is_completed = random.choice(["true", "false"])
+        return f"[TaskItem(title: {title}, isCompleted: {is_completed})]"
+    else:
+        # 自定义类型，返回默认初始化
+        return f"{spec_type}()"
 
 # Define dynamic variable specifications: role, type, default Swift value, and placeholder for templates
 # These cover the needs of the templates in get_view_suggestions
@@ -69,31 +115,52 @@ DYNAMIC_VAR_SPECS = [
 ]
 
 
+def generate_random_image_name():
+    """生成随机图片名称，优先从文件中读取"""
+    # 先尝试从 gener_imageset.txt 文件中读取图片名称
+    image_file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
+                                  "ios_log", "gener_imageset.txt")
+    try:
+        with open(image_file_path, 'r', encoding='utf-8') as f:
+            image_names = [line.strip() for line in f if line.strip()]
+            if image_names:
+                return random.choice(image_names)
+    except FileNotFoundError:
+        pass  # 文件不存在，继续使用随机生成
+    except Exception as e:
+        print(f"读取图片名称文件时出错: {e}")
+    
+    # 如果文件不存在或文件为空，使用随机方法名生成
+    random_name = get_random_method_name()
+    if not random_name:
+        # 如果生成失败，使用随机字符串
+        random_suffix = "".join(random.choices("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", k=12))
+        random_name = f"img{random_suffix}"
+    return random_name
+
 def get_view_suggestions(theme_keywords):
     """根据主题关键字提供SwiftUI视图元素的建议"""
     suggestions = []
     theme_str_lower = " ".join(theme_keywords).lower()
 
-    # 生成随机图片名称
-    random_image_names = [
-        "background_com",
-        "icon_com",
-        "banner_com",
-        "avatar_com",
-        "thumbnail_com",
-        "preview_com",
-        "cover_com",
-        "logo_com",
-        "illustration_com",
-        "pattern_com"
-    ]
+    # 为每个视图生成随机图片名称
+    image_name_1 = generate_random_image_name()
+    image_name_2 = generate_random_image_name()
+    image_name_3 = generate_random_image_name()
+    image_name_4 = generate_random_image_name()
+    image_name_5 = generate_random_image_name()
+    image_name_6 = generate_random_image_name()
+    image_name_7 = generate_random_image_name()
+    image_name_8 = generate_random_image_name()
+    image_name_9 = generate_random_image_name()
+    image_name_10 = generate_random_image_name()
 
     # 清理主题相关视图
     if "clean" in theme_str_lower or "清理" in theme_str_lower:
         suggestions.extend([
             ("CacheCleanerView", [
                 "VStack(spacing: 20) {",
-                "    Image(\"background_com\")",
+                f"    Image(\"{image_name_1}\")",
                 "        .resizable()",
                 "        .aspectRatio(contentMode: .fit)",
                 "        .frame(height: 200)",
@@ -107,7 +174,7 @@ def get_view_suggestions(theme_keywords):
             ]),
             ("LogFileManagerView", [
                 "VStack(spacing: 15) {",
-                "    Image(\"icon_com\")",
+                f"    Image(\"{image_name_2}\")",
                 "        .resizable()",
                 "        .frame(width: 60, height: 60)",
                 "        .clipShape(Circle())",
@@ -130,7 +197,7 @@ def get_view_suggestions(theme_keywords):
         suggestions.extend([
             ("FileCompressionView", [
                 "VStack(spacing: 15) {",
-                "    Image(\"banner_com\")",
+                f"    Image(\"{image_name_3}\")",
                 "        .resizable()",
                 "        .aspectRatio(contentMode: .fill)",
                 "        .frame(height: 150)",
@@ -138,7 +205,7 @@ def get_view_suggestions(theme_keywords):
                 "    List {",
                 "        ForEach({{FILE_LIST_ARRAY_CUSTOM}}) { file in",
                 "            HStack {",
-                "                Image(\"thumbnail_com\")",
+                f"                Image(\"{image_name_4}\")",
                 "                    .resizable()",
                 "                    .frame(width: 40, height: 40)",
                 "                    .cornerRadius(8)",
@@ -164,7 +231,7 @@ def get_view_suggestions(theme_keywords):
         suggestions.extend([
             ("NetworkMonitorView", [
                 "VStack(spacing: 20) {",
-                "    Image(\"cover_com\")",
+                f"    Image(\"{image_name_5}\")",
                 "        .resizable()",
                 "        .aspectRatio(contentMode: .fit)",
                 "        .frame(maxWidth: .infinity)",
@@ -176,7 +243,7 @@ def get_view_suggestions(theme_keywords):
                 "    List {",
                 "        ForEach({{ACTIVE_CONNECTIONS_ARRAY_CUSTOM}}) { connection in",
                 "            HStack {",
-                "                Image(\"avatar_com\")",
+                f"                Image(\"{image_name_6}\")",
                 "                    .resizable()",
                 "                    .frame(width: 30, height: 30)",
                 "                    .clipShape(Circle())",
@@ -196,13 +263,13 @@ def get_view_suggestions(theme_keywords):
         suggestions.extend([
             ("TaskManagerView", [
                 "VStack(spacing: 15) {",
-                "    Image(\"logo_com\")",
+                f"    Image(\"{image_name_7}\")",
                 "        .resizable()",
                 "        .frame(width: 100, height: 100)",
                 "    List {",
                 "        ForEach({{TASK_LIST_ARRAY_CUSTOM}}) { task in",
                 "            HStack {",
-                "                Image(\"preview_com\")",
+                f"                Image(\"{image_name_8}\")",
                 "                    .resizable()",
                 "                    .frame(width: 50, height: 50)",
                 "                    .cornerRadius(10)",
@@ -223,7 +290,7 @@ def get_view_suggestions(theme_keywords):
         suggestions.extend([
             ("GenericDetailView", [
                 "VStack(spacing: 20) {",
-                "    Image(\"illustration_com\")",
+                f"    Image(\"{image_name_9}\")",
                 "        .resizable()",
                 "        .aspectRatio(contentMode: .fit)",
                 "        .frame(maxWidth: .infinity)",
@@ -235,7 +302,7 @@ def get_view_suggestions(theme_keywords):
                 "        Text({{ERROR_MESSAGE_STRING}})",
                 "            .foregroundColor(.red)",
                 "    }",
-                "    Image(\"pattern_com\")",
+                f"    Image(\"{image_name_10}\")",
                 "        .resizable()",
                 "        .frame(height: 100)",
                 "        .opacity(0.5)",
@@ -278,8 +345,11 @@ def generate_swiftui_view_content(view_name, theme_keywords):
     used_swift_names = set()
 
     for spec in all_specs:
-        base_name_suggestion = spec["role"]
-        swift_var_name = to_camel_case(base_name_suggestion)
+        # 使用随机方法名作为变量名，而不是固定的 role
+        swift_var_name = get_random_method_name()
+        if not swift_var_name:
+            # 如果生成失败，使用 role 作为后备
+            swift_var_name = to_camel_case(spec["role"])
         
         # 确保唯一性
         original_swift_var_name = swift_var_name
@@ -289,9 +359,12 @@ def generate_swiftui_view_content(view_name, theme_keywords):
             counter += 1
         used_swift_names.add(swift_var_name)
 
+        # 动态生成默认值（字符串值随机生成）
+        dynamic_default_val = generate_dynamic_default_value(spec['type'], spec['role'])
+        
         placeholder_to_swift_name_map[spec["placeholder"]] = swift_var_name
         state_var_declarations.append(
-            f"    @State private var {swift_var_name}: {spec['type']} = {spec['default_val']}"
+            f"    @State private var {swift_var_name}: {spec['type']} = {dynamic_default_val}"
         )
 
     state_vars_string = "\n".join(state_var_declarations)
@@ -335,14 +408,30 @@ def generate_swiftui_view_content(view_name, theme_keywords):
                           "{{IS_ENCRYPTION_ENABLED_BOOL}}", "{{NETWORK_STATUS_CUSTOM}}", "{{TASK_STATUS_CUSTOM}}",
                           "{{STATUS_MESSAGE_STRING}}", "{{ERROR_MESSAGE_STRING}}"]:
             if placeholder in elem_processed:
-                # 如果这个占位符没有被映射，使用一个默认的变量名
-                default_name = to_camel_case(placeholder.strip("{{}}").lower())
-                if default_name not in used_swift_names:
+                # 如果这个占位符没有被映射，生成一个随机的变量名
+                if placeholder not in placeholder_to_swift_name_map:
+                    # 使用随机方法名作为变量名
+                    default_name = get_random_method_name()
+                    if not default_name:
+                        default_name = to_camel_case(placeholder.strip("{{}}").lower())
+                    
+                    # 确保唯一性
+                    original_default_name = default_name
+                    counter = 1
+                    while default_name in used_swift_names:
+                        default_name = f"{original_default_name}{counter}"
+                        counter += 1
+                    
                     used_swift_names.add(default_name)
+                    placeholder_type = get_type_for_placeholder(placeholder)
+                    dynamic_default_val = generate_dynamic_default_value(placeholder_type, placeholder)
                     state_var_declarations.append(
-                        f"    @State private var {default_name}: {get_type_for_placeholder(placeholder)} = {get_default_value_for_placeholder(placeholder)}"
+                        f"    @State private var {default_name}: {placeholder_type} = {dynamic_default_val}"
                     )
-                elem_processed = elem_processed.replace(placeholder, default_name)
+                    placeholder_to_swift_name_map[placeholder] = default_name
+                
+                # 使用映射的变量名替换占位符
+                elem_processed = elem_processed.replace(placeholder, placeholder_to_swift_name_map[placeholder])
         
         processed_body_elements.append(elem_processed)
 
@@ -483,24 +572,26 @@ def get_type_for_placeholder(placeholder):
     return type_map.get(placeholder, "String")
 
 def get_default_value_for_placeholder(placeholder):
-    """根据占位符返回对应的默认值"""
-    default_value_map = {
-        "{{FILE_LIST_ARRAY_CUSTOM}}": "[FileItem(name: \"document.pdf\", size: 1024)]",
-        "{{TASK_LIST_ARRAY_CUSTOM}}": "[TaskItem(title: \"Task 1\", isCompleted: false)]",
-        "{{LOG_FILES_ARRAY_STRING}}": "[\"app.log\", \"error.log\"]",
-        "{{FORMATS_ARRAY_STRING}}": "[\"ZIP\", \"TAR.GZ\", \"7Z\"]",
-        "{{ACTIVE_CONNECTIONS_ARRAY_CUSTOM}}": "[ActiveConnection(details: \"Sample Connection 1\")]",
-        "{{PROGRESS_VALUE_DOUBLE}}": "0.65",
-        "{{CACHE_SIZE_MB_DOUBLE}}": "128.5",
-        "{{IS_LOADING_BOOL}}": "false",
-        "{{COMPRESSION_FORMAT_STRING}}": "\"ZIP\"",
-        "{{IS_ENCRYPTION_ENABLED_BOOL}}": "false",
-        "{{NETWORK_STATUS_CUSTOM}}": "NetworkStatus()",
-        "{{TASK_STATUS_CUSTOM}}": "TaskStatus()",
-        "{{STATUS_MESSAGE_STRING}}": "\"Processing...\"",
-        "{{ERROR_MESSAGE_STRING}}": "\"An error occurred\""
+    """根据占位符返回对应的默认值（动态生成随机值）"""
+    type_map = {
+        "{{FILE_LIST_ARRAY_CUSTOM}}": "[FileItem]",
+        "{{TASK_LIST_ARRAY_CUSTOM}}": "[TaskItem]",
+        "{{LOG_FILES_ARRAY_STRING}}": "[String]",
+        "{{FORMATS_ARRAY_STRING}}": "[String]",
+        "{{ACTIVE_CONNECTIONS_ARRAY_CUSTOM}}": "[ActiveConnection]",
+        "{{PROGRESS_VALUE_DOUBLE}}": "Double",
+        "{{CACHE_SIZE_MB_DOUBLE}}": "Double",
+        "{{IS_LOADING_BOOL}}": "Bool",
+        "{{COMPRESSION_FORMAT_STRING}}": "String",
+        "{{IS_ENCRYPTION_ENABLED_BOOL}}": "Bool",
+        "{{NETWORK_STATUS_CUSTOM}}": "NetworkStatus",
+        "{{TASK_STATUS_CUSTOM}}": "TaskStatus",
+        "{{STATUS_MESSAGE_STRING}}": "String",
+        "{{ERROR_MESSAGE_STRING}}": "String"
     }
-    return default_value_map.get(placeholder, "\"Default Value\"")
+    
+    spec_type = type_map.get(placeholder, "String")
+    return generate_dynamic_default_value(spec_type, placeholder)
 
 def generate_swiftui_files(theme_keywords, num_files):
     """根据主题生成指定数量的SwiftUI文件, 覆盖旧文件。"""
