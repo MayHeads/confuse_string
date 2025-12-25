@@ -91,27 +91,27 @@ def insert_action():
 if __name__ == '__main__':
     
     # 生成 pbx 文件
-    # z_pbx_combin_all()
+    z_pbx_combin_all()
     
     # 生成 asset 文件
     z_asset_combin()
 
     # # 替换固定名字
-    # z_replace_fix_form()
+    z_replace_fix_form()
 
     # # 加密字符串
-    # z_enc_combin()
+    z_enc_combin()
 
     # # 替换文件名
-    # z_replace_file()
+    z_replace_file()
 
     # # 生成处理文件 swiftUI文件
-    # z_gen_process()
+    z_gen_process()
 
-    # insert_action()
+    insert_action()
 
     # # 执行pod install
-    # execute_pod_install()
+    execute_pod_install()
 
 
 

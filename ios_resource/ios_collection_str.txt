@@ -1,285 +1,885 @@
-$AppStart
-$app_version
-$device_id
-$is_first_day
-$manufacturer
-$model
-$network_type
-$os
-$os_version
-$resume_from_background
-$screen_height
-$screen_width
-$wifi
-&
-&deviceId=
-&key=
-&prdId=
-&timestamp=
-&uuid=
-&ver=1&data=
-.
-/tool-ab-service/api/abTest/getListGroupingConfigE/v2
-/tool-appbase-service/api/action/config/get/v3
-/tool-appbase-service/api/common/rftstatus/v2
-/tool-appbase-service/api/ios/rb/findBook/v2
-/tool-bridging-service/api/tianshu/ios/quarantine/addOrderV2
-/tool-bridging-service/api/tianshu/ios/quarantine/appAttribution
-/tool-bridging-service/api/tianshu/ios/quarantine/reportStateV2
-/tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataBatch
-/tool-bridging-service/api/tianshu/ios/quarantine/verifyOrderV2
-/tool-flow-service/api/payMember/getPayMemberInfo/v2
-/tool-flow-service/api/payMember/ios/queryIosCommodityInfo/v2
-/tool-flow-service/api/payMember/ios/uploadPayTag
-/tool-flow-service/payMember/test/deleteAllMemberData
-/tool-route/api/tianshu/ios/quarantine/recover
-/tool-route/api/tianshu/ios/quarantine/uploadShenceDataV2
-/tool_frontend_service/iCustomerServiceSub?prdId=
-0000
+ : 
+ 位置获取中...
+ 垂直
+ 定位服务已启用
+ 定位服务已禁用
+ 当前海拔
+ 指南针功能已启用
+ 显示权限提示
+ 检查磁力计状态
+ 水平
+ 磁力计不可用
+ 磁力计不可用，可能是设备不支持或需要校准
+ 磁力计应该正在工作，如果没有数据请检查设备校准
+ 角度
+ 设备不支持检测
+ 重新启动磁力计检测
+ 隐藏权限提示
+ 隐藏权限提示弹窗
+ 需要定位权限
+#
+#222E5D
+#243165
+#24D13B
+#31417F
+#4A90E2
+#4CAF50
+#F0F1F3
+#F6F7F8
+#FF0000
+#FFA600
+#FFD52F
+%.0f°
+%.1f°
+%.1f°C
+/
+/tool-business/api/gps/v2/listCommonArea
+/tool-weather-service/api/weather/v2/getCustomizeWeatherEn
+0
+00D4AA
+0123456789.
+0X
+0XFF0000FF
+0oBTvaWkcTWst3P3wFnosztS9+SEpjIt7ZQMyqcCxkY=
+0°
 1
-100
-12341
-133014
-133015
-1573999086783053
-2G
-3.0.6.5
-3G
-4G
-5G
-5GSrcqkeB24HYrbMVkWIyF4wKEfVszQOyLauyXdEPRI
-61
-=======
-Apple
+1. 引导页1-展示
+2. 引导页1-点击
+3. 引导页2-展示
+4.  引导页2-点击
+5.  引导页3-展示
+6.  引导页3-点击
+1. 指南针tab
+2. 测海拔tab
+3. 水平仪tab
+4. 天气地图tab
+5. 启动自动弹出
+1. 订阅页-展示
+2. 协议勾选
+3. 点击继续
+4.拉起支付
+5.支付成功
+6.放弃支付
+7.支付失败
+8.返回
+9.恢复订阅
+1.0.0
+100°C
+109
+109.3
+109.3 米
+110000
+111:42224
+113°19'0''
+113°20'0''
+12
+120.5
+123
+1234
+129100
+129101
+15天预报
+19f4bd55af
+2
+2025-09-12
+2025.07.25 周五
+2026/09/09
+20°C～30°C
+24°7'47''
+24°8'0''
+24小时预报
+25°
+39°54'27"
+4A90E2
+4CD964
+5856D6
+5B9FE8
+60%
+A
+AATCalendar
+AATContacts
+AF52DE
+APIError
+AddressList.json
+AmedeoAvogadroKeplersthirdlawobstructor
+Antillesmountainskinklucidness
+Apocynaceaebantamweightliparis
 Begin BD monitoring...
 Begin monitoring...
 Beginning Network request ended.
 Beginning network request...
-CFBundleIdentifier
-CFBundleShortVersionString
-CFBundleVersion
-DK_ELA
+CFBundleIconFiles
+CFBundleIcons
+CFBundlePrimaryIcon
+CIColorControls
+CIGaussianBlur
+CISepiaTone
+CITemperatureAndTint
+CLEAR
+CLEAR_DAY
+CLEAR_NIGHT
+CLOUDY
+CharlesFourierpricketanimalfoot
+ContactCell
+DUST
+DataError
+DecodingError
+E85B9F
+E8F4FD
+E8FDF7
+EAFDE8
+EEEEFD
 End monitoring...
-Error:
-F00C5GZWB1xX6EW9
-GDTAction启动
+EventCell
+FDE8EC
+FF2D55
+FF3B30
+FF69B4
+FF6B8A
+FF9500
+FFB6C1
+FFF0F5
+FFF3E8
+FOG
+FilterCell
+GPS定位指南针
+GVhHXGQNozOv+wgpeJ4mdxZ7eyGpIEWu5DyvTddzKRwIqesJnopUGfh7NGG75vRfqEMMia/4J3Q7VSxyyfw6Hw==
+HAIL
+HEAVY_HAZE
+HEAVY_RAIN
+HEAVY_SNOW
+HH:mm
 Initializing parameters...
 Initiating order creation...
 Initiating purchase restoration...
-JR7nZqQa0HInLTHq9UL0AQ==
-Main
-No product data received.
+LIGHT_HAZE
+LIGHT_RAIN
+LIGHT_SNOW
+LaunchScreen
+Lonicerahirsutacourgettebandyleg
+MODERATE_HAZE
+MODERATE_RAIN
+MODERATE_SNOW
+MarasmiusAmurprivetsicknessbenefit
+Nigerdroverchabasite
 Order created successfully.
 Order creation failed.
-PAY_FAILURE
-PAY_SUCCESS
+OriginalData
+PARTLY_CLOUDY
+PARTLY_CLOUDY_DAY
+PARTLY_CLOUDY_NIGHT
 Payment completed successfully.
 Payment failed.
 Payment is in progress...
 Payment was cancelled by the user.
-Purchase restoration failed.
 Purchase restored successfully.
-RT_APP
-SEC-
-STA
+QOcBWEKD2aW6+FSJ1zqOqGuJeEwFtDO2fC6VFn4GHNR8wjxs/Z+FyG//5q8qhSzsdjtm3ZRStMbQVHXr+8+yqA==
+RAIN_WITH_SNOW
+ResponseError
+SAND
+SF Pro
+SRecordViewController 拍照成功
+STORM_RAIN
+STORM_SNOW
 Setting VIP monitor...
-Tool-Auth
+Small
+THUNDER
+THUNDER_SHOWER
+TSBasxxeConfig
+TSLocationHelper
+TSLocationManager
 Transaction verification failed.
-Transaction verified successfully.
-Unknown
-WIFI
-[LiatrispunctataToda-Error]
-[LiatrispunctataToda-Error] deviceId is not allow nil
-[LiatrispunctataToda-Error] prdId is not allow nil
-[LiatrispunctataToda-Error] requestDomin is not allow nil
-[LiatrispunctataToda-IgnoramusShoat]
-abValue
-action1 -->
-activityChannel
-activityChannel=
-adsToken
-amountBoxStyle
-appStartNewRequest
-appStartNewResponse
-appVersion
-appVersion=
-appVersionCode
-appVersionCode=
-app_purchase
-app_version
-app_version_name
-apple支付失败
-apple支付成功
-application/json
-applicationDidBecomeActive
-b_channel
-bottomMark
-brand
-click
-closeButtonDelay
-closeButtonTransparency
+TwpbmtqZMJNrn5pciUHgDxpj3BqJcJCtWmrQ0tWOMmY=
+UnknownError
+UserLocationPin
+VIP 会员
+VIP开通被点击
+VolunteerCarolinajasmineprofessionalbaseball
+WIND
+XcUGrTaKHUiOFCcFLY6h2ec+hcKLyAKnKhRC67VwvJLPhU+zm7KnVYZPUED9EKhu
+Z
+[AppDelegate] 应用即将进入前台，准备重启定位服务
+[TSAddressList] 本地没有缓存的城市列表
+[TSLocationHelper] 定位请求已在进行中，忽略重复请求
+[TSLocationHelper] 开始获取位置信息
+[TSLocationHelper] 请求定位权限
+[TSLocationManager] getCurrentLocationWithPermissionCheck 开始
+[TSLocationManager] 停止定位和磁力计检测
+[TSLocationManager] 定位服务未启用
+[TSLocationManager] 未知权限状态
+[TSLocationManager] 权限已授权，开始获取位置
+[TSLocationManager] 权限未确定
+[TSLocationManager] 权限未确定，请求权限
+[TSLocationManager] 权限被拒绝
+[TSLocationManager] 权限被拒绝，停止定位
+[TSMapView] 权限未确定，请求权限
+[TSWeatherManager] 城市代码为空
+[TSWeatherManager] 更新北京天气数据 
+[TSWeatherManager] 更新当前天气数据
+[TSWeatherManager] 清除所有缓存
+[parameters][error]
+[weather][更新天气]
+[指南针] 更新频率限制，跳过本次更新
+[指南针] 权限检查已在进行中，跳过重复检查
+[指南针] 非VIP用户，忽略磁力计数据
+[🔍定位] didUpdateLocations: locations数组为空
+[🔍定位] didUpdateLocations: 收到位置更新
+[🔍定位] reverseGeocodeLocation 开始
+[🔍定位] startUpdatingLocation 开始
+[🔍定位] ⚠️ reverseGeocodeLocation: self已释放
+[🔍定位] ⚠️ self已释放
+[🔍定位] ⚠️ self已释放，无法更新位置
+[🔍定位] ⚠️ 定位服务已在运行，先停止再重新启动
+[🔍定位] ⚠️ 未找到地址信息
+[🔍定位] ⚠️ 磁力计不可用
+[🔍定位] ✅ 创建LocationModel完成
+[🔍定位] ✅ 反地理编码完成
+[🔍定位] ✅ 反地理编码成功
+[🔍定位] ✅ 定位服务已启动，isLocating设置为true
+[🔍定位] ✅ 开始磁力计检测
+[🔍定位] ❌ 定位服务未启用
+[🔍定位] ❌ 权限不足，无法启动定位服务
+[🔍定位] 开始反地理编码...
+[🔍定位] 找到地址信息
+[🔍定位] 💡 但这是首次定位，仍然使用此位置
+[🧭指南针]   - 无定位权限
+[🧭指南针]   - 磁力计不可用
+[🧭指南针]   - 非VIP用户
+[🧭指南针] autoRetry: true
+[🧭指南针] checkCompassStatus 开始
+[🧭指南针] handlePermissionCheckResult 开始
+[🧭指南针] setupLocationManagerIfNeeded 开始
+[🧭指南针] startLocationUpdates 开始
+[🧭指南针] updateCompassWithLocation 开始
+[🧭指南针] viewDidLoad 开始
+[🧭指南针] ⚠️ 定位失败且无缓存位置
+[🧭指南针] ⚠️ 定位服务已在运行
+[🧭指南针] ⚠️ 定位服务已在运行，跳过启动
+[🧭指南针] ⚠️ 无定位权限
+[🧭指南针] ⚠️ 权限状态异常，延迟重新检查
+[🧭指南针] ⚠️ 条件不满足:
+[🧭指南针] ✅ UI已更新
+[🧭指南针] ✅ getCurrentLocationWithPermissionCheck 成功
+[🧭指南针] ✅ 发现缓存的位置信息，直接使用
+[🧭指南针] ✅ 地址标签已显示
+[🧭指南针] ✅ 已添加代理和权限监听器
+[🧭指南针] ✅ 开始启动定位服务
+[🧭指南针] ✅ 收到定位回调 didUpdateLocation
+[🧭指南针] ✅ 有定位权限
+[🧭指南针] ✅ 条件满足，准备启动定位
+[🧭指南针] ❌ 定位失败回调 didFailWithError
+[🧭指南针] 启动定位服务
+[🧭指南针] 无缓存位置，开始获取位置
+[🧭指南针] 未知权限状态
+[🧭指南针] 权限未确定，请求权限
+[🧭指南针] 权限被拒绝或受限
+[🧭指南针] 💡 发现缓存位置，先更新UI
+[🧭指南针] 💡 定位失败，但发现缓存位置，使用缓存位置
+activity_name
+activity_state
+airQuality
+app_activity
+apparentTemperature
+aqi
+aqiDesc
+aqiSuggestMeasures
+aqiValue
+arrow.down
+arrow.up
+arrow.up.arrow.down
+avg
+avgDesc
+blackGold
+bowlfulfolkdancercarcass
+brookweedRudbeckiaunfairness
+calendar.badge.exclamationmark
+calendar.circle.fill
+camera.circle.fill
+camera.fill
+checkmark.circle.fill
+chessmatchrefresherrathole
+chevron.right
+cinema
+circle
+cityCode
+clear
+co
 code
-com.suosuo.tracker.buckCheerHelenAutotelism
-commoditNum
-commodityBgColor
-commodityDtoList
-commodityGroupDtoList
-commodityId
-commodityName
-commodityProperty
-configData
-configs
-content
-content-type
-cur_channel
-currentChannel
-currentChannel=
-currentCity
+cold
+com.tscompass.weather
+comfortDesc
+commonAreaDtoList
+configType
+corruptBudgePlaterConstructor
 data
-defaultCheck
-defaultGroup
-deviceId
-deviceId=
-device_id
-discountButtonCopywriting
-discountPriceDesc
-display
-en_url
-eventName
-extSuosuoraDescTransparency:
-extraDesc
-extraDescTransparency
-firstDeductionTime
-freeTrialCheck
-goodsInfo
+date
+dayTemperature
+dayWeatherCustomDesc
+dayWeatherType
+description
+diparrozconpolloprofit
+duc_agitate_establish_blackforest
+duc_air_spurblight
+duc_alleviate_autoclave_epistletophilemon
+duc_arsearound_goodness
+duc_attract_magneticrecorder
+duc_averageout_coil_genusambloplites
+duc_bearup_europeannuthatch_upperhand
+duc_belabor_acrocephalusschoenobaenus_smother
+duc_bleachout_negotiate_laterality_ux
+duc_bloviate_follow_longanberry_stultification
+duc_bob_basic
+duc_bone_lesbian_mahican
+duc_boom_defensivestructure
+duc_breakaway_seat_abannedinfant
+duc_bypass_style_melchior
+duc_call_dramacritic_gen
+duc_callitquits_vidar_apophasis
+duc_carry_interphalangealjoint_caspasemediatedcelldeath
+duc_chill_nest_nazigermany
+duc_chuckout_accommodation
+duc_clapboard_mythicalmonster
+duc_clickopen_jumpstart_manofletters
+duc_concentrate_infancy
+duc_counterbalance_cabinetminister_pickerelfrog
+duc_cub_fund_larusridibundus
+duc_cut_actup_beebeetle
+duc_cutoff_acousticdevice_unfeelingness
+duc_deepen_catchaglimpse_policeconstable
+duc_deputise_quiver_titration
+duc_descend_stump_simulcast
+duc_devitalize_cut_newworldleastweasel
+duc_disallow_johannwinckelmann
+duc_drawoff_unprotectedness
+duc_dripdry_pretense
+duc_dryrot_paralysisagitans
+duc_eatinto_memphis
+duc_eclipse_wrack_fibrositis_paraffin
+duc_fleshout_preisolate_ischium
+duc_found_nibble_pewter
+duc_fume_omnirange
+duc_getrif_cut_highlands
+duc_goof_susurrate_pagophilus
+duc_graze_interlink_marsileaquadrifolia_exemplar
+duc_grouse_familypleurobrachiidae
+duc_hangup_commonapricot_louvre
+duc_holver_europeaneconomiccommunity_constructor
+duc_improve_abdication
+duc_intend_fluster_access_genius
+duc_interpose_jumpoff_felicity_soul
+duc_jump_weigh_heath_phlomis
+duc_keep_droop_tsatske_fineness
+duc_knife_sketch_platariver_fairball
+duc_knockout_draw_porterhouse
+duc_laud_limp
+duc_measure_clipboard
+duc_meet_ordersapindales
+duc_minate_soak_curve
+duc_mishandle_care_adiantumcapillusveneris_misology
+duc_multiply_chewover_blackburn_queen
+duc_noise_siderite_duel
+duc_outstrip_crust_pandiculation_mensh
+duc_overpower_ambulate_stowe_centigradescale
+duc_pirate_arborolatry_liposarcoma
+duc_pluginto_profess_popper_opportunism
+duc_poison_norwegiankrone
+duc_port_classdicotylenae_inferno
+duc_precede_ambulate_oppositeness
+duc_proof_telloff_crotaluslepidus
+duc_raid_chessclub
+duc_ratchetwn_capitalofkuwait
+duc_reclaim_hussarmonkey_plumtomato
+duc_ride_commute_jawsoflife
+duc_sallyout_salaryincrease
+duc_secernate_bag_righteyeflounder_carrotjuice
+duc_see_stepup_californiacoffee
+duc_setup_genusmycteria_earedseal
+duc_shift_winff_orderpiciformes
+duc_shiver_ezrapound
+duc_skimoff_impale_melanittanigra_teresmajor
+duc_slip_slush_automobile_legalprofession
+duc_smack_stillness
+duc_staff_anglophobia_beechtree
+duc_stirfry_vascularise_tribuneship_carillon
+duc_suffocate_cryptocoryne
+duc_tally_jakobboehme
+duc_throwout_constitute_heatshield
+duc_throwout_jampack_pisum
+duc_touchon_deplume_genusaspiphoroides_hunting
+duc_trail_virga
+duc_transubstantiate_govern_ticketofleave
+duc_twist_snowdroptree
+duc_underspend_griffith_edwardjamesmuggeridge
+duc_unitise_passoff_schnaps
+duc_veil_photostat_reprieve
+duc_write_indaba
+effect
+elevation
+en_US_POSIX
+film
+firstGuideKey
+firstLauncherKey
+firstLetter
+firstPar secondPar - tsName
+forecast15DayWeathers
+forecast24HourWeather
+forecast24HourWeathers
+forecastKeypoint
+forest
+fourteenthsteatiteHokkai
+fresh
+fritillariamicrantha
+genusEngelmanniaMagyarorszagarabesque
+gppssCom
 groupId
-groupName
-groupType
-home_clearing_photo
-http://app.gzshenyuewl.com
+https://app.gzhutui.com
+https://docs.qq.com/doc/DY05TTkVCTVBQSnFo
+https://docs.qq.com/doc/DY2tzSnFsVERZeXF1
+https://docs.qq.com/doc/DY2xUYXhQcGZUeHhm
+https://docs.qq.com/doc/DY3RrT3RIYVdjdUds
 https://iostesthuyitool.jidiandian.cn
-iOS
-iPhone
-id
-identifier
-idfa
-idfaDigitalUnion
-idfa_s
-idfa_u
-idfv
-index
-innerOrderId
-ios
-iosProductId
-iosStyleId
-isAgreeProtocol
-isLoadedAtt
-lurchInsistScotchpancake
-mainButtonColor
-mainButtonCopywriting
-mainButtonSubscript
-markId
-member
-memberDeadline
-memberEquityIntroduce
-memberIosStyleDto
-msg
-none
-nvgag_shuzilm_cn
-offset
-op
-orderId
-orderInfoList
-orderState
-originTransactionId
-packageName
-pageDescTitle
-pageMaterialId
-pageMaterialUrl
-params
-phoneType
-platform
-prdId
-prdId=
-prd_id
-priceConvert
-priceDimension
-protocolCheck
-qaid
-remark
-remarkName
-renewal
-requestDomin is empty
-requestPath
-retentionPopUpCheck
-s_channel
-sandbox
-sdk_heartbeat
-sdk_version
-sdk_version_name
-sedfasdfasdfad
-sensorList
-service
-serviceCode
-showBuyCount
-signature
-signatureD=
-simulatesAskToBuyInSandbox
-sjql
-skimcoatMuckle
-sort
-startFrom
-state
-styleName
-sysVersion
-ticketChorizema
-timeliness
-timestamp
-topMark
-tranId
-transactionId
-transactionIdentifier
+humanecologyPhthorimaeaoperculellawarmth
+humidity
+idiotredelmdebasement
+inputNeutral
+inputTargetNeutral
+japanese
+jpRLaAabAa9uZ0Qf/LIoeyi6e0z5/VLtL114dNj92iU=
+knowHooverPaddle
+lat
+launchInfo_1
+launchText_1
+lng
+location.fill
+locationAuthAlertAgreeKey
+locationAuthAlertKey
+locationAuthAlertRefuseKey
+magnifyingglass
+max
+maxDesc
+maxTemperature
+mesmeristsubmaxillascull
+min
+minDesc
+minTemperature
+minus
+nameCn
+nameEn
+natural
+nightTemperature
+nightWeatherCustomDesc
+nightWeatherType
+no2
+nostalgia
+o3
+oldPhoto
+open_entrance
+original
+person.crop.circle.badge.questionmark
+person.crop.circle.fill
+phone.fill
+photo.circle.fill
+photo.fill
+physiologicalnystagmusmetabolicacisisOncovin
+pituitaryventilatormunjeet
+pm10
+pm25
+precipitation
+precipitationProbability
+pressure
+publicTime
+pulse
+purchaseSuccessNoti
+radarWeatherBy2Hours
+rankTotal
+ranking
+realTimeWeather
+reverseGeocodeLocationNoti
+royaljellyspasticityMoliere
+ruleofevidencearcsecondgaviiformseabird
+sdsd
+slopAdministerGenusresedaBreadbasket
+smallletterstorytang
+so2
+soft
+sparkles
+streamerusualnessRaphael
+suborderScombroideasandhishockabsorber
+sunriseTime
+sunsetTime
+tab
+tab展示
+tcps
+teal
+temperature
+tiberiusClaudiusNeroCaesarAugustus
+transform.scale
 true
-type
-uaWeb
-unimportantId
-unitPrice
-userAgent
-user_location
-uuid
-uuidString
-ver
-version
-versionCode
-xkX2Ab1P3KuI214V
-xm_lib
-xm_lib_version
-xm_manufacturer
-xm_model
-xm_network_type
-xm_os
-xm_os_version
-xm_screen_height
-xm_screen_width
-zgxMap
-{
-}
-主动取消支付
-会员恢复失败
-会员恢复成功啦，快去使用功能吧～
-会员更新失败，请退出应用重试
-周
-年
-开通会员成功啦，快去使用功能吧～
-无网络
-最终模型数组 =
-月
+ts
+ts_1
+ultravioletDesc
+ultravioletIndex
+userIPLocation
+visibility
+wClear_night_1
+warm
+weatherCustomDesc
+weatherType
+windDirection
+windLevel
+yyyy-MM-dd
+yyyy-MM-dd HH:mm
+yyyy-MM-dd HH:mm:ss
+yyyy.MM.dd EEEE
+yyyy年MM月dd日 EEEE
+zh_CN
+⏰
+⚠️ 已过期
+⚠️ 此事件已过期
+⚠️ 确认清理
+✅ 保存成功
+✨ 美颜相机
+、
+《付费会员服务协议》
+《会员服务协议》
+《自动续费服务协议》
+一键美颜
+上传照片
+与
+东
+东北
+东南
+东经
+东经 
+ --
+东经113°19'0''
+中国
+中雨
+中雪
+为了使用美颜功能，我们需要访问您的相册权限
+为了实时预览美颜效果，我们需要使用相机权限
+为了帮助您清理过期事件和管理日程，我们需要访问您的日历权限
+为了帮助您管理联系人，我们需要访问您的通讯录权限
+事件不存在
+事件详情
+今天
+今日气温
+付费页
+付费页-展示
+会员入口
+会员卡片点击
+会员服务协议
+位置权限被拒绝
+位置获取中...
+使用时授权
+使用期间授权
+保存
+保存失败
+保存成功
+保存水印照片
+修改设备号
+全天
+全部
+关闭按钮
+冰雹
+冷调
+分享
+分享失败
+删除
+删除事件
+删除失败
+删除联系人
+刷新后的地址信息
+刷新定位失败，请稍后再试
+刷新成功
+加载失败
+加载完成
+北
+北 0°
+北0°
+北京市
+北纬
+北纬 
+ --
+北纬 24°7'47''
+北纬24°7'47''
+协议勾选
+南
+南纬
+原图
+去设置
+取消
+受限制
+可爱
+合并
+合并此组
+合并联系人
+合并重复
+合并重复联系人
+同意定位授权
+启动自动弹出
+和
+和风
+图片合成失败
+图片已保存到相册
+基础美颜
+复古
+多云
+多云28℃ 东南风 2 级
+大气压强
+大眼
+大雨
+大雪
+大风
+天气地图
+天气地图tab
+太棒了！没有发现重复的联系人
+太棒了！没有过期事件需要清理 ✨
+女神
+始终授权
+完成
+定位失败
+定位授权弹窗展示
+定位服务已禁用
+定位服务未启用
+定位服务未启用，请在设置中开启定位服务
+定位权限不足
+定位权限未授权
+定位权限被拒绝
+定位权限被拒绝，请在设置中开启定位权限
+定位重新授权弹窗-去设置
+定位重新授权弹窗-取消
+定位重新授权弹窗-展示
+实时天气
+实时天气信息
+实时海拔测量
+实时记录
+实时记录点击
+小清新
+小雨
+小雪
+已开通会员
+已拒绝
+已过期
+广州市白云区白云山风景区
+广州市白云山
+引导流程
+引导页1-展示
+引导页1-点击
+引导页2-展示
+引导页2-点击
+引导页3-展示
+引导页3-点击
+强风
+当前海拔
+微风
+怀旧
+总事件
+恢复订阅
+您的通讯录是空的
+意见反馈
+我已阅读并同意
+我已阅读并同意《付费会员服务协议》和《自动续费服务协议》
+所有功能无限制使用
+批量删除
+拉起支付
+拍摄
+拍照成功
+拒绝定位授权
+指南针
+指南针tab
+排序方式
+提示
+搜索姓名或电话
+支付失败
+支付成功
+放弃支付
+新人引导
+新人首单优----惠¥8，原价¥48/周
+无名称
+无效的URL地址
+无有效数据
+无标题
+无缓存
+无风
+日出时间
+日历
+日历清理
+日系
+日落时间
+时间升序（最早在前）
+时间降序（最新在前）
+明天气温
+显示加载中...
+晴
+晴36℃ 西北风 1 级
+暂无电话号码
+暖调
+暴雨
+暴雪
+更多
+未找到相关联系人
 未知
-未知错误，apple支付失败
-网络不可用
-网络状态未知
-解密失败
-通过以太网或WiFi连接
-通过蜂窝网络连接
-非审核状态
-验单成功
+未知日历
+未知状态
+未知错误
+未确定
+本周
+本周到期
+本月
+权限不足
+权限不足，无法使用指南针旋转功能
+权限被拒绝，切换到北京地图
+柔光
+查天气
+森林
+横屏右
+横屏左
+正面朝上
+正面朝下
+氧气含量
+水印相机-保存
+水印相机-分享
+水平仪
+水平仪tab
+水的沸点
+沙尘
+没有过期事件需要清理
+测海拔
+测海拔tab
+浮沉
+添加滤镜，美白
+清新
+清理完成
+清透
+清除应用缓存
+温度
+湿度
+滤镜
+点击了 付费会员服务协议
+点击了 自动续费协议
+点击了 自动续费服务协议
+点击继续
+烈风
+照片保存成功
+照片已保存到相册
+版本 1.0.0
+版本号
+狂风
+用户协议
+用户协议被点击
+用户反馈
+电影
+电影感
+电话
+瘦脸
+瘦鼻
+白净
+相机不可用
+相机未初始化
+短脸
+确定
+确认
+确认删除
+磁力计不可用
+磨皮
+稍后再说
+空气质量
+立刻开通
+立刻解锁
+竖屏
+竖屏倒置
+精准方向定位
+精密水平检测
+紫外线
+红润
+继续按钮
+继续编辑
+美型
+美白
+美颜
+美颜相机
+美颜编辑
+老照片
+联系人不存在
+联系人管理
+联系人详情
+胶片
+自动续费服务协议
+自然
+获取位置信息超时
+获取相册权限-不同意
+获取相册权限-同意
+获取相机权限-不同意
+获取相机权限-同意
+被拒绝
+裁剪
+西
+西北
+西南
+西经
+解锁功能后使用
+触摸事件 - 隐藏当前弹窗
+订阅页
+订阅页-展示
+订阅须知
+设备不支持闪光灯
+设置
+设置页会员卡片
+设置页展示
+该时间段没有事件
+请在设置中允许访问相册
+请在设置中允许访问相机以使用实时记录功能
+请在设置中开启定位服务
+请在设置中开启定位服务以使用此功能
+请在设置中开启定位权限以使用指南针功能
+请在设置中开启定位权限以使用此功能
+请在设置中开启相机权限
+超强风
+输入密码
+过期
+返回
+返回首页
+选择相册
+通讯录
+重复联系人
+重新授权
+重置
+重置所有设置
+锐化
+闪光灯控制失败
+闪光灯错误
+阴天
+隐私协议
+隐私协议被点击
+雨夹雪
+雷电
+雷雨
+雾
+雾霾
+需要使用相机
+需要定位权限
+需要相机权限
+需要访问日历
+需要访问相册
+需要访问通讯录
+青橙
+页面加载失败，请检查网络连接
+风力较弱
+风向
+黑金
+，
+👁 按住查看原图
+📅
+📆
+📍
+📝
+📷 拍照
+🔄 TSRecordCameraView 转发刷新事件
+🔄 TSRecordViewController 接收到刷新事件
+🔄 位置信息更新完成
+🔄 刷新按钮被点击了
+🔄 开始更新位置信息
+🔍 Tab按钮位置调试:
+🖼️ 从相册选择
+🗑️ 一键清理过期事件
