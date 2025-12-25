@@ -1,1 +1,117 @@
-LaunchImage ----> duc_sadden_quirk_powerloom
+Frame 844 ----> duc_fallaway_schistosoma_mountaindevil
+Rectangle 206 ----> duc_answer_genuspicea_froelichia
+精准记录运动轨迹 ----> duc_thirst_sleuthing_flourmill
+Frame 846 ----> duc_setback_borsht
+Frame 845 ----> duc_getback_carveout_scheduledmaintenance
+刮风下雨时间预报 ----> duc_bring_nut
+Frame 195 ----> duc_guffaw_huaraches
+Frame 858 ----> duc_ubleteam_dapple_tang_austerity
+locationGuide ----> duc_hail_trickle_tatu_electronicvoltmeter
+Rectangle 204 ----> duc_jestat_amnesty_issue
+Frame 846 ----> duc_dip_amsinckiagrandiflora
+Frame 845 ----> duc_evade_trip_tailspin
+Frame 844 ----> duc_bevel_prologuize_radicalhysterectomy_rutherfordbirchardhayes
+Container ----> duc_intrude_chalcidfly
+Button ----> duc_imbrue_slug_reasonablecare
+Container ----> duc_stash_swoon_leviathan_selfimprovement
+Container ----> duc_predestine_samolus_holocephalan
+Container ----> duc_wallup_hypotheticalcreature
+Container ----> duc_stop_angosturabark
+Container ----> duc_cave_bedrest_rotaryconverter
+Container ----> duc_correct_collar_topbanana
+Container ----> duc_square_hide
+Container ----> duc_perceive_miff_axhandle
+Button ----> duc_vroom_jacobsstaff_plantlouse
+record_album_icon ----> duc_mix_coffer
+record_camera_icon ----> duc_summarize_fourpounder
+record_refresh_icon ----> duc_gildthelily_steamroll_latrodectus_subclassanapsida
+record_switch_camera_icon ----> duc_homogenise_setshot
+record_location_icon ----> duc_absorb_bard_lefty
+record_flashlight ----> duc_pick_infuscate_violist
+record_camera_bg ----> duc_bringhomethebacon_pestle_distressfulness_sauropod
+record_img_02_unable ----> duc_prink_wassermann_mystifier
+record_back_arrow ----> duc_fossilize_thespis
+record_calendar_icon ----> duc_yoke_provide_associationtheory_othmani
+Ellipse 137 ----> duc_pinwn_news
+Frame ----> duc_takethestand_preach_chaetontidae_norbertwiener
+Frame 839 ----> duc_inscribe_sully_foreground_marc
+Frame ----> duc_awaken_siccative_oldstyle
+Polygon 2 ----> duc_poison_ovenware
+Frame ----> duc_hiveaway_cairo_state
+Frame ----> duc_settle_fallover_incin_bias
+myLocationPin ----> duc_subvent_resign_hydroxybenzoicacid
+Polygon 3 ----> duc_playhooky_hydraulicpress
+altitude_img_02 ----> duc_lashout_dasheen_undershrub
+Property 1=冰雹 ----> duc_symbolise_scotchtape_canvass_cupid
+Property 1=雾 ----> duc_suit_quadrant_acrocarp
+Property 1=晴天 ----> duc_return_return_furnish_athenaeum
+Property 1=晴天（夜 ----> duc_mechanise_indispose_familyarcidae_alluvialplain
+Property 1=雷阵雨 ----> duc_entreat_popout_americanwormseed_gumbenjamin
+Property 1=雷电 ----> duc_calve_shortness
+Property 1=下雪 ----> duc_takecare_moisturise_stroma_psychicenergy
+Property 1=多云 ----> duc_crackle_anagrammatize_borrowingcost_softwater
+Property 1=沙尘 ----> duc_heel_port_genuspolistes
+Property 1=大雨 ----> duc_bombout_erode_epanos
+Property 1=大风 ----> duc_apprize_singlenucleotidepolymorphism
+setting_img_03 ----> duc_contract_felisyagouaroundi_charnelhouse
+reset_settings_icon ----> duc_couple_peshmerga_nationaloceanicandatmosphericadministration
+privacy_agreement_icon ----> duc_focus_compound_bramble
+arrow_right ----> duc_ignore_digest_sorrowfulness_godswill
+Frame 867 ----> duc_bodysurf_bottleneck_earthscrust
+clear_cache_icon ----> duc_internalise_equatorialguinea_sniffle
+user_agreement_icon ----> duc_encounter_textilescrewpine
+arrow_right_gold ----> duc_serenade_note_razzle
+vip_member_bg ----> duc_perch_dissolubility
+back_arrow ----> duc_pinwn_chase_daumier_psychoactivedrug
+提示弹窗 ----> duc_postulate_genuscariama_derriselliptica
+vip_non_member_bg ----> duc_uncloak_stickle_tincan_ublereed
+Frame 872 ----> duc_getonto_riposte_sandbur
+Frame 881 ----> duc_reenact_wrap_philology_gshit
+Frame 882 ----> duc_stew_cholestasis
+Vector ----> duc_tearaway_rissa
+Frame 874 ----> duc_maintain_moonon_octad
+Union ----> duc_exorcize_pelt_carlxvigustaf_genusprionotus
+返回按钮 ----> duc_vociferate_intricacy
+Frame 880 ----> duc_deaminate_stain_akko
+Frame 879 ----> duc_type_articulate_must
+Vector ----> duc_logout_operatingcapability_littledictionary
+Vector ----> duc_booze_assessment_top
+Frame 873 ----> duc_wreathe_pine_betulanigra
+CheckBox ----> duc_respect_benzol
+返回按钮 ----> duc_halve_terrorize_courtelle
+副按钮 ----> duc_explode_unchain_keratectasia
+Frame 195 ----> duc_payback_confidence_romaic
+Frame 858 ----> duc_strikeablow_strasbourg
+Frame ----> duc_record_clove_peperomia
+Frame ----> duc_cheque_gamut_harvestmoon
+Frame 852 ----> duc_tame_matakam
+Frame 858 ----> duc_induct_gauge_sevensome_distaste
+CheckBox ----> duc_bias_countoff_ignisfatuus
+Frame 195 ----> duc_admit_sear_controlrod
+返回按钮 ----> duc_frighten_samarkand
+Frame 195 ----> duc_pain_gatekeeper_bareboating
+Frame 53 ----> duc_scrutinise_buffalonut
+Frame 858 ----> duc_shift_goalong_threewayswitch
+Frame 195 ----> duc_bind_ride_radioreflector
+返回按钮 ----> duc_pressure_kimberlite_shenanigan
+Frame 855 ----> duc_say_patio
+Frame 858 ----> duc_nigrify_violate_tastetester_spermwhale
+副按钮 ----> duc_browbeat_peopleofcolour_parochialism
+Frame 858 ----> duc_shoutout_keepinline_kitchenpolice
+Frame 858 ----> duc_lash_signalise_accomplishment_ravennagrass
+Image ----> duc_sounff_languish_bombblast
+Frame 625 ----> duc_browse_submission
+Frame 624 ----> duc_fancy_exacerbate_akhenaton_hurling
+compass_img_07 ----> duc_restrengthen_purl_coreference
+compass_img_06 ----> duc_reduce_siemens
+compass_img_04 ----> duc_rise_play_arioso
+Frame 632 ----> duc_defaulton_rumpusroom
+compass_img_05 ----> duc_cite_headshop_ninepin
+compass_img_03 ----> duc_counterbalance_conkout_raingage_cardioid
+unlock_img_02 ----> duc_get_uropsilussoricipes_diningtable
+Frame 194 ----> duc_shape_pharyngeal
+viptag ----> duc_turn_mek
+返回按钮 ----> duc_see_rave_synecche_bacchanalia
+setting_img_09 ----> duc_outrival_makeclean_trumpeter_richness
+Property 1=ON ----> duc_splash_deposit_familycheloniidae_generalrelativitytheory
+Frame 509 ----> duc_tamper_anapsidreptile

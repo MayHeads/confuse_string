@@ -17,6 +17,7 @@ from ios_encry_string.z_enc_combin import z_enc_combin
 
 from ios_file_handle.z_file_combin import z_replace_file, z_gen_process
 from ios_pbx.z_pbx import z_pbx_combin_all
+from ios_asset_deal.z_asset_combin import z_asset_combin
 
 
 
@@ -90,8 +91,10 @@ def insert_action():
 if __name__ == '__main__':
     
     # 生成 pbx 文件
-    z_pbx_combin_all()
-
+    # z_pbx_combin_all()
+    
+    # 生成 asset 文件
+    z_asset_combin()
 
     # # 替换固定名字
     # z_replace_fix_form()
