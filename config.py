@@ -1,17 +1,17 @@
 
 # swiftsdk项目
-project_path = "/Users/jiangshanchen/TTRouSDK"
+# project_path = "/Users/jiangshanchen/TTRouSDK"
 
 # flutter项目
-# project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
+# project_path = "/Users/jiangshanchen/TTRouSDK"
 
-# project_path = "/Users/jiangshanchen/scanner3"
+project_path = "/Users/jiangshanchen/Desktop/iaa/GPPLocaCom"
 
 
 # 忽略文件夹  <忽略的swift文件夹>
 custom_ignore_folders = [
     'Pods', 'build', 'DerivedData', '.git', 
-    'Tests', 'UnitTests', 'UITests'
+    'Tests', 'UnitTests', 'UITests', 'LocalLib'
 ]
 
 ### 忽略swif文件  <忽略的swift文件>
@@ -68,8 +68,8 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['文档', '扫描', '拍证件照', '翻译', '文件管理', '合同']  # 主题关键字列表
-NUM_FILES = 60  # 要生成的文件数量
+THEME_KEYWORDS = ['指南针', '工具', '美化', '滤镜', '定位', '海拔', 'gps']  # 主题关键字列表
+NUM_FILES = 120  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>
@@ -78,13 +78,13 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 
 
 # pod 文件名相关混淆
-# ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
-ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
+ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
+# ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
 
-NEW_POD_FILE_NAME = "Sunshine"
+NEW_POD_FILE_NAME = "GPPLocaComBaseSDK"
 
-# NEW_POD_FILE_NAME = "YetRateSDK"
+# NEW_POD_FILE_NAME = "GPPLocaComBaseSDK"
 
 
 # 是否是pod 混淆模式
-IS_POD_CONFUSE_MODE = True
+IS_POD_CONFUSE_MODE = False

@@ -4,15 +4,15 @@
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
-# ROOT_PROJECT_DIR = "/Users/jiangshanchen/scanner3/ios"
+ROOT_PROJECT_DIR = "/Users/jiangshanchen/Desktop/iaa/GPPLocaCom"
 
-ROOT_PROJECT_DIR = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk/ios"
+# ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
 
 
 
 # 项目Scheme，用来匹配workspace，资源代码的位置
-PROJECT_SCHEME = "TTRouSDK"
+PROJECT_SCHEME = "GPPLocaCom"
 # PROJECT_SCHEME = "IncomingCall"
 # PROJECT_SCHEME = "Fingertip"
 # PROJECT_SCHEME = "qianyan" 
@@ -68,7 +68,10 @@ IGNORE_CODE_DIRECTORY = [
     # 忽略第三方库目录
     "ThirdParty",
     "External",
-    "Vendor"
+    "Vendor",
+    "LocalLib",  # 忽略混淆sdk的时候需要删除掉这个
+    'AAT',
+    'AAB',
 ]
 # 忽略assert不操作的目录
 IGNORE_ASSERT_DEFAULT_DIRECTORY = [".colorset", ".appiconset", ".imageset"]

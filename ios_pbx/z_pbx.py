@@ -1,4 +1,4 @@
-from pbx import z_pbx_combin
+from .pbx import z_pbx_combin
 
 
 def z_pbx_combin_all():
