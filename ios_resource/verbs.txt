@@ -3073,7 +3073,7 @@ come
 develop
 transpire
 recur
-repeat
+repeatWord
 iterate
 cycle
 gooff
@@ -8727,12 +8727,12 @@ characterise
 disambiguate
 define
 redefine
-repeat
+repeatWord
 echo
 cuckoo
 reecho
 parrot
-repeat
+repeatWord
 reiterate
 ingeminate
 iterate
@@ -15564,7 +15564,7 @@ tweedle
 chord
 reprise
 reprize
-repeat
+repeatWord
 recapitulate
 pipe
 slur
@@ -15617,7 +15617,7 @@ tongue
 duplicate
 reduplicate
 uble
-repeat
+repeatWord
 replicate
 replicate
 copy
@@ -23416,7 +23416,7 @@ makeapoint
 makesure
 ply
 apply
-repeat
+repeatWord
 takeover
 rest
 hibernate

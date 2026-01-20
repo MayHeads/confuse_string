@@ -10,7 +10,7 @@ ignore_keywords = [
     "import", "init", "inout", "let", "operator", "precedencegroup",
     "protocol", "struct", "subscript", "typealias", "var", "fileprivate",
     "internal", "private", "public", "static", "defer", "if", "guard",
-    "do", "repeat", "else", "for", "in", "while", "return", "break",
+    "do", "repeatWord", "else", "for", "in", "while", "return", "break",
     "continue", "fallthrough", "switch", "case", "default", "where",
     "catch", "throw", "as", "Any", "false", "is", "nil", "super", "self",
     "Self", "true", "try", "throws", "case"

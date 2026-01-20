@@ -68713,7 +68713,7 @@ cardiaccycle
 Carnotcycle
 Carnotsidealcycle
 pass
-repeat
+repeatWord
 repetition
 sequence
 cycle

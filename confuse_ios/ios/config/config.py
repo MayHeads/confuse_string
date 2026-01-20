@@ -4,10 +4,9 @@
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
-ROOT_PROJECT_DIR = "/Users/jiangshanchen/Desktop/iaa/GPPLocaCom"
+ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
-
 
 
 
@@ -69,7 +68,7 @@ IGNORE_CODE_DIRECTORY = [
     "ThirdParty",
     "External",
     "Vendor",
-    "LocalLib",  # 忽略混淆sdk的时候需要删除掉这个
+    # "LocalLib",  # 忽略混淆sdk的时候需要删除掉这个
     'AAT',
     'AAB',
 ]

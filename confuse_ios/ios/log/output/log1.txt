@@ -1,7 +1,7 @@
-混淆项目路径：/Users/jiangshanchen/Desktop/iaa/GPPLocaCom
+混淆项目路径：/Users/jiangshanchen/TTRouSDK
 
 
 
 
 
-混淆项目完成，总用时431.7907438278198
+混淆项目完成，总用时105.2887351512909

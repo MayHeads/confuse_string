@@ -18,11 +18,11 @@ from ios_encry_string.z_enc_combin import z_enc_combin
 from ios_file_handle.z_file_combin import z_replace_file, z_gen_process
 
 # 替换pod名字
-NEW_POD_FILE_NAME = "GPPLocaComBaseSDK"
+NEW_POD_FILE_NAME = "OuterWalkBaseSDK"
 # 生成处理文件 swiftUI文件
-THEME_KEYWORDS = ["指南针", "工具", "美化", "滤镜", "定位", "海拔", "gps"]  # 主题关键字列表
+THEME_KEYWORDS = ["指南针", "日历", "位置", "搜索", "节气", "天气", "24小时"]  # 主题关键字列表
 # 要生成的文件数量
-NUM_FILES = 50  # 要生成的文件数量
+NUM_FILES = 65  # 要生成的文件数量
 # 项目路径
 project_path = "/Users/jiangshanchen/TTRouSDK"
 
@@ -98,6 +98,9 @@ if __name__ == '__main__':
     
     # 更新配置文件
     update_config_files()
+
+    # 测试修改是否正常修改
+    exit();
 
     # 替换pod名字
     change_pod_ex()
