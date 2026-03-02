@@ -27,6 +27,7 @@ $wifi
 /tool-bridging-service/api/tianshu/ios/quarantine/appAttribution
 /tool-bridging-service/api/tianshu/ios/quarantine/reportStateV2
 /tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataBatch
+/tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataV2
 /tool-bridging-service/api/tianshu/ios/quarantine/verifyOrderV2
 /tool-flow-service/api/payMember/getPayMemberInfo/v2
 /tool-flow-service/api/payMember/ios/queryIosCommodityInfo/v2
@@ -85,13 +86,14 @@ Setting VIP monitor...
 Tool-Auth
 Transaction verification failed.
 Transaction verified successfully.
+UP.doNotRemindGuidge
 Unknown
 WIFI
-[ModernenglishBowlerShipbuilder-Error]
-[ModernenglishBowlerShipbuilder-Error] deviceId is not allow nil
-[ModernenglishBowlerShipbuilder-Error] prdId is not allow nil
-[ModernenglishBowlerShipbuilder-Error] requestDomin is not allow nil
-[ModernenglishBowlerShipbuilder-RedactJapanesearchipelagoGroundberry]
+[KayserfleischerringDiscontinuance-Error]
+[KayserfleischerringDiscontinuance-Error] deviceId is not allow nil
+[KayserfleischerringDiscontinuance-Error] prdId is not allow nil
+[KayserfleischerringDiscontinuance-Error] requestDomin is not allow nil
+[KayserfleischerringDiscontinuance-SciencelabTrigram]
 abValue
 action1 -->
 activityChannel
@@ -118,7 +120,8 @@ click
 closeButtonDelay
 closeButtonTransparency
 code
-com.suosuo.tracker.fearDisaccordHavelDragontree
+com.suosuo.tracker.explicateCrabapplejelly
+com.ttsdk.decrypt.hauntFloodinRazorbill
 commoditNum
 commodityBgColor
 commodityDtoList
@@ -146,12 +149,14 @@ discountPriceDesc
 display
 en_url
 eventName
+excludeGettingevenTenpence
 extSuosuoraDescTransparency:
 extraDesc
 extraDescTransparency
 firstDeductionTime
 freeTrialCheck
 goodsInfo
+group.com.feeling.test.eradica
 groupId
 groupName
 groupType
@@ -210,8 +215,9 @@ remarkName
 renewal
 requestDomin is empty
 requestPath
+retailConsentSlicer
 retentionPopUpCheck
-ridehorsebackBirthcontrolpillPenknife
+rightsDesc
 s_channel
 sandbox
 sdk_heartbeat
@@ -220,17 +226,16 @@ sdk_version_name
 sensorList
 service
 serviceCode
+setPsettichthysmelanostichus
 showBuyCount
 signature
 signatureD=
 simulatesAskToBuyInSandbox
 sjql
-slamDismantleSocialoccasion
 sort
 startFrom
 state
 styleName
-subordinateSassMagnificence
 sysVersion
 test
 timeliness

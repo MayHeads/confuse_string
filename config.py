@@ -3,27 +3,22 @@
 # project_path = "/Users/jiangshanchen/TTRouSDK"
 
 # flutter项目
-project_path = "/Users/jiangshanchen/TTRouSDK"
+project_path = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
 # project_path = "/Users/jiangshanchen/TTRouSDK"
 # project_path = "/Users/jiangshanchen/TTRouSDK"
 
 # 忽略文件夹  <忽略的swift文件夹>
-custom_ignore_folders = [
-    'Pods', 'build', 'DerivedData', '.git', 
-    'Tests', 'UnitTests', 'UITests',
-    #  'LocalLib',
-]
+custom_ignore_folders = ['Pods', 'build', 'DerivedData', '.git', 'Tests', 'UnitTests', 'UITests', '1234']
 
-### 忽略swif文件  <忽略的swift文件>
+### 忽略swift文件  <忽略的swift文件>
 custom_ignore_swift_files = [
     # 'AppDelegate.swift',
     # 'SceneDelegate.swift', 
     # 'main.swift'
 ]
 
-
 ### asset 浅醉 <asset 前缀>
-asset_prefix = "xyk"
+asset_prefix = 'xyk'
 
 
 ASSET_IMAGE_CONFIG = {
@@ -68,7 +63,7 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['指南针', '日历', '位置', '搜索', '节气', '天气', '24小时']  # 主题关键字列表
+THEME_KEYWORDS = ['相机', '拍照', '更换壁纸', '相册', '选择']  # 主题关键字列表
 NUM_FILES = 65  # 要生成的文件数量
 
 
@@ -78,13 +73,15 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 
 
 # pod 文件名相关混淆
-ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
-# ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
+# ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
+ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
+# ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
 
 # NEW_POD_FILE_NAME = "OuterWalkBaseSDK"
 
-NEW_POD_FILE_NAME = "OuterWalkBaseSDK"
+# NEW_POD_FILE_NAME = 'TingsSDK'
+NEW_POD_FILE_NAME = 'DFShowSDK'
 
 
 # 是否是pod 混淆模式
-IS_POD_CONFUSE_MODE = True
+IS_POD_CONFUSE_MODE = False

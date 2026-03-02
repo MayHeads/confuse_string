@@ -23,7 +23,7 @@ from image_elastic_tool import elastic_demo
 
 # ==================== 统一配置参数 ====================
 # 通用配置参数（所有工具共用）
-COMMON_FOLDER_PATH = '/Users/jiangshanchen/Desktop/iaa/GPPLocaCom/GPPLocaCom/Resource/Assets.xcassets'  # 要处理的文件夹路径
+COMMON_FOLDER_PATH = '/Users/jiangshanchen/drive_test_ex/assets/signs'  # 要处理的文件夹路径
 COMMON_PRESERVE_TRANSPARENCY = True  # 是否保持透明区域不变
 COMMON_BACKUP = False                # 是否创建备份文件
 COMMON_RECURSIVE = True              # 是否递归查找子文件夹
@@ -36,7 +36,7 @@ INTERPOLATION = 'BICUBIC'            # 插值方法 ('NEAREST', 'BILINEAR', 'BIC
 
 
 # 滤镜工具配置
-FILTER_TYPE = 'vintage'               # 滤镜类型 ('red_black', 'sepia', 'vintage', 'high_contrast', 'invert', 'grayscale')  invert不好用
+FILTER_TYPE = 'high_contrast'               # 滤镜类型 ('red_black', 'sepia', 'vintage', 'high_contrast', 'invert', 'grayscale')  invert不好用
 FILTER_STRENGTH = 3.0                # 滤镜强度 (0.1-3.0)   这个参数生效
 
 # 模糊工具配置

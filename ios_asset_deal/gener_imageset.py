@@ -248,6 +248,8 @@ def asset_path():
 
 def entry_gener_imageset():
     asset_root_path = asset_path()
+    print("asset_root_path:---->")
+    print(asset_root_path)
     
     # 统计现有的 imageset 数量
     existing_count = count_existing_imagesets(asset_root_path)

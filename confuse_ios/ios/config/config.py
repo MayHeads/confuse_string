@@ -4,20 +4,20 @@
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
-ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
+ROOT_PROJECT_DIR = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
 
 
 # 项目Scheme，用来匹配workspace，资源代码的位置
-PROJECT_SCHEME = "GPPLocaCom"
+PROJECT_SCHEME = "ttfluttersdk"
 # PROJECT_SCHEME = "IncomingCall"
 # PROJECT_SCHEME = "Fingertip"
 # PROJECT_SCHEME = "qianyan" 
 
 # 目录前缀
-ADD_DIRECTORY_PREFIX = "QY_"
+ADD_DIRECTORY_PREFIX = "TT_"
 # 文件前缀
 ADD_FILE_PREFIX = "QY_"
 

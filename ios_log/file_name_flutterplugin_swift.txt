@@ -3,9 +3,9 @@
 
 注意：.h 和 .m 文件是成对出现的，使用相同的新名字
 
-TtFlutterSdkPluginExtension1_pkm -> TetralogyAlanmathisonturingWaybill
-TtFlutterSdkPluginPlu_pkm -> BassAcroporaGenusbocconia
-BDManagerkf_pkm -> FamilytupaiidaeUbiety
-GDManagerkf_pkm -> ChervilEngineeringRoentgenography
-GDTActionBridgekf_pkm -> HalflifeBeautybush
-DelegateHelper_pkm -> AmahHeronsbill
+TtFlutterSdkPluginExtension1_pkm -> BeefSearch
+TtFlutterSdkPluginPlu_pkm -> StiltploverPlowwright
+BDManagerkf_pkm -> PhonecardUltrahighfrequency
+GDManagerkf_pkm -> DamsonplumPieterbrueghelKb
+GDTActionBridgekf_pkm -> ExpositionKentishShortsleep
+DelegateHelper_pkm -> FigureInstructionSeptemberelm

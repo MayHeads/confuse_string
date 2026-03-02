@@ -55,7 +55,6 @@ app_version_name
 application/json
 attributionToken
 b03a69af45d64500b5d2e0f6f1a945a0
-b763defb600f1d3df48e7b8291600790
 b_channel
 bdGetAttributionToken
 bdGetDuIdfa
@@ -275,6 +274,7 @@ zgxMap
 获取vip状态数据
 获取商品信息失败
 获取商品信息结束
+警告: 请求参数获取超时
 购买成功临时像后台发送临时信号
 购买成功临时像后台发送临时信号失败
 购买成功临时像后台发送临时信号成功

@@ -89,6 +89,8 @@ def insert_action():
 
 
 if __name__ == '__main__':
+    z_gen_process()
+    exit();
     
     # 生成 pbx 文件
     z_pbx_combin_all()

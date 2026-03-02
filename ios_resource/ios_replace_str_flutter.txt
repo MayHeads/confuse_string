@@ -24,18 +24,23 @@ ScanShengCeTrackService_pkm
 ScanTrackService_pkm
 StartSubscribeInfo_pkm
 _AppGlobalManagerParams_pkm
+_RequestParamsCache_pkm
 _appStartTime_pkm
 _backgroundAt_pkm
+_cachedDeviceId_pkm
 _channel_pkm
 _coldStartSent_pkm
 _dataBase64_pkm
 _devIdKey_pkm
+_deviceIdCompleter_pkm
 _eventCache_pkm
 _formatError_pkm
 _generateRandomString_pkm
+_handleRequest_pkm
 _handleRestorePurchasesobs_pkm
 _heartbeatTimer_pkm
 _initAppGlobalManagerParams_pkm
+_initCompleter_pkm
 _initialized_pkm
 _instance_pkm
 _internal_pkm
@@ -82,12 +87,15 @@ bottomMark_pkm
 box2_pkm
 bundleIdentifier_pkm
 bytes_pkm
+cache_pkm
 cancelToken_pkm
 changeAgreeToTermsobs_pkm
 charCodes_pkm
 chars_pkm
 checkCameraAndPhotoPermission_pkm
 ciphertext_pkm
+clearCache_pkm
+clearDeviceIdCache_pkm
 clearPendingPurchasesobs_pkm
 closeButtonDelay_pkm
 closeButtonDelayobs_pkm
@@ -143,6 +151,7 @@ discountCommodityTag_pkm
 discountPriceDesc_pkm
 disposeobs_pkm
 duIDFA_pkm
+duIdfaMap_pkm
 duIdfaResult_pkm
 dynamicParams_pkm
 e_pkm
@@ -169,6 +178,7 @@ firstPeriodType_pkm
 firstStart_pkm
 freeTrialCheck_pkm
 fromJson_pkm
+futures_pkm
 gdGetCaid_pkm
 gdOpenUrl_pkm
 generateRequestSignature_pkm
@@ -181,6 +191,7 @@ getDuIdfa_pkm
 getIDfa_pkm
 getIdfaobs_pkm
 getIdfvobs_pkm
+getInstance_pkm
 getRequest_pkm
 getSystemIDFA_pkm
 getVipInfoobs_pkm
@@ -269,7 +280,6 @@ obsConnectivityResult_pkm
 obsCreate_pkm
 obsData_pkm
 obsDeviceId_pkm
-obsDeviceInfoPlugin_pkm
 obsDio_pkm
 obsDuIdfaResult_pkm
 obsEnableLogger_pkm
@@ -366,6 +376,7 @@ pageDescTitle_pkm
 pageMaterialUrl_pkm
 pageTitle_pkm
 paramsBase64String_pkm
+paramsCache_pkm
 params_pkm
 parsedData_pkm
 parsedResponse_pkm
@@ -412,7 +423,9 @@ responseModel_pkm
 response_pkm
 restorePurchasesobs_pkm
 restoredOrderobs_pkm
+resultDevID_pkm
 result_pkm
+results_pkm
 retentionPopUpCheck_pkm
 secondEncData_pkm
 selectPriceobs_pkm
@@ -445,6 +458,7 @@ suID_pkm
 subscribingStatus_pkm
 success_pkm
 suidfa_pkm
+systemIdfa_pkm
 t_pkm
 timeliness_pkm
 timer_pkm
