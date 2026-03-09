@@ -3,9 +3,11 @@
 # project_path = "/Users/jiangshanchen/TTRouSDK"
 
 # flutter项目
-project_path = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
+project_path = '/Users/jiangshanchen/Desktop/pencial/LaiShow/laishow_app/ios'
 # project_path = "/Users/jiangshanchen/TTRouSDK"
-# project_path = "/Users/jiangshanchen/TTRouSDK"
+# project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
+
+
 
 # 忽略文件夹  <忽略的swift文件夹>
 custom_ignore_folders = ['Pods', 'build', 'DerivedData', '.git', 'Tests', 'UnitTests', 'UITests', '1234']
@@ -63,8 +65,8 @@ REPLACE_IGNORE_FILE_NAMES = {
 }
 
 # 生成swif文件的主题和数量
-THEME_KEYWORDS = ['相机', '拍照', '更换壁纸', '相册', '选择']  # 主题关键字列表
-NUM_FILES = 65  # 要生成的文件数量
+THEME_KEYWORDS = ['来电秀', '铃声', '图片', '视频', '结果']  # 主题关键字列表
+NUM_FILES = 50  # 要生成的文件数量
 
 
 # 混淆字符串key <暂时用随机生成的>
@@ -72,15 +74,15 @@ CONFUSE_KEY = "0C32C2KT2FE79YKC"
 
 
 
-# pod 文件名相关混淆
+# pod 文件名相关混淆    
 # ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-ORIGIN_POD_FILE_NAME = "ttfluttersdk_plugin"
+ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
 # ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
 
 # NEW_POD_FILE_NAME = "OuterWalkBaseSDK"
 
 # NEW_POD_FILE_NAME = 'TingsSDK'
-NEW_POD_FILE_NAME = 'DFShowSDK'
+NEW_POD_FILE_NAME = 'MCCleanSDK'
 
 
 # 是否是pod 混淆模式

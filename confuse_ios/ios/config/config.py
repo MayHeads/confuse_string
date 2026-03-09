@@ -4,7 +4,7 @@
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 
-ROOT_PROJECT_DIR = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
+ROOT_PROJECT_DIR = '/Users/jiangshanchen/Desktop/pencial/LaiShow/laishow_app/ios'
 
 # ROOT_PROJECT_DIR = "/Users/jiangshanchen/TTRouSDK"
 

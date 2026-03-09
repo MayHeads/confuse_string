@@ -13,15 +13,16 @@ sys.path.insert(0, project_root)
 # 修改下面的变量值后，运行脚本会自动同步到 config.py 和 ios/config.py
 
 # 替换pod名字
-NEW_POD_FILE_NAME = "DECWeaSDK"
+NEW_POD_FILE_NAME = "MCCleanSDK"
 # 生成处理文件 swiftUI文件
-THEME_KEYWORDS = ["天气", "预报", "地图", "位置", "水平"]
+THEME_KEYWORDS = ["来电秀", "铃声", "图片", "视频", "结果"]
 # 要生成的文件数量
-NUM_FILES = 65
+NUM_FILES = 50
 # 项目路径 (同时会同步到 ios/config.py 的 ROOT_PROJECT_DIR)
-project_path = "/Users/jiangshanchen/TTRouSDK"
+# project_path = "/Users/jiangshanchen/TTCleanerSDK"
+project_path = '/Users/jiangshanchen/Desktop/pencial/LaiShow/laishow_app/ios'
 # 是否是pod混淆模式
-IS_POD_CONFUSE_MODE = True
+IS_POD_CONFUSE_MODE = False
 
 ORIGIN_POD_FILE_NAME = "MyFirstLibrary"
 
@@ -169,6 +170,9 @@ if __name__ == '__main__':
     # 先更新配置文件（必须在import依赖config的模块之前）
     update_config_files()
 
+
+
+
     # 测试修改是否正常修改
     # exit()
 
@@ -179,10 +183,10 @@ if __name__ == '__main__':
     from ios_encry_string.z_enc_combin import z_enc_combin
     from ios_file_handle.z_file_combin import z_replace_file, z_gen_process
 
-    # z_gen_process()
-    # execute_pod_install()
+    z_gen_process()
+    execute_pod_install()
 
-    # exit()
+    exit()
 
 
     # 替换pod名字

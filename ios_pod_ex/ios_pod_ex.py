@@ -353,7 +353,7 @@ if __name__ == '__main__':
     print(f"开始替换项目中的 {fix_phase} 为 {new_phase}")
     delete_empty_folders()
     # change_pod_ex()
-    change_pod_ex("Runner", "Sunshine")
+    change_pod_ex("Runner", "LessShow")
 
 
     print(f"替换完成")
