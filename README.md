@@ -15,7 +15,19 @@
 
 1. 确保已安装 Python 3.x 和必要的依赖：
 ```bash
-pip install pycryptodome pbxproj
+python3 -m pip install -r requirements.txt
+```
+
+如果你需要运行 `confuse_ios` 里的 Swift / OC 插入和解析逻辑，还需要额外准备系统工具：
+
+- Xcode Command Line Tools
+- `sourcekitten`
+- `libclang`（`clang` Python 包只提供绑定，底层动态库需要系统安装）
+
+另外，`nltk` 相关脚本会使用 `wordnet` 语料；首次使用时如果缺失，需要执行：
+
+```bash
+python3 -m nltk.downloader wordnet omw-1.4
 ```
 
 2. 运行字符串收集：

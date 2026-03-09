@@ -1,0 +1,24 @@
+# Core dependencies
+chardet==3.0.4
+click>=8.0
+lxml>=4.9
+nltk>=3.8
+numpy>=1.24
+pbxproj==3.5.0
+Pillow>=10.0.0
+pycryptodome>=3.20
+pycparser>=2.21
+requests>=2.24.0
+
+# Image / asset processing
+matplotlib>=3.7
+opencv-python>=4.8
+scikit-image>=0.22
+tinify>=1.6.0
+
+# Objective-C / legacy tooling
+clang>=14.0
+
+# UI / packaging helpers used by legacy scripts
+guizero>=1.5.0
+pyinstaller>=6.4.0
