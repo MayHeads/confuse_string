@@ -183,10 +183,6 @@ if __name__ == '__main__':
     from ios_encry_string.z_enc_combin import z_enc_combin
     from ios_file_handle.z_file_combin import z_replace_file, z_gen_process
 
-    z_gen_process()
-    execute_pod_install()
-
-    exit()
 
 
     # 替换pod名字
