@@ -151,3 +151,13 @@ python3 -m buness.cli run tt_route_sdk
 
 1. 改 [buness/profiles.py](/Users/jiangshanchen/confuse_string/buness/profiles.py) 对应 profile 的 `overrides`
 2. 直接跑对应脚本
+
+
+
+## 常用命令
+
+### 运行原生sdk混淆
+python3 -m buness.cli run tt_route_sdk
+
+### 运行flutter sdk混淆
+python3 -m buness.cli run tt_route_sdk_flutter
