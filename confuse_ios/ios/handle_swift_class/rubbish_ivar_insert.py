@@ -1,5 +1,6 @@
 import os
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.append("./")
 from ios.modes.directory_model import DirectoryModel
@@ -22,6 +23,42 @@ def should_ignore_file(file_path):
     return False
 
 
+def _insert_rubbish_ivar_for_file(file_path):
+    module_names = module_area.get_class_or_struct_module_area_in_file(file_path)
+
+    for name in module_names:
+        result = module_area.get_module_area_info(file_path, name)
+        if result is None:
+            continue
+
+        print(
+            f"<InsertRubbishIvar> ==== 正在处理文件{file_path}\n"
+        )
+
+        bodyoffset = result["bodyoffset"]
+        insert_offset = bodyoffset
+
+        r_file = open(file_path, "r")
+        file_content = r_file.read().encode("utf-8")
+
+        rubbish_property = rubbish_util.generate_swift_property().encode("utf-8")
+
+        new_file_content = (
+            file_content[:insert_offset]
+            + '\n'.encode('utf-8')
+            + rubbish_property
+            + '\n'.encode('utf-8')
+            + file_content[insert_offset:]
+        )
+        new_file_content = new_file_content.decode("utf-8")
+
+        w_file = open(file_path, "w")
+        w_file.write(new_file_content)
+
+        r_file.close()
+        w_file.close()
+
+
 ###插入垃圾属性 example:
 ### class A {
 ###   var name: String = "hello" 
@@ -40,43 +77,22 @@ def handle_insert_rubbish_ivar():
     ## 2、获取.swift 文件
     swift_result = file_util.get_files_endswithSwift(result)
     ## 3、插入垃圾属性
-    for file_path in swift_result:
-        ## 检查是否应该忽略该文件
-        if should_ignore_file(file_path):
-            continue
-        
-        ## 4 获取结构
-        module_names = module_area.get_class_or_struct_module_area_in_file(file_path)
+    swift_result = [file_path for file_path in swift_result if not should_ignore_file(file_path)]
+    if not swift_result:
+        return
 
-        for name in module_names:
-            
-            result = module_area.get_module_area_info(file_path,name)
-            
-            if result is None:
-                continue
-
-            print(
-                f"<InsertRubbishIvar> ==== 正在处理文件{file_path}\n"
-            )
-
-            # print(result['kind'],result["bodyoffset"],name)            
-            bodyoffset = result["bodyoffset"]
-            insert_offset = bodyoffset
-            
-
-            r_file = open(file_path, "r")
-            file_content = r_file.read().encode("utf-8")
-
-            rubbish_property = rubbish_util.generate_swift_property().encode("utf-8")
-        
-            new_file_content = file_content[:insert_offset] + '\n'.encode('utf-8') + rubbish_property + '\n'.encode('utf-8') +file_content[insert_offset:]
-            new_file_content = new_file_content.decode("utf-8")
-        
-            w_file = open(file_path, "w")
-            w_file.write(new_file_content)
-
-            r_file.close()
-            w_file.close()
+    max_workers = min(len(swift_result), max(1, min(8, os.cpu_count() or 4)))
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(_insert_rubbish_ivar_for_file, file_path): file_path
+            for file_path in swift_result
+        }
+        for future in as_completed(futures):
+            file_path = futures[future]
+            try:
+                future.result()
+            except Exception as exc:
+                print(f"Swift 垃圾属性插入失败: {file_path}\n原因: {exc}")
 
 
 

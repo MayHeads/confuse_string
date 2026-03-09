@@ -3,9 +3,9 @@
 
 注意：.h 和 .m 文件是成对出现的，使用相同的新名字
 
-TtFlutterSdkPluginExtension1_pkm -> MarkrothkoBolivianEasygoingness
-TtFlutterSdkPluginPlu_pkm -> YellowladysslipperPother
-BDManagerkf_pkm -> GenuspetrogaleYellowbirchSecurity
-GDManagerkf_pkm -> PopcornRupert
-GDTActionBridgekf_pkm -> UlemaMilitance
-DelegateHelper_pkm -> CedarGasmask
+TtFlutterSdkPluginExtension1_pkm -> MyctophidaeShlep
+TtFlutterSdkPluginPlu_pkm -> HousingstartLodge
+BDManagerkf_pkm -> FishflyTwang
+GDManagerkf_pkm -> PlasticexplosiveAngleofattackTorchsinger
+GDTActionBridgekf_pkm -> WhitebeanGreatdanePaddy
+DelegateHelper_pkm -> BergsonPrepyloricveinSergeant

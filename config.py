@@ -9,8 +9,8 @@
 
 # ==================== 目标项目 ====================
 
-project_path = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
-ROOT_PROJECT_DIR = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
+project_path = '/Users/jiangshanchen/TTRouSDK'
+ROOT_PROJECT_DIR = '/Users/jiangshanchen/TTRouSDK'
 PROJECT_SCHEME = 'ttfluttersdk'
 
 # ==================== 扫描/过滤配置 ====================
@@ -32,7 +32,7 @@ ig_fix_text = ['.mp4', '.zip', '/', '.', ',']
 ig_format_text = ['%.', '%d', '%s', '%f']
 STRING_SUFFIX = '_pkm'
 CONFUSE_KEY = '0C32C2KT2FE79YKC'
-IS_POD_CONFUSE_MODE = False
+IS_POD_CONFUSE_MODE = True
 
 # ==================== 文件/命名替换配置 ====================
 
@@ -45,9 +45,9 @@ REPLACE_IGNORE_FILE_NAMES = {
     'ViewController',
 }
 THEME_KEYWORDS = ['来电秀', '铃声', '图片', '视频', '结果']
-NUM_FILES = 100
-ORIGIN_POD_FILE_NAME = 'ttfluttersdk_plugin'
-NEW_POD_FILE_NAME = 'flutter_base_sdk'
+NUM_FILES = 50
+ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
+NEW_POD_FILE_NAME = 'CCVIdeoSDK'
 
 # ==================== confuse_ios 相关配置 ====================
 

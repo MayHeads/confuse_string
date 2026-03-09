@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 import chardet
+from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.append("./")
 from enum import Enum
 import subprocess
@@ -30,11 +31,21 @@ def c_add_random_code():
         # items = find_swift_files(DirectoryModel().code)
         #2.0
         items = find_swift_files_all()
-        for item in items:
-            # 检查是否应该忽略该文件
-            if should_ignore_file(item):
-                continue
-            parse_swift_file_2.modfife_method(item)
+        if not items:
+            continue
+
+        max_workers = min(len(items), max(1, min(8, os.cpu_count() or 4)))
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {
+                executor.submit(parse_swift_file_2.modfife_method, item): item
+                for item in items
+            }
+            for future in as_completed(futures):
+                item = futures[future]
+                try:
+                    future.result()
+                except Exception as exc:
+                    print(f"处理 Swift 文件失败: {item}\n原因: {exc}")
         # add_random_code(item)
 
 

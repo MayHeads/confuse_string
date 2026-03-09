@@ -383,6 +383,7 @@ parsedResponse_pkm
 parsed_pkm
 path_pkm
 payType_pkm
+phoneType_pkm
 physicalSize_pkm
 plainText_pkm
 prdId_pkm

@@ -3,6 +3,8 @@ import sys
 import os
 import re
 import string
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import local
 
 sys.path.append("./ios")
 from log.random_strs import *
@@ -26,10 +28,26 @@ class PreviousMethod:
     #     self.method_param_names = method_param_names
     #     self.method_param_types = method_param_types
 
-previous_method = PreviousMethod()
-first_method = PreviousMethod()
+_THREAD_STATE = local()
 
 left_space = "    "
+
+
+def _reset_method_state():
+    _THREAD_STATE.previous_method = PreviousMethod()
+    _THREAD_STATE.first_method = PreviousMethod()
+
+
+def _get_previous_method():
+    if not hasattr(_THREAD_STATE, "previous_method"):
+        _reset_method_state()
+    return _THREAD_STATE.previous_method
+
+
+def _get_first_method():
+    if not hasattr(_THREAD_STATE, "first_method"):
+        _reset_method_state()
+    return _THREAD_STATE.first_method
 
 #生成随机垃圾逻辑代码
 def generate_logic_rubbish_code():
@@ -91,6 +109,9 @@ def generate_single_method(isLast:bool):
     call_previous_method_content = ""
 
     
+    previous_method = _get_previous_method()
+    first_method = _get_first_method()
+
     if previous_method.is_reset == False:
         call_previous_method_content = generate_call_method(
             previous_method.method_name,
@@ -375,17 +396,29 @@ def start():
 
     result = oc_file_util.get_files_endswithhm(file_result)
 
-    for file_path in result:
+    result = [file_path for file_path in result if not oc_file_util.is_ignore_confuse_oc(file_path)]
+    if not result:
+        return
 
-        #忽略文件
-        if (oc_file_util.is_ignore_confuse_oc(file_path) == True):
-            continue
-        
-        handle_file(file_path)
+    max_workers = min(len(result), max(1, min(8, os.cpu_count() or 4)))
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(handle_file, file_path): file_path
+            for file_path in result
+        }
+        for future in as_completed(futures):
+            file_path = futures[future]
+            try:
+                future.result()
+            except Exception as exc:
+                print(f"OC 垃圾代码插入失败: {file_path}\n原因: {exc}")
+                log.logger.info(f"OC 垃圾代码插入失败: {file_path} 原因: {exc}")
         
         
 
 def handle_file(file_path):
+    _reset_method_state()
+
     with open(file_path, "r") as f:
         content = f.read()
 
@@ -397,6 +430,8 @@ def handle_file(file_path):
     x = pattern.findall(content)
     for s in x:
 
+        previous_method = _get_previous_method()
+        first_method = _get_first_method()
         previous_method.is_reset = True
 
         method_list_content = generate_method()
@@ -407,7 +442,6 @@ def handle_file(file_path):
         if len(methods) > 0:
             method_name = methods[0]
 
-            global first_method
             call_code = generate_call_method(first_method.method_name, first_method.method_param_types, first_method.method_param_names)
             new_content = insert_call_code_in_first_method(new_content, method_name, call_code)
 
