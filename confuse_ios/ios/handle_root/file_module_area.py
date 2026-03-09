@@ -10,6 +10,18 @@ import add_rubbish_swift_code.rubbish_swift_code as rubbish_util
 
 file_path = "/Users/lindy/Desktop/xmiles_project/python_ios_test/IOSConfuse/IOSConfuse/CGroup/CSubGroup/CSubSubGroup/CSubSubGroupModel.swift"
 
+
+def _sourcekitten_structure(file_path):
+    try:
+        output = subprocess.check_output(
+            ["sourcekitten", "structure", "--file", file_path],
+            stderr=subprocess.STDOUT,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        print(f"解析 Swift 文件失败，已跳过: {file_path}\n原因: {exc}")
+        return None
+    return json.loads(output.decode())
+
 ### 获取class 和 结构体
 def get_class_or_struct_module_area_in_file(file_path):
     module_names = []
@@ -22,11 +34,9 @@ def get_class_or_struct_module_area_in_file(file_path):
 
 ### 获取一个文件中的所有module名称。
 def get_all_module_area_in_file(file_path):
-     # 调用 sourcekitten 命令并获取输出
-    command = f"sourcekitten structure --file {file_path}"
-    output = subprocess.check_output(command, shell=True)
-    # 解析 JSON 输出
-    structure = json.loads(output.decode())
+    structure = _sourcekitten_structure(file_path)
+    if structure is None:
+        return []
 
     # 获取顶级结构元素（类、结构体、协议等）
     top_level_structure = structure.get("key.substructure", [])
@@ -61,11 +71,9 @@ def swift_type(json_name):
     return kind
 
 def get_module_area_info(file_path,module_name):
-    # 调用 sourcekitten 命令并获取输出
-    command = f"sourcekitten structure --file {file_path}"
-    output = subprocess.check_output(command, shell=True)
-    # 解析 JSON 输出
-    structure = json.loads(output.decode())
+    structure = _sourcekitten_structure(file_path)
+    if structure is None:
+        return None
 
     # 获取顶级结构元素（类、结构体、协议等）
     top_level_structure = structure.get("key.substructure", [])

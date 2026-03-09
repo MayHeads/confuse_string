@@ -427,6 +427,7 @@ resultDevID_pkm
 result_pkm
 results_pkm
 retentionPopUpCheck_pkm
+rightsDesc_pkm
 secondEncData_pkm
 selectPriceobs_pkm
 selectedCommodity_pkm

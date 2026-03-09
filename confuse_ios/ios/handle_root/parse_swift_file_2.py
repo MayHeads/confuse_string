@@ -218,7 +218,8 @@ class InsertOperation:
     type: OffsetType
     invoke_code: str
     insert_code: str
-    def __init__(self, name, offset, type, invoke_code, insert_code):
+
+    def __init__(self, name="", offset=0, type=OffsetType.INVOKE, invoke_code="", insert_code=""):
         self.name = name
         self.offset = offset
         self.type = type
@@ -245,8 +246,18 @@ class InsertOperation:
         invoke_name = '\n       ' + result.group(1) + '()'
         all_insert = code + '\n' + invoke_name
         return (all_insert)
-    
-     
+
+
+def _sourcekitten_structure(file_path):
+    try:
+        output = subprocess.check_output(
+            ["sourcekitten", "structure", "--file", file_path],
+            stderr=subprocess.STDOUT,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        print(f"解析 Swift 文件失败，已跳过: {file_path}\n原因: {exc}")
+        return None
+    return json.loads(output.decode())
 
 
 # ========================================== 转化 ==========================================
@@ -367,12 +378,9 @@ def split_string(string, splits):
 
 # ========================================== 解析代码 ==========================================
 def parse_swift_file(file_path):
-    # 调用 sourcekitten 命令并获取输出
-    command = f"sourcekitten structure --file {file_path}"
-    output = subprocess.check_output(command, shell=True)
-    # 解析 JSON 输出
-    # print(output)
-    z = json.loads(output.decode())
+    z = _sourcekitten_structure(file_path)
+    if z is None:
+        return []
     y = json.dumps(z, indent=2)
     print(f"<output>:------>\n {y}")
 
@@ -507,9 +515,9 @@ def modfife_method(path):
 
 # 测试效果
 def parse(file_path):
-    command = f'sourcekitten structure --file "{file_path}"'
-    output = subprocess.check_output(command, shell=True)
-    z = json.loads(output.decode())
+    z = _sourcekitten_structure(file_path)
+    if z is None:
+        return
     y = json.dumps(z, indent=2)
     print(f"<output>:------>\n {y}")
 
@@ -545,4 +553,3 @@ if __name__ == "__main__":
     
 
     
-

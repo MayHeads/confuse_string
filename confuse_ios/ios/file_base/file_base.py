@@ -7,6 +7,14 @@ import config.config as config
 from ios.modes.directory_model import DirectoryModel
 
 
+def _path_components(path):
+    normalized = os.path.normpath(path)
+    return normalized.split(os.sep)
+
+
+def _contains_ignored_component(path):
+    return any(part in config.IGNORE_CODE_DIRECTORY for part in _path_components(path))
+
 
 #获取目录【工程下可能存在多个】
 def get_all_folders():
@@ -32,9 +40,18 @@ def get_all_folders():
 
 def get_files_in_directory(directory):
     files = []
-    for file in glob.glob(os.path.join(directory, "**"), recursive=True):
-        if os.path.isfile(file):
-            files.append(file)
+    for root, dirs, filenames in os.walk(directory):
+        dirs[:] = [dir_name for dir_name in dirs if dir_name not in config.IGNORE_CODE_DIRECTORY]
+
+        if _contains_ignored_component(root):
+            dirs[:] = []
+            continue
+
+        for file_name in filenames:
+            file_path = os.path.join(root, file_name)
+            if _contains_ignored_component(file_path):
+                continue
+            files.append(file_path)
     return files
 
 
@@ -90,8 +107,8 @@ def is_ignore_confuse(file_path):
     # 2根据文件路径获取文件名称
     if __is_oc_briding_file(file_path):
         return True
-    # 3忽略系统文件
-    if file_path_list[file_path_list_len - 2] in config.IGNORE_CODE_DIRECTORY:
+    # 3忽略系统文件和路径中的忽略目录
+    if _contains_ignored_component(file_path):
         return True
     return False
 

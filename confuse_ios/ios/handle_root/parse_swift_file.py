@@ -39,8 +39,14 @@ def write_to_file(file_path,objs):
 
 def parse_swift_file(file_path):
     # 调用 sourcekitten 命令并获取输出
-    command = f"sourcekitten structure --file {file_path}"
-    output = subprocess.check_output(command, shell=True)
+    try:
+        output = subprocess.check_output(
+            ["sourcekitten", "structure", "--file", file_path],
+            stderr=subprocess.STDOUT,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        print(f"解析 Swift 文件失败，已跳过: {file_path}\n原因: {exc}")
+        return []
     # 解析 JSON 输出
     structure = json.loads(output.decode())
     print(json.dumps(structure, indent=2))

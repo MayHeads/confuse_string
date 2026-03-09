@@ -1,89 +1,97 @@
+"""统一项目配置。
 
-# swiftsdk项目
-# project_path = "/Users/jiangshanchen/TTRouSDK"
+这是整个仓库唯一的配置源：
+- 根目录脚本直接读取这里
+- confuse_ios/ios/config/config.py 会桥接到这里
 
-# flutter项目
-project_path = '/Users/jiangshanchen/Desktop/pencial/LaiShow/laishow_app/ios'
-# project_path = "/Users/jiangshanchen/TTRouSDK"
-# project_path = "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk"
+如无特殊说明，优先修改这个文件，不要再分别维护两套配置。
+"""
 
+# ==================== 目标项目 ====================
 
+project_path = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
+ROOT_PROJECT_DIR = '/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk'
+PROJECT_SCHEME = 'ttfluttersdk'
 
-# 忽略文件夹  <忽略的swift文件夹>
+# ==================== 扫描/过滤配置 ====================
+
 custom_ignore_folders = ['Pods', 'build', 'DerivedData', '.git', 'Tests', 'UnitTests', 'UITests', '1234']
+custom_ignore_swift_files = []
 
-### 忽略swift文件  <忽略的swift文件>
-custom_ignore_swift_files = [
-    # 'AppDelegate.swift',
-    # 'SceneDelegate.swift', 
-    # 'main.swift'
-]
+# ==================== Asset 配置 ====================
 
-### asset 浅醉 <asset 前缀>
 asset_prefix = 'xyk'
+ASSET_IMAGE_CONFIG = {'width_range': (100, 200),
+ 'height_range': (200, 300),
+ 'blur_range': (1, 5),
+ 'imageset_count_range': (2, 3)}
 
+# ==================== 字符串混淆配置 ====================
 
-ASSET_IMAGE_CONFIG = {
-    'width_range': (100, 200),      # 图片宽度范围
-    'height_range': (200, 300),     # 图片高度范围
-    'blur_range': (1, 5),           # 模糊程度范围
-    'imageset_count_range': (2, 3)  # 每个文件夹生成的imageset数量范围
-}
-
-##### 字符串混淆  配置 <字符串混淆忽略>
-# 固定文本忽略列表
-ig_fix_text = [
-    '.mp4',
-    '.zip',
-    '/',
-    '.',
-    ','
-    
-]
-
-# 格式化字符串忽略列表（包含%的字符串） <字符串混淆忽略>
-ig_format_text = [
-    '%.',
-    '%d',
-    '%s',
-    '%f'
-]
-
-
-#  替换类名和方法前缀 <替换类名和方法前缀>
+ig_fix_text = ['.mp4', '.zip', '/', '.', ',']
+ig_format_text = ['%.', '%d', '%s', '%f']
 STRING_SUFFIX = '_pkm'
+CONFUSE_KEY = '0C32C2KT2FE79YKC'
+IS_POD_CONFUSE_MODE = False
 
+# ==================== 文件/命名替换配置 ====================
 
-# 需要忽略的文件名列表  <替换文件名>
 REPLACE_IGNORE_FILE_NAMES = {
     'AppDelegate',
+    'Assets',
+    'Info',
+    'Main',
     'SceneDelegate',
     'ViewController',
-    'Main',
-    'Info',
-    'Assets',
 }
+THEME_KEYWORDS = ['来电秀', '铃声', '图片', '视频', '结果']
+NUM_FILES = 100
+ORIGIN_POD_FILE_NAME = 'ttfluttersdk_plugin'
+NEW_POD_FILE_NAME = 'flutter_base_sdk'
 
-# 生成swif文件的主题和数量
-THEME_KEYWORDS = ['来电秀', '铃声', '图片', '视频', '结果']  # 主题关键字列表
-NUM_FILES = 50  # 要生成的文件数量
+# ==================== confuse_ios 相关配置 ====================
 
-
-# 混淆字符串key <暂时用随机生成的>
-CONFUSE_KEY = "0C32C2KT2FE79YKC" 
-
-
-
-# pod 文件名相关混淆    
-# ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-# ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-
-# NEW_POD_FILE_NAME = "OuterWalkBaseSDK"
-
-# NEW_POD_FILE_NAME = 'TingsSDK'
-NEW_POD_FILE_NAME = 'MCCleanSDK'
-
-
-# 是否是pod 混淆模式
-IS_POD_CONFUSE_MODE = False
+ADD_DIRECTORY_PREFIX = 'TT_'
+ADD_FILE_PREFIX = 'QY_'
+ORIGIN_SYMBOL_PREFIX = 'qy_'
+CONFUSE_LEVEL = 2
+IGNORE_CODE_DIRECTORY = ['main.m',
+ 'Assets.xcassets',
+ 'Base.lproj',
+ 'PetWidget',
+ 'Frameworks',
+ 'Products',
+ 'Pods',
+ 'provisioning',
+ 'ttfluttersdkTests',
+ 'ttfluttersdkUITests',
+ 'FingertipWidget',
+ 'WWidgets',
+ 'ZFPlayer',
+ 'Mustang',
+ 'iflyMSC',
+ 'Pods',
+ 'KSBannerView',
+ 'KSArchiveTools',
+ 'KSLoadingView',
+ 'KSURLRequest',
+ 'KSNetworking',
+ 'SVProgressHUD',
+ 'XBExpandButton',
+ 'LocalPods',
+ 'cocos2d_libs.xcworkspace',
+ 'qianyan.xcodeproj',
+ 'Others',
+ 'mac',
+ 'Demo',
+ 'MyFirstLibrary',
+ 'KSCompossSDK',
+ 'TTRouSDK.debug.dylib',
+ 'ThirdParty',
+ 'External',
+ 'Vendor',
+ 'AAT',
+ 'AAB']
+IGNORE_ASSERT_DEFAULT_DIRECTORY = ['.colorset', '.appiconset', '.imageset']
+CONFUSE_STR_FILES = []
+IGNORE_CLASS_PREFIXES = ['GDT', 'Turing', 'NS', 'UI', 'CG', 'OS', 'MyFirstLibrary', 'KSCompossSDK']

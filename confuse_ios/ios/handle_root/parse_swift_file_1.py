@@ -14,8 +14,10 @@ file_path = "/Users/jiangshanchen/Desktop/gitee/test_ios/TestPackage/VC/LoginCon
 
 def parse_swift_file(file_path):
     # 调用 sourcekitten 命令并获取输出
-    command = f"sourcekitten structure --file {file_path}"
-    output = subprocess.check_output(command, shell=True)
+    output = subprocess.check_output(
+        ["sourcekitten", "structure", "--file", file_path],
+        stderr=subprocess.STDOUT,
+    )
     # 解析 JSON 输出
     structure = json.loads(output.decode())
     print(json.dumps(structure, indent=2))
@@ -42,6 +44,5 @@ if __name__=='__main__':
     with open(file_path, "a") as file:
         file.write(append_str)
     
-
 
 

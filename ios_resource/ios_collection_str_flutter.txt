@@ -170,6 +170,7 @@ remarkName
 requestPath
 resume_from_background
 retentionPopUpCheck
+rightsDesc
 s_channel
 sdk_heartbeat
 sdk_version
