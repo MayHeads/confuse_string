@@ -9,7 +9,7 @@ IOS_KEYWORDS = {
     'class', 'struct', 'enum', 'protocol', 'extension', 'import', 'public', 'private', 'internal',
     'fileprivate', 'open', 'final', 'override', 'required', 'convenience', 'init', 'deinit', 'subscript',
     'self', 'super', 'Self', 'Type', 'Protocol', 'Any', 'AnyObject', 'nil', 'true', 'false',
-    'guard', 'if', 'else', 'switch', 'case', 'default', 'for', 'while', 'repeat', 'do', 'break',
+    'guard', 'if', 'else', 'switch', 'case', 'default', 'for', 'while', 'repeatWord', 'do', 'break',
     'continue', 'return', 'throw', 'throws', 'rethrows', 'try', 'catch', 'as', 'is', 'in', 'where',
     'var', 'let', 'func', 'typealias', 'associatedtype', 'mutating', 'nonmutating', 'lazy', 'weak',
     'unowned', 'optional', 'required', 'convenience', 'override', 'final', 'open', 'public', 'internal',

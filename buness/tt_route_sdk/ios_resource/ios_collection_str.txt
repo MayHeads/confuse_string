@@ -1,0 +1,251 @@
+$AppStart
+$app_version
+$device_id
+$is_first_day
+$manufacturer
+$model
+$network_type
+$os
+$os_version
+$resume_from_background
+$screen_height
+$screen_width
+$wifi
+&deviceId=
+&key=
+&prdId=
+&timestamp=
+&uuid=
+&ver=1&data=
+.
+/tool-appbase-service/api/common/rftstatus/v2
+/tool-appbase-service/api/ios/rb/findBook/v2
+/tool-bridging-service/api/tianshu/ios/quarantine/addOrderV2
+/tool-bridging-service/api/tianshu/ios/quarantine/appAttribution
+/tool-bridging-service/api/tianshu/ios/quarantine/reportStateV2
+/tool-bridging-service/api/tianshu/ios/quarantine/verifyOrderV2
+/tool-flow-service/api/payMember/getPayMemberInfo/v2
+/tool-flow-service/api/payMember/ios/queryIosCommodityInfo/v2
+/tool-flow-service/api/payMember/ios/uploadPayTag
+/tool-flow-service/payMember/test/deleteAllMemberData
+/tool-route/api/tianshu/ios/quarantine/recover
+/tool-route/api/tianshu/ios/quarantine/uploadShenceDataV2
+0000
+1
+100
+1234
+133014
+133015
+1573999086783053
+2G
+3.0.6.5
+3G
+4G
+5G
+5GSrcqkeB24HYrbMVkWIyF4wKEfVszQOyLauyXdEPRI
+61
+=======
+Apple
+Begin BD monitoring...
+Begin monitoring...
+Beginning Network request ended.
+Beginning network request...
+CFBundleIdentifier
+CFBundleShortVersionString
+CFBundleVersion
+Default Configuration
+End monitoring...
+Error:
+F00C5GZWB1xX6EW9
+Initializing parameters...
+Initiating order creation...
+Initiating purchase restoration...
+IntramuscularinjectionDehydration
+JR7nZqQa0HInLTHq9UL0AQ==
+No product data received.
+Order created successfully.
+Order creation failed.
+PAY_FAILURE
+PAY_SUCCESS
+Payment completed successfully.
+Payment failed.
+Payment is in progress...
+Payment was cancelled by the user.
+Purchase restoration failed.
+Purchase restored successfully.
+SEC-
+Setting VIP monitor...
+Tool-Auth
+Transaction verification failed.
+Transaction verified successfully.
+Unknown
+WIFI
+[BerylliumbronzeAiglet-Error]
+[BerylliumbronzeAiglet-Error] deviceId is not allow nil
+[BerylliumbronzeAiglet-Error] prdId is not allow nil
+[BerylliumbronzeAiglet-Error] requestDomin is not allow nil
+[BerylliumbronzeAiglet-FlyingvisitDecoctionprocess]
+activityChannel
+adsToken
+amountBoxStyle
+appStartNewRequest
+appStartNewResponse
+appVersion
+appVersionCode
+app_purchase
+app_version
+app_version_name
+apple支付失败
+apple支付成功
+application/json
+b_channel
+bottomMark
+brand
+closeButtonDelay
+closeButtonTransparency
+code
+comethroughWarnCercocebus
+commoditNum
+commodityBgColor
+commodityDtoList
+commodityGroupDtoList
+commodityId
+commodityName
+commodityProperty
+content
+content-type
+cur_channel
+currentChannel
+currentCity
+data
+defaultCheck
+defaultGroup
+deviceId
+deviceId=
+device_id
+discountButtonCopywriting
+discountPriceDesc
+eventName
+extSuosuoraDescTransparency:
+extraDesc
+extraDescTransparency
+firstDeductionTime
+freeTrialCheck
+goodsInfo
+groupId
+groupName
+groupType
+http://app.gzshenyuewl.com
+https://iostesthuyitool.jidiandian.cn
+iOS
+iPhone
+id
+identifier
+idfa
+idfaDigitalUnion
+idfa_s
+idfa_u
+idfv
+index
+innerOrderId
+ios
+iosProductId
+iosStyleId
+isAgreeProtocol
+isLoadedAtt
+mainButtonColor
+mainButtonCopywriting
+mainButtonSubscript
+markId
+member
+memberDeadline
+memberEquityIntroduce
+memberIosStyleDto
+msg
+none
+nvgag_shuzilm_cn
+orderId
+orderInfoList
+orderState
+originTransactionId
+packageName
+pageDescTitle
+pageMaterialId
+pageMaterialUrl
+params
+phoneType
+platform
+prdId
+prdId=
+prd_id
+priceConvert
+priceDimension
+protocolCheck
+qaid
+remark
+remarkName
+renewal
+requestPath
+retentionPopUpCheck
+s_channel
+sandbox
+sdk_heartbeat
+sdk_version
+sdk_version_name
+service
+showBuyCount
+signature
+simulatesAskToBuyInSandbox
+sjql
+sort
+startFrom
+state
+styleName
+sysVersion
+timeliness
+timestamp
+topMark
+tranId
+transactionId
+transactionIdentifier
+true
+type
+uaWeb
+unimportantId
+unitPrice
+urticateEstablishedchurch
+userAgent
+user_location
+uuid
+uuidString
+ver
+version
+versionCode
+xkX2Ab1P3KuI214V
+xm_lib
+xm_lib_version
+xm_manufacturer
+xm_model
+xm_network_type
+xm_os
+xm_os_version
+xm_screen_height
+xm_screen_width
+{
+}
+主动取消支付
+会员恢复失败
+会员恢复成功啦，快去使用功能吧～
+会员更新失败，请退出应用重试
+周
+已连接
+年
+开通会员成功啦，快去使用功能吧～
+无网络
+月
+未知
+未知错误，apple支付失败
+未连接
+解密失败
+非审核状态
+验单成功

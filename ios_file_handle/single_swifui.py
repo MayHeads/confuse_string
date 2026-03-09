@@ -60,8 +60,12 @@ def generate_combined_view(view_names):
 // Generated on: {current_date}
 // Combined Views: {', '.join(view_names)}
 
-struct {view_name}: View {{
-    var body: some View {{
+public struct {view_name}: View {{
+    public init() {{
+        // Default initializer
+    }}
+
+    public var body: some View {{
         ScrollView {{
             VStack(spacing: 30) {{
 """
@@ -91,8 +95,8 @@ struct {view_name}: View {{
 }}
 
 // Preview provider
-struct {view_name}_Previews: PreviewProvider {{
-    static var previews: some View {{
+public struct {view_name}_Previews: PreviewProvider {{
+    public static var previews: some View {{
         NavigationView {{
             {view_name}()
         }}
@@ -134,6 +138,7 @@ def single_swifui():
             f.write(content)
         print(f"\n已生成组合视图文件: {output_file}")
         print(f"文件包含 {len(view_names)} 个视图组件")
+        print("注意：文件已生成到临时目录，后续会通过move_view.py复制到项目中的正确位置")
     except Exception as e:
         print(f"错误：写入文件失败: {e}")
 

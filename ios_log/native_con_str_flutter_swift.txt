@@ -1,0 +1,18 @@
+👉👉👉👉👉Flutter Swift String Obfuscation Map List👈👈👈👈👈
+
+
+INVALID_ARGUMENT <-----------> p2j+DVKRkqdNdpjduknxrpPhkXiQAB348jFakxmOMY4=
+bdGetAttributionToken <-----------> itOA1fo/fePo7J6ZcZ6O7nmK/7XS6wl+tGqZTSElz9Y=
+bdGetDuIdfa <-----------> sOzvgeaNRg5ZhzIutrz+ig==
+bdGetSystemIDFA <-----------> DQ2/RP+k9szCt5+Izi6C+Q==
+deviceID <-----------> AveiIQ0Z7uOcTKSp/KLyPw==
+deviceID is required <-----------> nLjDnBFtQoacamMQKYy/qbRxQTnYIR/TGHb32uQ+5HQ=
+duIDFA <-----------> ebgDhnDU6xVSXEYz84D08A==
+gdGetCaid <-----------> brZKavZFtIvWvH+Zz10HUA==
+initBDManager <-----------> PRvao2W2LqN/lJHP6euU7g==
+initGDManager <-----------> qdcLwBjTLjkwTyi4YiDs9Q==
+nvgag_shuzilm_cn <-----------> g2qdXgAcuDfpVikjR3+Q4mOSC79CrHuQOdPIBK3Vth4=
+prdid <-----------> gU7LFsChIbZaC8sHMlBm9A==
+prdid is required <-----------> B4By4wttpcbhSQ2sph/drZunhK094jpJz2Hij+EoOEU=
+suID <-----------> 4hnmYpClsuBCL66ygibv4A==
+ttfluttersdk_plugin_channel_name <-----------> yG6tLbvhd4qAXHQkabfq1b+55rhBO58imiUl+2PKNVHDoILfZFan9bfgHK9aea3Y

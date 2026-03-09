@@ -1,0 +1,21 @@
+
+
+        let image = UIImageView(frame: CGRectMake(20, 100, 100, 100))
+        image.image = R.image.new_logoMain()
+        view.addSubview(image)
+        
+        
+        let image2 = UIImageView(frame: CGRectMake(20, 230, 100, 100))
+        image2.image = UIImage(named: "new_logoMain")
+        view.addSubview(image2)
+
+        // UIImage *itemImage = [UIImage imageNamed:@"new_logoMain"];
+
+        
+
+
+
+
+
+
+

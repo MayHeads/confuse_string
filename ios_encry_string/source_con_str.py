@@ -13,13 +13,18 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from project_scanner import get_project_info
-from config import custom_ignore_folders, custom_ignore_swift_files, ig_fix_text, ig_format_text, CONFUSE_KEY
-from collect_str import main_collect_str_all
+from config import custom_ignore_folders, custom_ignore_swift_files, ig_fix_text, ig_format_text, CONFUSE_KEY, IS_POD_CONFUSE_MODE
+from .collect_str import main_collect_str_all
+
+
+def generate_random_aes_key(length=16):
+    """生成随机的AES密钥"""
+    # 使用数字和大写字母生成密钥
+    characters = string.digits + string.ascii_uppercase
+    return ''.join(random.choice(characters) for _ in range(length))
 
 
 project_info = get_project_info()
-
-
 
 ## 项目路径
 project_path = project_info.project_path
@@ -28,9 +33,9 @@ target_name = project_info.target_name
 
 IGNORE_DIRECTORY = custom_ignore_folders
 
-# 本地 AES 密钥
-LOCAL_AES_KEY = CONFUSE_KEY # 替换为你的本地密钥
-
+# 生成随机的AES密钥，每次运行都不同
+LOCAL_AES_KEY = generate_random_aes_key(16)
+print(f"生成随机AES密钥: {LOCAL_AES_KEY}")
 
 # AES_KEY = '0M32COOACYE79YEC'
 
@@ -58,8 +63,22 @@ class XcodeSwiftFileCreator:
             if not file_name.endswith('.swift'):
                 file_name = f"{file_name}.swift"
 
-            # 确定文件路径
-            file_dir = os.path.join(self.project_path, target_name)
+            # 根据IS_POD_CONFUSE_MODE决定写入路径
+            if IS_POD_CONFUSE_MODE:
+                # Pod混淆模式：查找Classes目录
+                classes_path = self._find_classes_directory()
+                if classes_path:
+                    file_dir = classes_path
+                    print(f"Pod混淆模式：写入到Classes目录: {file_dir}")
+                else:
+                    # 如果没找到Classes目录，使用原来的逻辑
+                    file_dir = os.path.join(self.project_path, target_name)
+                    print(f"未找到Classes目录，使用默认路径: {file_dir}")
+            else:
+                # 非Pod混淆模式：使用原来的逻辑
+                file_dir = os.path.join(self.project_path, target_name)
+                print(f"非Pod混淆模式：使用默认路径: {file_dir}")
+
             file_path = os.path.join(file_dir, file_name)
 
             # 检查文件是否已存在
@@ -87,6 +106,23 @@ class XcodeSwiftFileCreator:
             print(f"创建文件时发生错误: {str(e)}")
             return False
 
+    def _find_classes_directory(self) -> str:
+        """查找项目中的Classes目录，返回第一个找到的路径"""
+        classes_paths = []
+        
+        for root, dirs, files in os.walk(self.project_path):
+            for dir_name in dirs:
+                if dir_name == 'Classes':
+                    classes_path = os.path.join(root, dir_name)
+                    classes_paths.append(classes_path)
+                    print(f"找到Classes目录: {classes_path}")
+        
+        # 返回第一个找到的Classes目录
+        if classes_paths:
+            return classes_paths[0]
+        
+        return None
+
     def _create_swift_template(self, file_name: str,aes_key: str,method_prefix: str) -> str:
         """创建Swift文件模板"""
         return f'''//
@@ -99,12 +135,12 @@ import Foundation
 import CryptoSwift
 
 extension String {{
-    enum StringDecrypt {{
+    public enum StringDecrypt {{
         static let key = "{aes_key}"
         static let iv = "{aes_key}"
     }}
     
-    func {method_prefix}_decrypt() -> String{{
+    public func {method_prefix}_decrypt() -> String{{
         var text: String?
         do {{
             let aes = try AES(key: StringDecrypt.key, iv: StringDecrypt.iv, padding: .pkcs5)
@@ -116,7 +152,7 @@ extension String {{
         return text ?? ""
     }}
 
-    func {method_prefix}_encrypt() -> String? {{
+    public func {method_prefix}_encrypt() -> String? {{
         var text = ""
         do {{
             let aes = try AES(key: StringDecrypt.key, iv: StringDecrypt.iv, padding: .pkcs5)

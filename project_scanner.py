@@ -13,6 +13,13 @@ class ProjectInfo:
     all_swift_files: List[str]  # 所有Swift文件（未过滤）
     podfile_paths: List[str]  # Podfile文件路径列表
     target_name: str  # 项目目标名称（项目路径的最后一级）
+     
+    #### flutter 相关
+    flutter_plugin_path: str  # 搜索project_path下的获取到ttfluttersdk_plugin的目录 如果为空 给空字符串
+    flutter_plugin_dart_files: List[str] # 搜索flutter_plugin_path下的获取到所有的dart文件 如果为空 给空列表
+    flutter_clenpy: str # 搜索project_path下的clean.py文件 如果为空 给空字符串
+
+    readme_file: str # flutter_plugin_path下的README1.md文件 如果为空 给空字符串
     
     @property
     def content_path(self) -> str:
@@ -29,6 +36,10 @@ Swift文件数量: {len(self.swift_files)} (过滤后)
 Xcode项目文件: {self.xcodeproj_path}
 xcassets文件夹数量: {len(self.xcassets_paths)}
 Podfile文件数量: {len(self.podfile_paths)}
+flutter_plugin_path: {self.flutter_plugin_path}
+flutter_plugin_dart_files: {len(self.flutter_plugin_dart_files)}
+flutter_clenpy: {self.flutter_clenpy}
+readme_file: {self.readme_file}
 """
 
 def scan_project(project_path: str, 
@@ -109,6 +120,44 @@ def scan_project(project_path: str,
     # 6. 获取项目目标名称（项目路径的最后一级）
     target_name = os.path.basename(os.path.normpath(project_path))
     
+    # 7. 搜索 ttfluttersdk_plugin 目录
+    flutter_plugin_path = ""
+    flutter_plugin_dart_files = []
+    
+    # 搜索 project_path 下的 ttfluttersdk_plugin 目录
+    plugin_pattern = os.path.join(project_path, '**/ttfluttersdk_plugin')
+    plugin_paths = glob.glob(plugin_pattern, recursive=True)
+    
+    # 如果找到目录，取第一个（通常只有一个）
+    if plugin_paths:
+        flutter_plugin_path = plugin_paths[0]
+        # 搜索该目录下的所有 .dart 文件
+        if os.path.isdir(flutter_plugin_path):
+            for root, dirs, files in os.walk(flutter_plugin_path):
+                for file in files:
+                    if file.endswith('.dart'):
+                        flutter_plugin_dart_files.append(os.path.join(root, file))
+    
+    # 8. 搜索 project_path 下的 clean.py 文件
+    flutter_clenpy = ""
+    clean_py_pattern = os.path.join(project_path, '**/clean.py')
+    clean_py_files = glob.glob(clean_py_pattern, recursive=True)
+    
+    # 如果找到文件，取第一个（通常只有一个）
+    if clean_py_files:
+        flutter_clenpy = clean_py_files[0]
+    
+    # 9. 搜索 flutter_plugin_path 下的 README1.md 文件
+    readme_file = ""
+    if flutter_plugin_path:
+        # 在 flutter_plugin_path 下搜索 README1.md 文件
+        readme_pattern = os.path.join(flutter_plugin_path, '**/README1.md')
+        readme_files = glob.glob(readme_pattern, recursive=True)
+        
+        # 如果找到文件，取第一个（通常只有一个）
+        if readme_files:
+            readme_file = readme_files[0]
+    
     return ProjectInfo(
         project_path=project_path,
         swift_files=swift_files,
@@ -116,7 +165,11 @@ def scan_project(project_path: str,
         xcassets_paths=xcassets_paths,
         all_swift_files=all_swift_files,
         podfile_paths=podfile_paths,
-        target_name=target_name
+        target_name=target_name,
+        flutter_plugin_path=flutter_plugin_path,
+        flutter_plugin_dart_files=flutter_plugin_dart_files,
+        flutter_clenpy=flutter_clenpy,
+        readme_file=readme_file
     )
 
 def print_project_summary(project_info: ProjectInfo):
@@ -158,6 +211,34 @@ def print_project_summary(project_info: ProjectInfo):
         for i, podfile_path in enumerate(project_info.podfile_paths):
             relative_podfile = os.path.relpath(podfile_path, project_info.project_path)
             print(f"  {i+1}. {relative_podfile}")
+    
+    if project_info.flutter_plugin_path:
+        relative_plugin = os.path.relpath(project_info.flutter_plugin_path, project_info.project_path)
+        print(f"\nFlutter Plugin路径: {relative_plugin}")
+        if project_info.flutter_plugin_dart_files:
+            print(f"Dart文件数量: {len(project_info.flutter_plugin_dart_files)}")
+            print(f"Dart文件列表 (前10个):")
+            for i, dart_file in enumerate(project_info.flutter_plugin_dart_files[:10]):
+                relative_dart = os.path.relpath(dart_file, project_info.flutter_plugin_path)
+                print(f"  {i+1}. {relative_dart}")
+            if len(project_info.flutter_plugin_dart_files) > 10:
+                print(f"  ... 还有 {len(project_info.flutter_plugin_dart_files) - 10} 个文件")
+        else:
+            print("未找到Dart文件")
+    else:
+        print(f"\nFlutter Plugin路径: 未找到")
+    
+    if project_info.flutter_clenpy:
+        relative_clean = os.path.relpath(project_info.flutter_clenpy, project_info.project_path)
+        print(f"\nclean.py文件: {relative_clean}")
+    else:
+        print(f"\nclean.py文件: 未找到")
+    
+    if project_info.readme_file:
+        relative_readme = os.path.relpath(project_info.readme_file, project_info.project_path)
+        print(f"\nREADME1.md文件: {relative_readme}")
+    else:
+        print(f"\nREADME1.md文件: 未找到")
 
 def scan_current_project():
     """

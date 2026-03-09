@@ -1,0 +1,33 @@
+{# {% for type in types %}
+Class Name: {{ type.name }}
+{% endfor %} #}
+
+{# Properties:
+{% for variable in type.variables %}
+- {{ variable.name }}: {{ variable.typeName }}
+{% endfor %}
+
+Methods:
+{% for method in type.methods %}
+- {{ method.name }}
+{% endfor %}
+
+Protocols:
+{% for protocolName in type.inheritedTypes where protocolName | contains: "Protocol" %}
+- {{ protocolName }}
+{% endfor %}
+
+{% endfor %} #}
+
+
+
+
+{% for type in types %}
+    Class Name: {{ type.name }}
+    
+    Protocols:
+    {% for protocolName in type.inheritedTypes where protocolName | contains: "Protocol" %}
+    - {{ protocolName }}
+    {% endfor %}
+    
+    {% endfor %}
