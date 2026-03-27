@@ -9,9 +9,9 @@
 
 # ==================== 目标项目 ====================
 
-project_path = '/Users/jiangshanchen/TTRouSDK'
-ROOT_PROJECT_DIR = '/Users/jiangshanchen/TTRouSDK'
-PROJECT_SCHEME = 'ttfluttersdk'
+project_path = '/Users/jiangshanchen/Desktop/pencial/quick_face_ex'
+ROOT_PROJECT_DIR = '/Users/jiangshanchen/Desktop/pencial/quick_face_ex'
+PROJECT_SCHEME = 'quick_face_ex'
 
 # ==================== 扫描/过滤配置 ====================
 
@@ -32,7 +32,7 @@ ig_fix_text = ['.mp4', '.zip', '/', '.', ',']
 ig_format_text = ['%.', '%d', '%s', '%f']
 STRING_SUFFIX = '_pkm'
 CONFUSE_KEY = '0C32C2KT2FE79YKC'
-IS_POD_CONFUSE_MODE = True
+IS_POD_CONFUSE_MODE = False
 
 # ==================== 文件/命名替换配置 ====================
 
@@ -44,10 +44,10 @@ REPLACE_IGNORE_FILE_NAMES = {
     'SceneDelegate',
     'ViewController',
 }
-THEME_KEYWORDS = ['来电秀', '铃声', '图片', '视频', '结果']
-NUM_FILES = 50
-ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-NEW_POD_FILE_NAME = 'CCVIdeoSDK'
+THEME_KEYWORDS = ['换脸', '位置', '图片', '视频', '结果', '进度']
+NUM_FILES = 100
+ORIGIN_POD_FILE_NAME = 'ttfluttersdk_plugin'
+NEW_POD_FILE_NAME = 'flutter_quickly_sdk'
 
 # ==================== confuse_ios 相关配置 ====================
 

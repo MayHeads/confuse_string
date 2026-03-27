@@ -12,7 +12,7 @@ from pathlib import Path
 
 # ==================== 调试参数配置 ====================
 # 方便调试时快速修改参数，无需修改代码内部
-DEBUG_FOLDER_PATH = '/Users/jiangshanchen/TSComposs'  # 要处理的文件夹路径
+DEBUG_FOLDER_PATH = '/Users/jiangshanchen/CloudTuiQing'  # 要处理的文件夹路径
 
 DEBUG_BACKUP = False              # 是否创建备份文件
 DEBUG_RECURSIVE = True           # 是否递归查找子文件夹

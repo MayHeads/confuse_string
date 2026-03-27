@@ -39,9 +39,9 @@ PROFILES = {
         name="tt_route_sdk",
         description="Route SDK 全流程，包含配置覆盖、Pod 替换、字符串和文件处理、垃圾代码、pod install。",
         overrides={
-            "NEW_POD_FILE_NAME": "CCVIdeoSDK",
-            "THEME_KEYWORDS": ["来电秀", "铃声", "图片", "视频", "结果"],
-            "NUM_FILES": 50,
+            "NEW_POD_FILE_NAME": "MeetSoundSDK",
+            "THEME_KEYWORDS": ["打鼾", "声音", "位置", "数据", "模板"],
+            "NUM_FILES": 63,
             "project_path": "/Users/jiangshanchen/TTRouSDK",
             "ROOT_PROJECT_DIR": "/Users/jiangshanchen/TTRouSDK",
             "IS_POD_CONFUSE_MODE": True,
@@ -72,8 +72,8 @@ PROFILES = {
         name="tt_route_sdk_flutter",
         description="Flutter Route SDK 流程，含 Dart/Plugin 重命名、README 映射同步、字符串加密、垃圾代码、Pod 和 clean.py。",
         overrides={
-            "NEW_POD_FILE_NAME": "flutter_base_sdk",
-            "THEME_KEYWORDS": ["来电秀", "铃声", "图片", "视频", "结果"],
+            "NEW_POD_FILE_NAME": "flutter_quickly_sdk",
+            "THEME_KEYWORDS": ["换脸", "位置", "图片", "视频", "结果", "进度"],
             "NUM_FILES": 100,
             "project_path": "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk",
             "ROOT_PROJECT_DIR": "/Users/jiangshanchen/Desktop/Code/flutter_ttk/ttfluttersdk",
