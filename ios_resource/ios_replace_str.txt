@@ -348,6 +348,7 @@ orderCreationEndpoint_pkm
 orderCreationFailed_pkm
 orderID_pkm
 orderId_pkm
+orderResultBlur_pkm
 orderResult_pkm
 orderStatusReportEndpoint_pkm
 orderVerificationEndpoint_pkm
@@ -369,6 +370,7 @@ params_pkm
 paramscomplete_pkm
 paramsuuid_pkm
 path_pkm
+payingBlur_pkm
 payload_pkm
 paymentCancelledByUser_pkm
 paymentCompletedSuccessfully_pkm

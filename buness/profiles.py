@@ -42,8 +42,8 @@ PROFILES = {
             "NEW_POD_FILE_NAME": "MeetSoundSDK",
             "THEME_KEYWORDS": ["打鼾", "声音", "位置", "数据", "模板"],
             "NUM_FILES": 63,
-            "project_path": "/Users/jiangshanchen/TTRouSDK",
-            "ROOT_PROJECT_DIR": "/Users/jiangshanchen/TTRouSDK",
+            "project_path": "/Users/may/TTRouSDK",
+            "ROOT_PROJECT_DIR": "/Users/may/TTRouSDK",
             "IS_POD_CONFUSE_MODE": True,
             "ORIGIN_POD_FILE_NAME": "MyFirstLibrary",
             "custom_ignore_folders": [
