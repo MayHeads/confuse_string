@@ -44,10 +44,10 @@ REPLACE_IGNORE_FILE_NAMES = {
     'SceneDelegate',
     'ViewController',
 }
-THEME_KEYWORDS = ['打鼾', '声音', '位置', '数据', '模板']
-NUM_FILES = 63
+THEME_KEYWORDS = ['相机', '位置', '跳舞', '身份', '轨迹']
+NUM_FILES = 60
 ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-NEW_POD_FILE_NAME = 'MeetSoundSDK'
+NEW_POD_FILE_NAME = 'DanceBaseSDK'
 
 # ==================== confuse_ios 相关配置 ====================
 

@@ -39,9 +39,9 @@ PROFILES = {
         name="tt_route_sdk",
         description="Route SDK 全流程，包含配置覆盖、Pod 替换、字符串和文件处理、垃圾代码、pod install。",
         overrides={
-            "NEW_POD_FILE_NAME": "MeetSoundSDK",
-            "THEME_KEYWORDS": ["打鼾", "声音", "位置", "数据", "模板"],
-            "NUM_FILES": 63,
+            "NEW_POD_FILE_NAME": "DanceBaseSDK",
+            "THEME_KEYWORDS": ["相机", "位置", "跳舞", "身份", "轨迹"],
+            "NUM_FILES": 60,
             "project_path": "/Users/may/TTRouSDK",
             "ROOT_PROJECT_DIR": "/Users/may/TTRouSDK",
             "IS_POD_CONFUSE_MODE": True,
