@@ -39,9 +39,9 @@ PROFILES = {
         name="tt_route_sdk",
         description="Route SDK 全流程，包含配置覆盖、Pod 替换、字符串和文件处理、垃圾代码、pod install。",
         overrides={
-            "NEW_POD_FILE_NAME": "DanceBaseSDK",
-            "THEME_KEYWORDS": ["相机", "位置", "跳舞", "身份", "轨迹"],
-            "NUM_FILES": 60,
+            "NEW_POD_FILE_NAME": "ACBakkSDK",
+            "THEME_KEYWORDS": ["相机", "位置", "聊天", "性质", "参数"],
+            "NUM_FILES": 46,
             "project_path": "/Users/may/TTRouSDK",
             "ROOT_PROJECT_DIR": "/Users/may/TTRouSDK",
             "IS_POD_CONFUSE_MODE": True,
@@ -130,6 +130,30 @@ PROFILES = {
             "z_replace_fix_form",
             "z_replace_file",
             "insert_action",
+        ],
+    ),
+    "tt_enc_single_project": BunessProfile(
+        name="tt_enc_single_project",
+        description="项目混淆字符串",
+        overrides={
+            "project_path": "/Users/may/wudongcam",
+            "ROOT_PROJECT_DIR": "/Users/may/wudongcam",
+            "IS_POD_CONFUSE_MODE": False,
+            "custom_ignore_folders": [
+                "Pods",
+                "build",
+                "DerivedData",
+                ".git",
+                "Tests",
+                "UnitTests",
+                "UITests",
+                "1234",
+                "LocalLib"
+            ]
+        },
+        steps=[
+            "z_enc_combin",
+            "execute_pod_install"
         ],
     ),
 }

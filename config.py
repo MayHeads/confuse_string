@@ -9,13 +9,21 @@
 
 # ==================== 目标项目 ====================
 
-project_path = '/Users/may/TTRouSDK'
-ROOT_PROJECT_DIR = '/Users/may/TTRouSDK'
+project_path = '/Users/may/wudongcam'
+ROOT_PROJECT_DIR = '/Users/may/wudongcam'
 PROJECT_SCHEME = 'quick_face_ex'
 
 # ==================== 扫描/过滤配置 ====================
 
-custom_ignore_folders = ['Pods', 'build', 'DerivedData', '.git', 'Tests', 'UnitTests', 'UITests', '1234']
+custom_ignore_folders = ['Pods',
+ 'build',
+ 'DerivedData',
+ '.git',
+ 'Tests',
+ 'UnitTests',
+ 'UITests',
+ '1234',
+ 'LocalLib']
 custom_ignore_swift_files = []
 
 # ==================== Asset 配置 ====================
@@ -32,7 +40,7 @@ ig_fix_text = ['.mp4', '.zip', '/', '.', ',']
 ig_format_text = ['%.', '%d', '%s', '%f']
 STRING_SUFFIX = '_pkm'
 CONFUSE_KEY = '0C32C2KT2FE79YKC'
-IS_POD_CONFUSE_MODE = True
+IS_POD_CONFUSE_MODE = False
 
 # ==================== 文件/命名替换配置 ====================
 
@@ -44,10 +52,10 @@ REPLACE_IGNORE_FILE_NAMES = {
     'SceneDelegate',
     'ViewController',
 }
-THEME_KEYWORDS = ['相机', '位置', '跳舞', '身份', '轨迹']
-NUM_FILES = 60
+THEME_KEYWORDS = ['相机', '位置', '聊天', '性质', '参数']
+NUM_FILES = 46
 ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-NEW_POD_FILE_NAME = 'DanceBaseSDK'
+NEW_POD_FILE_NAME = 'ACBakkSDK'
 
 # ==================== confuse_ios 相关配置 ====================
 
