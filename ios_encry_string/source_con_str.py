@@ -375,7 +375,7 @@ def start_string_obfuscation():
                             escaped_str = re.escape(de_str)
                             pattern = f'"{escaped_str}"'
                             replacement = f'/*{de_str}*/"{en_str}".{random_method_prefix}_decrypt()'
-                            content = re.sub(pattern, replacement, content)
+                            content = re.sub(pattern, lambda m: replacement, content)
 
                     with open(file_path, 'w') as f:
                         f.write(content)
