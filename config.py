@@ -52,10 +52,10 @@ REPLACE_IGNORE_FILE_NAMES = {
     'SceneDelegate',
     'ViewController',
 }
-THEME_KEYWORDS = ['相机', '位置', '聊天', '性质', '参数']
-NUM_FILES = 46
+THEME_KEYWORDS = ['设备', '控制', '遥控', '心态参数', '结果']
+NUM_FILES = 64
 ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-NEW_POD_FILE_NAME = 'ACBakkSDK'
+NEW_POD_FILE_NAME = 'DeviccTkSDK'
 
 # ==================== confuse_ios 相关配置 ====================
 
