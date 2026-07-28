@@ -1,612 +1,296 @@
-#00E5FF
-#0E0F14
-#0d0e13
-#0d0e15
-#121319
-#18191f
-#24252D
-#8ff5ff
-#F08FAC
-#FF2A85
-#abaab1
-#c47fff
-#f7f5fd
-#ff2a85
-#ff3b30
-#ff89ac
-%02hhx
-+NWhDUEzADKmqD6jmas+0F+AXbvCjbP7H/kY3d5FNHDiOLkt5zdzBOeY1GkIovnt
-+NWhDUEzADKmqD6jmas+0LZGJa3T4MF809DlyQ+xnHhdXJ6S3C9HrSWqW0cuPimn
-+ntZUj+hwFo0LKQ2hU7th5e7vaf+eEAm/oRS1UwREqDLBznHVoCYh26xSA/+xfur
-.jpeg
-.jpg
-.mp4
-.png
-.webp
-/
-/ 年
-/cicCnTmnJKormHxj52d7qRIk+Zsq3l3ciukgQe90u4=
-/tool-ai-service/api/faceBeauty/v2/beautifyPic
-/tool-ai-service/api/faceBeauty/v2/styleImagePro
-/tool-ai-service/api/faceBeauty/v2/tryLipstickPic
-/tool-ai-service/api/oss/getSignUrlCom
-/tool-appbase-service/api/action/config/get/v2?serviceCode=PHONE
-/tool-appbase-service/api/action/config/get/v2?serviceCode=PHONE_MARGE
+$AppStart
+$app_version
+$device_id
+$is_first_day
+$manufacturer
+$model
+$network_type
+$os
+$os_version
+$resume_from_background
+$screen_height
+$screen_width
+$wifi
+&
+&deviceId=
+&key=
+&prdId=
+&timestamp=
+&uuid=
+&ver=1&data=
+.
+/tool-ab-service/api/abTest/getListGroupingConfigE/v2
+/tool-ad-service/api/gdtSecretConfig/getSecret
 /tool-appbase-service/api/action/config/get/v3
-/tool-user-service/api/login/v1/app/checkPhoneBind
-/tool-user-service/api/login/v1/app/phone
-/tool-user-service/api/login/v1/app/sendCode
-/tool-wallpaper-service/api/ai/config/enc/wm
-/tool-wallpaper-service/api/ai/craft/common/comp/record/v2
-/tool-wallpaper-service/api/ai/craft/common/enc/del/record
-/tool-wallpaper-service/api/ai/craft/common/enc/img/create
-/tool-wallpaper-service/api/ai/craft/common/enc/img/matting
-/tool-wallpaper-service/api/ai/craft/common/enc/video/dreamina/actionImitation
-/tool-wallpaper-service/api/ai/craft/common/enc/video/tx/effects
-/tool-wallpaper-service/api/ai/craft/common/pic/check/v2
-/tool-wallpaper-service/api/ai/craft/common/pic/comp/v2
-/tool-wallpaper-service/api/ai/craft/common/pic/upload/v2
-/tool-wallpaper-service/api/ai/craft/common/video/swap/put/v2
-/tool-wallpaper-service/api/ai/craft/module/listModuleItem/v2
-/tool-wallpaper-service/api/ai/craft/new/enc/template/category
-/tool-wallpaper-service/api/ai/craft/new/enc/template/detail
-/tool-wallpaper-service/api/ai/craft/new/enc/template/detail/v2
-/tool-wallpaper-service/api/ai/craft/new/enc/template/page
-/tool-wallpaper-service/api/ai/template/user/mark/collect/list/v2
-/tool-wallpaper-service/api/ai/template/user/mark/collect/v2
-/tool-wallpaper-service/api/craft/new/enc/template/face/recommend
-/tool-wallpaper-service/api/oss/getToken
-/tool-wallpaper-service/api/wallpaper/category/reliable/list
-/tool-wallpaper-service/api/wallpaper/reliable/list
-/wk
-/yr
-0
-0%
-01
-02
-03
-04
-0MB
+/tool-appbase-service/api/common/rftstatus/v2
+/tool-appbase-service/api/ios/rb/findBook/v2
+/tool-bridging-service/api/tianshu/ios/quarantine/addOrderV2
+/tool-bridging-service/api/tianshu/ios/quarantine/appAttribution
+/tool-bridging-service/api/tianshu/ios/quarantine/reportStateV2
+/tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataBatch
+/tool-bridging-service/api/tianshu/ios/quarantine/uploadShenceDataV2
+/tool-bridging-service/api/tianshu/ios/quarantine/verifyOrderV2
+/tool-flow-service/api/payMember/getPayMemberInfo/v2
+/tool-flow-service/api/payMember/ios/queryIosCommodityInfo/v2
+/tool-flow-service/api/payMember/ios/uploadPayTag
+/tool-flow-service/payMember/test/deleteAllMemberData
+/tool-route/api/tianshu/ios/quarantine/recover
+/tool-route/api/tianshu/ios/quarantine/uploadShenceDataV2
+/tool_frontend_service/iCustomerServiceSub?prdId=
+0000
 1
-1.0.0
-124MB
-133038
-133039
-167 x 204
-1cdbf774d5
-20
-4K 超清画质无水印导出
-4K 高清极速导出
-4k.tv
-6
-77oGSjc/FLMeR77v8axWGTcaSUXrQGUvr2tTe9K/+YI=
+100
+133014
+133015
+1573999086783053
+2G
+3.0.6.5
+3G
+4G
+5G
+5GSrcqkeB24HYrbMVkWIyF4wKEfVszQOyLauyXdEPRI
+61
 97e1b1c011
-?
-AI Motion
-AI SCANNING
-AI 创作
-AI 生成
-ATTACHMENTS
-AXc3arATnfm6UQma2O6ZS4HkspI/JnnYU0XOVWswm9c=
-Accept
-AlbumAssetCell
-Anime
-BeVietnamPro-Light
-Bug Report
+=======
+Apple
+Begin BD monitoring...
+Begin monitoring...
+Beginning Network request ended.
+Beginning network request...
+CFBundleIdentifier
 CFBundleShortVersionString
-Ch7oglBQlV9nmLxDH7Nga1TIrhI4hxq0ZBCsrbWaJ+o=
-Close
-Confirm & Kill App
-Content-Type
-DREAMINA_VIDEO_ACTION_IMITATION
-E9weu0eqKS0di9gu2r9RJA==
-END OF DOCUMENT
-EVOLVE.
-FEEDBACK
-Feature Idea
-FokTWlKctQrWNQ8hTlb5ExmTmVZXATUawjTLWKs5V1g=
-GALLERY LIBRARY
-GbGDCD+ps8Yev5DRP+d94IFTNDb4nkZ/Vz6uxg1RW0U=
-HELP US 
-HNLXT3tF1+YPlLulphTSn9wkt4S5vaLNWzFQ8jwa5G0=
-HS_IMAGE_CREATE
-Hand Dance
-HfXQtzV52xHHhi4d9LFDUBswkwUE0njCV4KSr5Ke1D+mCDhstT2vCne8ty1R1Tyq
-HomeTemplateCell
-K-Pop
-LQugv5d8dkB8XODT1mJ8WVCT+GNFuWh+G+YsraNe5x28UE3o7Yj7FDqX9mPtGqIx
-LaunchScreen
-Liquid Shadow
-MusicTrackCell
-N0/xO/OSFsGOCOOHoF8UHaMzmTCC0ucJNd0K17QAsZk=
-NEON PULSE
-NetServiceError
-No more data
-OnboardingCell
-Original
-Others
-P1ucePN/dAcCIZyyoZZnbpq2cKt2Wx74qcPVFjtVJI8=
-PDLiquidGradient
-POST
-PRO
-Policy
-Premium Plan
-Privacy
-Privacy Policy
-ProfileMediaCell
-Purchase Failed
-QJfrWIHV5t4pnEOtTJqRYDn1rClAKe6MfYBlCEipnXA=
-Recents
-SAVE 70%
-SELECT CATEGORY
-SELECTED PREVIEW
-SELF MATCHES %@
-SavedImageAddCell
-SavedImageCell
-Service
-Settings: User logout triggered
-SpaceGrotesk-Bold
-T+UDr+sGxoEDjNjIo7iT/A==
-TX_VIDEO_EFFECTS
-TemplateDetail: Collection failed
-TemplateDetail: collectionButton tapped!
-TemplateDetailCell
-TemplateListCell
-Terms
-Trending
-UI Design
-UNLOCK 舞动相机 PRO
-USER INPUT
-UVqMFpH5WJrjRs4+YmAkBtEnhFMwHQWiHE3q+qcpUV/QLC8OaCz6Icxj3bqNRB/G
-VIP
-VIP会员
-VideoFaceSwap
-View All
-VqcnDE26n0VN/mFjXmPt0vdICYbXYEeyWeYRr0WT4rg=
-WEEKLY PLAN
-WO6JBLXnAnZzUzvrtQdWgoGUN9YgRW+gaReePHLqTeSkVckZybeTjDn4K+ksF2rrf+lCT2Myy//P9xViatHF5g==
-Y2K Style
-Y5sVic45EqN7LoIsfhPZCdvp6t7fc7L6HPD4X7O8+Bw=
-YEARLY PLAN
-\
-
-^1[3-9]\d{9}$
-a_button
-a_c_0
-a_c_1
-a_c_2
-a_in_0
-a_in_1
-a_in_2
-a_t_0
-a_t_1
-a_t_2
-a_top_back
-accessKeyId
-accessKeySecret
-accessibility.fill
-activity_money
-activity_name
-activity_state
-aiGrad
-app_activity
+CFBundleVersion
+DK_ELA
+End monitoring...
+Error:
+F00C5GZWB1xX6EW9
+GDTAction启动
+Initializing parameters...
+Initiating order creation...
+Initiating purchase restoration...
+JR7nZqQa0HInLTHq9UL0AQ==
+Main
+NSAllowsArbitraryLoads
+NSAppTransportSecurity
+No product data received.
+Order created successfully.
+Order creation failed.
+PAY_FAILURE
+PAY_SUCCESS
+Payment completed successfully.
+Payment failed.
+Payment is in progress...
+Payment was cancelled by the user.
+Purchase restoration failed.
+Purchase restored successfully.
+RT_APP
+SEC-
+STA
+Setting VIP monitor...
+Tool-Auth
+Transaction verification failed.
+Transaction verified successfully.
+Unknown
+WIFI
+[EtamineParulawarbler-Error]
+[EtamineParulawarbler-Error] deviceId is not allow nil
+[EtamineParulawarbler-Error] prdId is not allow nil
+[EtamineParulawarbler-Error] requestDomin is not allow nil
+[EtamineParulawarbler-GinghamPillbug]
+abValue
+action1 -->
+activityChannel
+activityChannel=
+adsToken
+amountBoxStyle
+appStartNewRequest
+appStartNewResponse
+appVersion
+appVersion=
+appVersionCode
+appVersionCode=
+app_purchase
+app_version
+app_version_name
+apple支付失败
+apple支付成功
 application/json
-arrow.2.circlepath
-arrow.left
-arrow.left.and.right
-arrow.right
-arrow.up.circle
-author
-bNPr+6jtmKMafMApMK2Z0iXIgnRY/TBbjMsLE52Wdic=
-backgroundUrl
-bbas
-bolt.fill
-bucket
-cRtr9mfLgXfv6hJNxV4h8P+d0c/sKZfMnL21HVLsA0s=
-camera
-category
-categoryId
-categoryList
-categoryName
-checkmark
-checkmark.square.fill
-chevron.down
-chevron.left
-chevron.right
-circle
+applicationDidBecomeActive
+b_channel
+bottomMark
+brand
+click
+closeButtonDelay
+closeButtonTransparency
 code
-collectMark
-com.wudongcam.savedImageManager
-com.舞动相机.pro.weekly
-com.舞动相机.pro.yearly
-com.舞动相机.pro.yearly.newuser
-compsDate
-compsTime
+com.suosuo.tracker.forgeEchelon
+com.ttsdk.decrypt.excludeApeHeatcontent
+commoditNum
+commodityBgColor
+commodityDtoList
+commodityGroupDtoList
+commodityId
+commodityName
+commodityProperty
+configData
 configs
-creationDate
-crown.fill
-current
+content
+content-type
+cur_channel
+currentChannel
+currentChannel=
+currentCity
 data
-desc
+debug
+defaultCheck
+defaultGroup
+deviceId
+deviceId=
+device_id
+discountButtonCopywriting
+discountPriceDesc
 display
-doc.text.fill
-drop.slash
-endpoint
-enhance
-envelope.fill
-expiration
-extJson
-eye
-faceIndexList
-fadeGradient
-gLntG03li7La0hj7/+/gglwu0AoZP2K/etCUCplTG0c=
-gearshape.fill
-hasBind
-hasHistoryRecords
-height
-hitCount
-house.fill
-https://docs.qq.com/doc/DV2FqWXhaV3JFVk9o
-https://docs.qq.com/doc/DV2NtQnBzTmFJb0Ni
-https://docs.qq.com/doc/DV3JIZ3dKbFZmeHNp
-https://docs.qq.com/doc/DV3hJTU5jUXJGdEVp
-https://fasthuyitool.jidiandian.cn/
-https://www.baidus.com
-iDk516TWze6dvmdoa79QWQ==
+en_url
+eventName
+extSuosuoraDescTransparency:
+extraDesc
+extraDescTransparency
+firstDeductionTime
+freeTrialCheck
+goodsInfo
+groupId
+groupName
+groupType
+holidayCustommakeJamesmaitlandstewartVerbalintelligence
+home_clearing_photo
+http://app.gzshenyuewl.com
+https://iostesthuyitool.jidiandian.cn
+iOS
+iPhone
 id
-image/png
-imageCountMax
-imageCountMin
-imageStyle
-imgCreate
-imgUrls
-infinity
-input_temp.mp4
-internaldrive
-iphone
-isBindResultedWcgRec
-isFirstLoaedLaunch
-isSearchCount
-itemBackgroundImage
-itemCoverImage
-itemDtoList
-itemId
-itemJumpId
-itemJumpType
-itemList
-itemTitle
-laserScan
-left
-line.horizontal.3
-lock.shield
-lock.shield.fill
-mainId
-mark
-mediaType == %d
-message
-moduleType
-music.note
-name
-newUserGroup
-objectKey
-object_string1
-object_string2
-object_string3
-object_string4
-object_string5
-onboarding_2
-onboarding_3
-open
-open_entrance
-optimizeCountSql
-orders
-output_watermarked.mp4
-pageNo
-pageSize
-pawprint.fill
-paywall_hero
-paywall_hero_zh
-person.badge.shield.checkered
-person.circle.fill
-person.crop.circle.fill
-person.fill
-phone
-picComps
-picSource
-plus
+identifier
+idfa
+idfaDigitalUnion
+idfa_s
+idfa_u
+idfv
+index
+innerOrderId
+intermingleJupitersbeard
+ios
+iosProductId
+iosStyleId
+isAgreeProtocol
+isLoadedAtt
+mainButtonColor
+mainButtonCopywriting
+mainButtonSubscript
+markId
+member
+memberDeadline
+memberEquityIntroduce
+memberIosStyleDto
+msg
+none
+nvgag_shuzilm_cn
+offset
+op
+orderId
+orderInfoList
+orderState
+originTransactionId
+packageName
+pageDescTitle
+pageMaterialId
+pageMaterialUrl
+params
+phoneType
+platform
 prdId
-previewVignette
-queueStatus
-record.circle
-records
-rectangle.portrait.and.arrow.right
-requestId
-result.mp4
-result.png
-right
-securityToken
-selectionGrad
-shield.checkerboard
-size
+prdId=
+prd_id
+priceConvert
+priceDimension
+protocolCheck
+qaid
+remark
+remarkName
+renewal
+requestDomin is empty
+requestPath
+retentionPopUpCheck
+rightsDesc
+s_channel
+sandbox
+sdk_heartbeat
+sdk_version
+sdk_version_name
+secret
+sensorList
+service
+serviceCode
+setKaratGeorgeiv
+showBuyCount
+signature
+signatureD=
+simulatesAskToBuyInSandbox
+sjql
 sort
-sound
-sourceType
-sparkles
-square
-star
-star.fill
-status
-style
-success
-tSKnUlhenW9WeNYXj6WaHB+dVWjbSPFRcrd0V449PMRsu2azSuypavSyc2Y0ZhvsEfhszid9lU3xK1zwy4G8Ng==
-tags
-templateDesc
-templateId
-templateLink
-templateLinkNew
-templateList
-templateName
-templateStyle
-templateUrl
-tiled
-total
-trans
-transform.translation.y
-trash.fill
-tray
-tv
-txVideoEffects
+sourceId
+startFrom
+state
+styleName
+sysVersion
+test
+timeliness
+timestamp
+topMark
+tranId
+transactionId
+transactionIdentifier
+true
 type
-url
-useCount
-userImgMd5
-userImgUrl
-userPic
-v4aJSYTpeqsAyyXq78WlB2nAL3+q8Fjbs6v2NWcNeDk=
-video.fill
-waitTime
-wand.and.stars
-watermarked.mp4
-watermarked.png
-width
-wmUrl
-wudongcam_saved_images_list
-wudongxin
-xmark
-xmark.circle
-xmark.circle.fill
-yyyy.MM.dd
-¥128
-¥18
-¥198
-© 2023 舞动相机 Labs. All Rights Reserved.
-如有疑问请联系：legal@舞动相机.app
-▶ 拍同款
-✅ 购买成功
-✨
-《会员服务协议》
-《自动续费协议》
-上下滑动
-上传中...
-上传成功
-上传照片
-下一步
-专属特权持续更新
-为了保障您的账号安全及作品同步
-建议您立即进行账号绑定
-享有算法服务器超车优先排队权
-人物跳舞
-付费成功
-付费页
-会员
-会员icon
-会员服务协议
-作品
-你的首个 AI 舞蹈魔法
-使用协议
-保存作品
-保存失败
-保存相册
-信息使用
-信息收集
-免责声明
-关于
-关闭
-分享给好友
-删除
-制作失败
-制作完成
-制作流程
-制作页展示
-功能
-加入
-动物跳舞
-协议勾选（主动点击勾选，点击订阅后弹出同意的点击都报）
-单商品转化策略
-去除水印 / 4K 导出
-去除视频水印
-发送验证码失败
-取消
-取消支付
-古风
-合成中...
-合成结果
-同意并继续
-后台生成
-否
-启动
-启动自动弹出
-启动页
-哈基米也能 C 位出道
-图片
-在这里记录你的舞蹈瞬间
-好的
-宠物也疯狂
-尊享专属通道，省时高效
-尽管我们力求提供最优质的 AI 渲染效果，但因技术限制，生成的结果可能存在视觉瑕疵。舞动相机 不对生成内容的特定用途适用性做任何明示或暗示的保证。
-展示
-已保存到相册
-开启 PRO
-会员特权
-开启3天免费试用
-开启你的舞蹈
-开启奇妙旅程
-开始 3 天免费试用
-开始3天免费试用
-开始制作
-开始生成
-开通会员代表接受
-
-《会员服务协议》与《自动续费协议》
-开通会员代表接受《会员服务协议》与《自动续费协议》
-引导页
-引导页1-展示
-引导页1-点击继续
-引导页2-展示
-引导页2-点击继续
-引导页3-展示
-引导页3-点击继续
-弹窗展示
-当下神曲
-恢复失败
-恢复成功
-恢复订阅
-恢复购买
-您在 舞动相机 上传的原始内容所有权归您所有。但是，通过使用本服务，您授予 舞动相机 全球性、非排他性的许可，允许我们在协议范围内使用、托管及展示该内容。
-您的权利
-您的每一条建议都如同一剂催化剂，帮助我们在这场霓虹律动中不断进化。
-感谢您的反馈，我们会尽快处理。
-我们承诺保护您的个人隐私。您上传的照片和生成的视频数据将经过加密处理，除提供服务所需外，我们不会擅自泄露给任何第三方。
-
-关于数据的收集、存储及使用的具体细则，请参阅我们的《隐私权政策》。
-我们收集信息的主要目的是为了提供并改进 舞动相机 的 AI 创作体验。我们不会向任何非关联第三方出售您的个人信息。
-我们收集的信息包括您主动提供的信息（如注册邮箱）以及在使用服务过程中自动生成的技术信息（如设备型号、IP地址）。
-
-对于照片数据，我们仅在处理期间临时存储，处理完成后即会根据策略进行清理。
-我们采用行业领先的加密技术和多重安全校验机制，确保您的数据在传输和存储过程中的安全。
-我已阅读并同意
-我的
-我的作品
-我的收藏
-手机号或者验证码错误
-手机号绑定
-拉起支付
-提交中...
-提交成功
-提示
-摇滚
-支付失败
-数据安全
-新人引导流程
-新用户专享
-无限制所有舞蹈模板
-无限次解锁全部 AI 舞蹈特效
-无限生成次数 & 解锁全部风格
-智能优化
-暂不绑定
-暂无数据
-最后更新日期：2023年10月24日
-最新潮特效功能抢先体验
-服务异常
-服务条款说明
-未开启相册权限，请在设置中允许访问相册以便选择照片或视频
+uaWeb
+unimportantId
+unitPrice
+userAgent
+user_location
+uuid
+uuidString
+ver
+version
+versionCode
+xkX2Ab1P3KuI214V
+xm_lib
+xm_lib_version
+xm_manufacturer
+xm_model
+xm_network_type
+xm_os
+xm_os_version
+xm_screen_height
+xm_screen_width
+zgxMap
+{
+}
+下单成功
+主动取消支付
+会员恢复失败
+会员恢复成功啦，快去使用功能吧～
+会员更新失败，请退出应用重试
+周
+年
+开通会员成功啦，快去使用功能吧～
+支付中
+无网络
+最终模型数组 =
+月
 未知
-查看作品详情
-查看全部 ➔
-根据适用法律，您有权访问、更正或要求删除您的个人信息。您可以随时通过 legal@舞动相机.app 与我们联系以行使这些权利。
-模板详情
-模版名
-歌曲列表
-正在优化全息纹理效果...
-正在初始化生成引擎...
-正在合成中，请稍后...
-正在同步量子舞蹈节奏...
-正在提取色彩精华...
-正在注入赛博朋克灵魂...
-正在渲染超现实背景...
-正在生成你的舞蹈
-正在计算光影路径...
-每月获赠 500 个高级动作点数
-流行
-海量视频/图片模板一键生成
-清除缓存
-点击
-点击继续
-热门
-热门音乐
-照片变舞蹈
-照片裁剪
-版权与知识产权
-生成队列优先提速
-用户协议
-用户反馈
-用户隐私与安全
-电音
-登录
-登录失败
-登录失败，请稍后再试
-登录并绑定
-登录成功
-确定
-确认
-确认并生成
-确认提交
-确认清除缓存吗？
-立即制作
-立即生成
-立即生成/制作同款
-立即绑定
-素材使用
-素材详情页展示
-自动续费协议
-舞动
-舞动相机
-舞动相机 Legal v2.4
-舞动相机 PRO
-舞动相机 Support
-舞动相机 是一款基于 AI 驱动的视觉艺术创作工具。通过访问或使用我们的服务，即表示您同意接受本协议的所有条款及条件。
-
-我们将为您提供包括但不限于：照片动效合成、AI 舞蹈模拟、素材库托管以及社交分享功能。
-获取验证码
-视频
-解锁 1000+ 爆款模板
-解锁 PRO 特权
-
-解锁 PRO 特权
-Unlock 舞动相机 PRO
-解锁全能 PRO
-订阅页
-订阅页展示
-设置
-设置页
-设置页VIP卡片
-试用3天后 ¥198/年，可随时取消
-请描述您遇到的问题...
-请输入手机号
-请输入有效的手机号
-请输入验证码
-调试
-账号绑定
-账户
-超强节奏同步，燃爆全场
-跳舞列表
-踩准每一个节拍
-返回
-返回关闭页面
-进入歌曲列表
-退出登录
-选择人物跳舞
-选择作品
-选择动物跳舞
-选择已上传的照片
-选择歌曲
-选择歌曲模版
-通用
-重新发送
-错误未知
-隐私协议
-隐私政策
-首页
-验证码发送失败
-验证码已发送
-高清画质，极速无损导出
+未知错误，apple支付失败
+网络不可用
+网络状态未知
+解密失败
+通过以太网或WiFi连接
+通过蜂窝网络连接
+非审核状态
+验单成功

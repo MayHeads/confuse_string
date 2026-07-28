@@ -9,21 +9,13 @@
 
 # ==================== 目标项目 ====================
 
-project_path = '/Users/may/wudongcam'
-ROOT_PROJECT_DIR = '/Users/may/wudongcam'
+project_path = '/Users/may/ttfluttersdk-overseas'
+ROOT_PROJECT_DIR = '/Users/may/ttfluttersdk-overseas'
 PROJECT_SCHEME = 'quick_face_ex'
 
 # ==================== 扫描/过滤配置 ====================
 
-custom_ignore_folders = ['Pods',
- 'build',
- 'DerivedData',
- '.git',
- 'Tests',
- 'UnitTests',
- 'UITests',
- '1234',
- 'LocalLib']
+custom_ignore_folders = ['Pods', 'build', 'DerivedData', '.git', 'Tests', 'UnitTests', 'UITests', '1234']
 custom_ignore_swift_files = []
 
 # ==================== Asset 配置 ====================
@@ -52,10 +44,10 @@ REPLACE_IGNORE_FILE_NAMES = {
     'SceneDelegate',
     'ViewController',
 }
-THEME_KEYWORDS = ['设备', '控制', '遥控', '心态参数', '结果']
-NUM_FILES = 64
-ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
-NEW_POD_FILE_NAME = 'DeviccTkSDK'
+THEME_KEYWORDS = ['植物', '位置', '配置', '临时', '结果', '进度']
+NUM_FILES = 35
+ORIGIN_POD_FILE_NAME = 'ttfluttersdk_plugin'
+NEW_POD_FILE_NAME = 'PlantFlutterBaseSDK'
 
 # ==================== confuse_ios 相关配置 ====================
 

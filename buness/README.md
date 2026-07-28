@@ -161,3 +161,6 @@ python3 -m buness.cli run tt_route_sdk
 
 ### 运行flutter sdk混淆
 python3 -m buness.cli run tt_route_sdk_flutter
+
+### 运行海外flutter sdk混淆
+python3 -m buness.cli run tt_route_sdk_flutter_overseas

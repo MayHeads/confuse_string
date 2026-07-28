@@ -1,6 +1,6 @@
--------1
 .
 /tool-ab-service/api/abTest/getListGroupingConfigE/v2
+/tool-ad-service/api/gdtSecretConfig/getSecret
 /tool-appbase-service/api/common/rftstatus/v2
 /tool-appbase-service/api/ios/rb/findBook/v2
 /tool-bridging-service/api/tianshu/ios/quarantine/addOrderV2
@@ -19,9 +19,9 @@
 0D32C8OACYE79YCA
 1
 100
-133014
-133015
 133016
+133028
+133029
 14.6
 1573999086783053
 25
@@ -31,6 +31,8 @@
 61
 8d0bd96920e3b122afe156f36afc2bc8
 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~
+Allow Arbitrary Loads
+App Transport Security Settings
 AppStart
 Apple
 F00C5GZWB1xX6EW9
@@ -45,7 +47,6 @@ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 actionStrategy
 activityChannel
 adsToken
-agreeToTerms
 amountBoxStyle
 appStartNewRequest
 appVersion
@@ -61,10 +62,12 @@ bdGetDuIdfa
 bdGetSystemIDFA
 bottomMark
 brand
+checkAts
 ciphertext
 closeButtonDelay
 closeButtonTransparency
 code
+com.dwind.adept
 commoditNum
 commodityDtoList
 commodityGroupDtoList
@@ -112,8 +115,9 @@ groupId
 groupName
 groupType
 hasDeniedCamera
-https://app.anmingshi.com
+https://app.gzloongtui.com
 https://iostesthuyitool.jidiandian.cn
+https://www.apple.com
 iOS
 iPhone
 id
@@ -124,7 +128,10 @@ idfa_s
 idfa_u
 idfv
 index
-init start
+init network
+init network success
+init obs network success
+init storage
 initBDManager
 initGDManager
 innerOrderId
@@ -133,7 +140,6 @@ iosProductId
 iosStyleId
 isEncryption
 isInnerError
-isNotFirst
 isRftstatus
 loginResponse
 mainButtonCopywriting
@@ -143,6 +149,8 @@ member
 memberDeadline
 memberIosStyleDto
 msg
+network_permission_triggered
+newUserGroup
 offset
 orderAmount
 orderId
@@ -175,8 +183,11 @@ s_channel
 sdk_heartbeat
 sdk_version
 sdk_version_name
+secret
+secretKey
 sensorList
 service
+setID
 showBuyCount
 signature
 signs
@@ -184,16 +195,13 @@ simplescan
 simulatesAskToBuyInSandbox
 sonCommodityId
 sort
+sourceId
 startFrom
-startGroup
-start_agreeToTerms
-start_isNotFirst
 status
 styleName
 suID
 success
 sysVersion
-test
 timeliness
 timestamp
 topMark
@@ -229,7 +237,6 @@ zgxMap
 上报给服务端购买状态失败
 上报给服务端购买状态成功
 下单失败
-下单完向苹果拉起购买
 分组接口执行成功，分组数据已存储
 删除测试会员数据失败
 删除测试会员数据成功
@@ -238,13 +245,12 @@ zgxMap
 埋点失败
 已停止监听购买状态
 开始
-开始下单
 开始像服务端恢复购买
 开始像服务端验单
-开始恢复购买记录
 开始恢复购买记录...
 开始执行分组接口
 开始执行归因 3 合一接口
+开始执行获取广点通密钥配置接口
 开始执行过审核状态判断
 归因 3 合一接口执行失败
 归因 3 合一接口执行完成
@@ -260,7 +266,6 @@ zgxMap
 拉起苹果支付
 拉起苹果支付失败
 收到监听购买状态
-有网络
 未找到匹配的商品
 正式环境 不打印数据
 没有找到有效的 iOS 商品 ID
@@ -268,6 +273,7 @@ zgxMap
 神策埋点失败
 神策埋点成功
 立即订阅
+等待网络超时，继续启动流程
 结束恢复购买 没有交易记录
 苹果付费取消
 苹果付费失败
@@ -275,6 +281,7 @@ zgxMap
 获取vip状态数据
 获取商品信息失败
 获取商品信息结束
+获取广点通密钥配置接口执行失败
 警告: 请求参数获取超时
 购买成功临时像后台发送临时信号
 购买成功临时像后台发送临时信号失败

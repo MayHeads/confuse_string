@@ -1,18 +1,23 @@
 👉👉👉👉👉Flutter Swift String Obfuscation Map List👈👈👈👈👈
 
 
-INVALID_ARGUMENT <-----------> KLTqlYz9yng6rBF3ZSDzYQHn0pXR1hvkC/V0I55ND6s=
-bdGetAttributionToken <-----------> 4LN0GH0c/Lhjw+OYMHj3nQOOW5/ZgxwNFBO/OC0HAk0=
-bdGetDuIdfa <-----------> KdiOOPHlYzVtbUkAEqkb0w==
-bdGetSystemIDFA <-----------> 6wlg5rUYG7MA+XzBEqDVFw==
-deviceID <-----------> WrknEz7EcLA/I/fn3nSHJw==
-deviceID is required <-----------> cfjv4LKVns9Vyc5iWsOXDzgVOXfncRMkrytRDtk5Rjs=
-duIDFA <-----------> bOGy2HSjyUyofG/oXGeTJQ==
-gdGetCaid <-----------> lHk5tVSgCGRfxCX/djna2A==
-initBDManager <-----------> qktbNMzhbTfiAzb/x7ttxA==
-initGDManager <-----------> SKKAlhJ04S9hXq2Ka44PLQ==
-nvgag_shuzilm_cn <-----------> q+cp8Jsfb/14rCbNc2mSq2rDta7fDfTniKkLszWX+qc=
-prdid <-----------> XT2Q9iOG1e3Gqx59bAVJeg==
-prdid is required <-----------> 45R5tGPucLY4vVDDVm57MdWsMLvl0Lylrat9S5gTsBs=
-suID <-----------> mhG9VL8a34yK3nG1RVVbPg==
-ttfluttersdk_plugin_channel_name <-----------> /opEE58glnFX6lSrFya4MZqLGEKeKPWO0zk6YLBhGaUYnXhbTYPHWl6M2LTh+al4
+INVALID_ARGUMENT <-----------> M/Tvb/en64qNms3Mqy9mhmWyEmGKpu2onejtgENlcI4=
+NSAllowsArbitraryLoads <-----------> gGBqtBl9/2u2L4eN9HnzTwVCGlTQeGUce8k6asLBi8I=
+NSAppTransportSecurity <-----------> tKvfGedmp8Zth1hPcSHgY1IYJ6JnPrFQ1o1uxjj4H7Q=
+bdGetAttributionToken <-----------> SqBYG4iYCeZeix7d1xdaSuLVZMEVP+JvRw5jU6rzbLA=
+bdGetDuIdfa <-----------> XZZ4OMgIRud3eqMmyxTjWQ==
+bdGetSystemIDFA <-----------> m/0MXHIzqG0JrrBQhWt0WA==
+checkAts <-----------> XTgscAb6bcm6AOHbcm3feQ==
+deviceID <-----------> 9n6ZzbfFZCk5a5aTCPqsDw==
+deviceID is required <-----------> B/ekNnORalrTvQogELGhZVz524/EdPNCjB8nQP2BOE8=
+duIDFA <-----------> lqWb9XsNsUusAuYiQcsJ4Q==
+gdGetCaid <-----------> fwikVYijG2dkUZFTwYmKuw==
+initBDManager <-----------> eyQo+m6fMa+72MMykiUjJA==
+initGDManager <-----------> m2N/u7goZqzaNwqbCFKGpw==
+nvgag_shuzilm_cn <-----------> Ov/ApDrahzqVGoy3NjAOSU2y8i07hdBPQOX5gQ4sA6c=
+prdid <-----------> EWuBRIdAjlmdxk0aSe3R9Q==
+prdid is required <-----------> HEtfkugR+bTYbKRg1RWLxeUdQIhOLWaUFF1QNd17bB0=
+secretKey <-----------> iwErzoshgxxm2OZkAwisEw==
+setID <-----------> JF0gadqH4I52ztaiQbWO7Q==
+suID <-----------> FL58iZ1ApLUsUMG6n5KVgw==
+ttfluttersdk_plugin_channel_name <-----------> +lqPbNnKoi6HSvJkyyfiTVhz6ziT5bVTUZCkCI6hWJdAKHcaDJzyQXt09eX6hQlQ

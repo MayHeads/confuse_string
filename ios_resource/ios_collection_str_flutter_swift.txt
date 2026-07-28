@@ -1,7 +1,10 @@
 INVALID_ARGUMENT
+NSAllowsArbitraryLoads
+NSAppTransportSecurity
 bdGetAttributionToken
 bdGetDuIdfa
 bdGetSystemIDFA
+checkAts
 deviceID
 deviceID is required
 duIDFA
@@ -11,5 +14,7 @@ initGDManager
 nvgag_shuzilm_cn
 prdid
 prdid is required
+secretKey
+setID
 suID
 ttfluttersdk_plugin_channel_name

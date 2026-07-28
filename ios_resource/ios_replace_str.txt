@@ -102,6 +102,7 @@ begin_pkm
 beignNetwrokRequest_pkm
 bottSuosuoomMark_pkm
 browserUserAgent_pkm
+buglyId_pkm
 bundleDict_pkm
 bundleID_pkm
 bundleIdentifier_pkm
@@ -114,6 +115,7 @@ cancelByUser_pkm
 cdid_pkm
 changeSelectIndex_pkm
 changeStatus_pkm
+chekEnvi_pkm
 ciphertext_pkm
 ciphertextres_pkm
 cleanListfrom_pkm
@@ -216,9 +218,7 @@ finishorderID_pkm
 firSuosuostDeductionTime_pkm
 foregroundReturnTimestamp_pkm
 freeSuosuoTrialCheck_pkm
-gdKey_pkm
-gdSecret_pkm
-gdtsAppID_pkm
+gdtSecretConfigEndpoint_pkm
 genZhongEvent_pkm
 getAttactionStatus_pkm
 getCaiddd_pkm
@@ -443,7 +443,7 @@ rightsDesc_pkm
 saUpload_pkm
 scIsVip_pkm
 schedulePeriodicEventUpload_pkm
-secretKey_pkm
+secret_pkm
 sensorSSCList_pkm
 serializedJSONString_pkm
 serviceList_pkm
@@ -458,6 +458,7 @@ showTime_pkm
 signatureD_pkm
 single_pkm
 sortSuosuo_pkm
+sourceId_pkm
 ssc_appReview_pkm
 startMonitoring_pkm
 stateAction_pkm
