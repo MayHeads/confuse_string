@@ -33,6 +33,7 @@ def collect_ios_files(flutter_plugin_path):
     STRING_SUFFIX = '_pkm'
     
     for root, dirs, files in os.walk(flutter_plugin_path):
+        dirs[:] = [d for d in dirs if "build" not in d.lower()]
         for file in files:
             file_path = os.path.join(root, file)
             # 获取文件名（不含扩展名）和扩展名
@@ -175,6 +176,7 @@ def replace_in_project_files(project_path, name_mapping):
     print(f"开始递归遍历 {project_path} 下的所有文件...")
     
     for root, dirs, files in os.walk(project_path):
+        dirs[:] = [d for d in dirs if d not in ignore_folders and "build" not in d.lower()]
         # 检查当前路径是否包含忽略的文件夹
         should_skip_root = False
         for ignore_folder in ignore_folders:

@@ -19,7 +19,6 @@
 0D32C8OACYE79YCA
 1
 100
-133016
 133028
 133029
 14.6
@@ -33,7 +32,6 @@
 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~
 Allow Arbitrary Loads
 App Transport Security Settings
-AppStart
 Apple
 F00C5GZWB1xX6EW9
 PAY_CANCELED
@@ -49,6 +47,7 @@ activityChannel
 adsToken
 amountBoxStyle
 appStartNewRequest
+appStartNewResponse
 appVersion
 appVersionCode
 app_version
@@ -176,7 +175,6 @@ qaid
 remark
 remarkName
 requestPath
-resume_from_background
 retentionPopUpCheck
 rightsDesc
 s_channel
@@ -254,7 +252,6 @@ zgxMap
 开始执行过审核状态判断
 归因 3 合一接口执行失败
 归因 3 合一接口执行完成
-归因 3 合一接口执行成功
 心跳计时器已恢复
 心跳计时器已暂停
 恢复购买失败

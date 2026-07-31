@@ -9,8 +9,8 @@
 
 # ==================== 目标项目 ====================
 
-project_path = '/Users/may/ttfluttersdk-overseas'
-ROOT_PROJECT_DIR = '/Users/may/ttfluttersdk-overseas'
+project_path = '/Users/may/TTRateTracker'
+ROOT_PROJECT_DIR = '/Users/may/TTRateTracker'
 PROJECT_SCHEME = 'quick_face_ex'
 
 # ==================== 扫描/过滤配置 ====================
@@ -32,7 +32,7 @@ ig_fix_text = ['.mp4', '.zip', '/', '.', ',']
 ig_format_text = ['%.', '%d', '%s', '%f']
 STRING_SUFFIX = '_pkm'
 CONFUSE_KEY = '0C32C2KT2FE79YKC'
-IS_POD_CONFUSE_MODE = False
+IS_POD_CONFUSE_MODE = True
 
 # ==================== 文件/命名替换配置 ====================
 
@@ -44,10 +44,10 @@ REPLACE_IGNORE_FILE_NAMES = {
     'SceneDelegate',
     'ViewController',
 }
-THEME_KEYWORDS = ['植物', '位置', '配置', '临时', '结果', '进度']
-NUM_FILES = 35
-ORIGIN_POD_FILE_NAME = 'ttfluttersdk_plugin'
-NEW_POD_FILE_NAME = 'PlantFlutterBaseSDK'
+THEME_KEYWORDS = ['心率', '地上', '时间', '参数', '心率']
+NUM_FILES = 20
+ORIGIN_POD_FILE_NAME = 'MyFirstLibrary'
+NEW_POD_FILE_NAME = 'TimeRateBaseSDK'
 
 # ==================== confuse_ios 相关配置 ====================
 
@@ -58,6 +58,7 @@ CONFUSE_LEVEL = 2
 IGNORE_CODE_DIRECTORY = ['main.m',
  'Assets.xcassets',
  'Base.lproj',
+ 'build',
  'PetWidget',
  'Frameworks',
  'Products',

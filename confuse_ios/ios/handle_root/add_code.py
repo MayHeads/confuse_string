@@ -17,6 +17,9 @@ from ios.file_base import file_base
 
 def should_ignore_file(file_path):
     """检查文件路径是否应该被忽略"""
+    if "build" in file_path.lower():
+        print(f"忽略文件（包含 build 目录）: {file_path}")
+        return True
     for ignore_dir in config.IGNORE_CODE_DIRECTORY:
         if ignore_dir in file_path:
             print(f"忽略文件（包含忽略目录 {ignore_dir}）: {file_path}")

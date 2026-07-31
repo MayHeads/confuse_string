@@ -60,6 +60,8 @@ def should_ignore_string(s: str) -> bool:
 
 def is_ignore_file(file_path: str) -> bool:
     """检查文件是否应该被忽略"""
+    if "build" in file_path.lower():
+        return True
     for directory in custom_ignore_folders:
         file_folder_list = file_path.split("/")
         if directory in file_folder_list:
@@ -349,7 +351,7 @@ def collect_swift_files_from_flutter_plugin(flutter_plugin_path: str) -> List[st
     
     for root, dirs, files in os.walk(flutter_plugin_path):
         # 跳过忽略的文件夹
-        dirs[:] = [d for d in dirs if d not in custom_ignore_folders]
+        dirs[:] = [d for d in dirs if d not in custom_ignore_folders and "build" not in d.lower()]
         
         for file in files:
             if file.endswith('.swift'):

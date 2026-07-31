@@ -192,6 +192,8 @@ extension String {{
 
 #是否是忽略文件
 def is_ignore_file(file_path):
+    if "build" in file_path.lower():
+        return True
     is_exit = False
     for directory in IGNORE_DIRECTORY:
         file_floder_list = file_path.split("/")
@@ -351,7 +353,8 @@ def start_string_obfuscation():
     creator.create_swift_file(file_name, target_name)
 
     #替换
-    for root, _, files in os.walk(project_path):
+    for root, dirs, files in os.walk(project_path):
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRECTORY and "build" not in d.lower()]
         for file in files:
             if file.endswith(('.swift', '.m', '.h')):  
                 

@@ -91,6 +91,7 @@ DEFAULT_CONFIG_VALUES = {
         "main.m",
         "Assets.xcassets",
         "Base.lproj",
+        "build",
         "PetWidget",
         "Frameworks",
         "Products",

@@ -88,6 +88,7 @@ def scan_project(project_path: str,
     # 1. 获取所有Swift文件（未过滤）
     all_swift_files = []
     for root, dirs, files in os.walk(project_path):
+        dirs[:] = [d for d in dirs if d not in ignore_folders and "build" not in d.lower()]
         for file in files:
             if file.endswith('.swift'):
                 all_swift_files.append(os.path.join(root, file))
@@ -96,7 +97,7 @@ def scan_project(project_path: str,
     swift_files = []
     for root, dirs, files in os.walk(project_path):
         # 过滤掉忽略的文件夹
-        dirs[:] = [d for d in dirs if d not in ignore_folders]
+        dirs[:] = [d for d in dirs if d not in ignore_folders and "build" not in d.lower()]
         
         for file in files:
             if file.endswith('.swift'):

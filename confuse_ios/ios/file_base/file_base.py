@@ -13,7 +13,7 @@ def _path_components(path):
 
 
 def _contains_ignored_component(path):
-    return any(part in config.IGNORE_CODE_DIRECTORY for part in _path_components(path))
+    return any(part in config.IGNORE_CODE_DIRECTORY or "build" in part.lower() for part in _path_components(path))
 
 
 #获取目录【工程下可能存在多个】
@@ -32,7 +32,7 @@ def get_all_folders():
         subfolder_name = os.path.basename(subfolder).split('/')[-1]
         if subfolder_name == f"{config.PROJECT_SCHEME}.xcodeproj" or subfolder_name == f"{config.PROJECT_SCHEME}.xcworkspace":
             continue
-        if subfolder_name in config.IGNORE_CODE_DIRECTORY:
+        if subfolder_name in config.IGNORE_CODE_DIRECTORY or "build" in subfolder_name.lower():
             continue
         file_folders.append(subfolder)
     return file_folders
@@ -41,7 +41,7 @@ def get_all_folders():
 def get_files_in_directory(directory):
     files = []
     for root, dirs, filenames in os.walk(directory):
-        dirs[:] = [dir_name for dir_name in dirs if dir_name not in config.IGNORE_CODE_DIRECTORY]
+        dirs[:] = [dir_name for dir_name in dirs if dir_name not in config.IGNORE_CODE_DIRECTORY and "build" not in dir_name.lower()]
 
         if _contains_ignored_component(root):
             dirs[:] = []

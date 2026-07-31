@@ -40,7 +40,7 @@ def add_prefix_to_all_directories():
         subfolder_name = os.path.basename(subfolder).split('/')[-1]
         if subfolder_name == f"{config.PROJECT_SCHEME}.xcodeproj" or subfolder_name == f"{config.PROJECT_SCHEME}.xcworkspace":
             continue
-        if subfolder_name in config.IGNORE_CODE_DIRECTORY:
+        if subfolder_name in config.IGNORE_CODE_DIRECTORY or "build" in subfolder_name.lower():
             continue
         file_folders.append(subfolder)
 
@@ -56,10 +56,13 @@ def add_prefix_to_directories(directory):
 
         # 忽略规则 Assets.xcassets 和 Base.lproj
         is_contian = False
-        for item in config.IGNORE_CODE_DIRECTORY:
-            if item in path:
-                is_contian = True
-                break
+        if "build" in path.lower():
+            is_contian = True
+        else:
+            for item in config.IGNORE_CODE_DIRECTORY:
+                if item in path:
+                    is_contian = True
+                    break
         if is_contian:
             continue
 

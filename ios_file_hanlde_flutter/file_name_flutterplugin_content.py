@@ -20,6 +20,7 @@ def collect_pkm_strings(flutter_plugin_path):
     supported_extensions = ['.swift', '.h', '.m']
     
     for root, dirs, files in os.walk(flutter_plugin_path):
+        dirs[:] = [d for d in dirs if "build" not in d.lower()]
         for file in files:
             file_path = os.path.join(root, file)
             _, ext = os.path.splitext(file)
@@ -119,6 +120,7 @@ def replace_strings_in_flutter_plugin_files(flutter_plugin_path, replace_map):
     print(f"开始替换 {flutter_plugin_path} 中的文件内容...")
     
     for root, dirs, files in os.walk(flutter_plugin_path):
+        dirs[:] = [d for d in dirs if "build" not in d.lower()]
         for file in files:
             file_path = os.path.join(root, file)
             _, ext = os.path.splitext(file)
@@ -267,6 +269,7 @@ def replace_in_project_files(project_path, replace_map):
     print(f"开始递归遍历 {project_path} 下的所有文件...")
     
     for root, dirs, files in os.walk(project_path):
+        dirs[:] = [d for d in dirs if d not in ignore_folders and "build" not in d.lower()]
         # 检查当前路径是否包含忽略的文件夹
         should_skip_root = False
         for ignore_folder in ignore_folders:
